@@ -1,0 +1,1951 @@
+<?xml version="1.0"?>
+<dumps>
+  <platform name="win32A" char_bit="8" short_bit="16" int_bit="32" long_bit="32" long_long_bit="64" pointer_bit="32"/>
+  <rawtokens>
+    <file index="0" name="mcc_generated_files/pin_manager.h"/>
+    <tok fileIndex="0" linenr="1" column="1" str="/**x  System Interrupts Generated Driver Filexx  @Company:x    Microchip Technology Inc.xx  @File Name:x    pin_manager.hxx  @Summary:x    This is the generated manager file for the MPLAB(c) Code Configurator device.  This managerx    configures the pins direction, initial state, analog setting.x    The peripheral pin select, PPS, configuration is also handled by this manager.xx  @Description:x    This source file provides implementations for MPLAB(c) Code Configurator interrupts.x    Generation Information :x        Product Revision  :  MPLAB(c) Code Configurator - 4.85.0x        Device            :  PIC32MX570F512Hx        Version           :  1.02x    The generated drivers are tested against the following:x        Compiler          :  XC32 1.42x        MPLAB             :  MPLAB X 3.55xx    Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.xx    Microchip licenses to you the right to use, modify, copy and distributex    Software only when embedded on a Microchip microcontroller or digital signalx    controller that is integrated into your product or third party productx    (pursuant to the sublicense terms in the accompanying license agreement).xx    You should refer to the license agreement accompanying this Software forx    additional information regarding your rights and obligations.xx    SOFTWARE AND DOCUMENTATION ARE PROVIDED &quot;AS IS&quot; WITHOUT WARRANTY OF ANY KIND,x    EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION, ANY WARRANTY OFx    MERCHANTABILITY, TITLE, NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE.x    IN NO EVENT SHALL MICROCHIP OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDERx    CONTRACT, NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, ORx    OTHER LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSESx    INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE ORx    CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT OFx    SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIESx    (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.xx*/"/>
+    <tok fileIndex="0" linenr="48" column="1" str="#"/>
+    <tok fileIndex="0" linenr="48" column="2" str="ifndef"/>
+    <tok fileIndex="0" linenr="48" column="9" str="_PIN_MANAGER_H"/>
+    <tok fileIndex="0" linenr="49" column="1" str="#"/>
+    <tok fileIndex="0" linenr="49" column="2" str="define"/>
+    <tok fileIndex="0" linenr="49" column="9" str="_PIN_MANAGER_H"/>
+    <tok fileIndex="0" linenr="50" column="1" str="/**    Section: Includes*/"/>
+    <tok fileIndex="0" linenr="53" column="1" str="#"/>
+    <tok fileIndex="0" linenr="53" column="2" str="include"/>
+    <tok fileIndex="0" linenr="53" column="10" str="&lt;xc.h&gt;"/>
+    <tok fileIndex="0" linenr="54" column="1" str="/**    Section: Device Pin Macros*/"/>
+    <tok fileIndex="0" linenr="57" column="1" str="/**x  @Summaryx    Sets the GPIO pin, RB10, high using LATBbits.LATB10.xx  @Descriptionx    Sets the GPIO pin, RB10, high using LATBbits.LATB10.xx  @Preconditionsx    The RB10 must be set to an output.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    // Set RB10 high (1)x    SDI3_SetHigh();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="80" column="1" str="#"/>
+    <tok fileIndex="0" linenr="80" column="2" str="define"/>
+    <tok fileIndex="0" linenr="80" column="9" str="SDI3_SetHigh"/>
+    <tok fileIndex="0" linenr="80" column="21" str="("/>
+    <tok fileIndex="0" linenr="80" column="22" str=")"/>
+    <tok fileIndex="0" linenr="80" column="33" str="LATBbits"/>
+    <tok fileIndex="0" linenr="80" column="41" str="."/>
+    <tok fileIndex="0" linenr="80" column="42" str="LATB10"/>
+    <tok fileIndex="0" linenr="80" column="49" str="="/>
+    <tok fileIndex="0" linenr="80" column="51" str="1"/>
+    <tok fileIndex="0" linenr="81" column="1" str="/**  @Summary    Sets the GPIO pin, RB10, low using LATBbits.LATB10.  @Description    Sets the GPIO pin, RB10, low using LATBbits.LATB10.  @Preconditions    The RB10 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB10 low (0)    SDI3_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="104" column="1" str="#"/>
+    <tok fileIndex="0" linenr="104" column="2" str="define"/>
+    <tok fileIndex="0" linenr="104" column="9" str="SDI3_SetLow"/>
+    <tok fileIndex="0" linenr="104" column="20" str="("/>
+    <tok fileIndex="0" linenr="104" column="21" str=")"/>
+    <tok fileIndex="0" linenr="104" column="33" str="LATBbits"/>
+    <tok fileIndex="0" linenr="104" column="41" str="."/>
+    <tok fileIndex="0" linenr="104" column="42" str="LATB10"/>
+    <tok fileIndex="0" linenr="104" column="49" str="="/>
+    <tok fileIndex="0" linenr="104" column="51" str="0"/>
+    <tok fileIndex="0" linenr="105" column="1" str="/**  @Summary    Toggles the GPIO pin, RB10, using LATBbits.LATB10.  @Description    Toggles the GPIO pin, RB10, using LATBbits.LATB10.  @Preconditions    The RB10 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RB10    SDI3_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="128" column="1" str="#"/>
+    <tok fileIndex="0" linenr="128" column="2" str="define"/>
+    <tok fileIndex="0" linenr="128" column="9" str="SDI3_Toggle"/>
+    <tok fileIndex="0" linenr="128" column="20" str="("/>
+    <tok fileIndex="0" linenr="128" column="21" str=")"/>
+    <tok fileIndex="0" linenr="128" column="33" str="LATBbits"/>
+    <tok fileIndex="0" linenr="128" column="41" str="."/>
+    <tok fileIndex="0" linenr="128" column="42" str="LATB10"/>
+    <tok fileIndex="0" linenr="128" column="49" str="^="/>
+    <tok fileIndex="0" linenr="128" column="52" str="1"/>
+    <tok fileIndex="0" linenr="129" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RB10.xx  @Descriptionx    Reads the value of the GPIO pin, RB10.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RB10x    postValue = SDI3_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="154" column="1" str="#"/>
+    <tok fileIndex="0" linenr="154" column="2" str="define"/>
+    <tok fileIndex="0" linenr="154" column="9" str="SDI3_GetValue"/>
+    <tok fileIndex="0" linenr="154" column="22" str="("/>
+    <tok fileIndex="0" linenr="154" column="23" str=")"/>
+    <tok fileIndex="0" linenr="154" column="33" str="PORTBbits"/>
+    <tok fileIndex="0" linenr="154" column="42" str="."/>
+    <tok fileIndex="0" linenr="154" column="43" str="RB10"/>
+    <tok fileIndex="0" linenr="155" column="1" str="/**  @Summary    Configures the GPIO pin, RB10, as an input.  @Description    Configures the GPIO pin, RB10, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB10 as an input    SDI3_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="178" column="1" str="#"/>
+    <tok fileIndex="0" linenr="178" column="2" str="define"/>
+    <tok fileIndex="0" linenr="178" column="9" str="SDI3_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="178" column="29" str="("/>
+    <tok fileIndex="0" linenr="178" column="30" str=")"/>
+    <tok fileIndex="0" linenr="178" column="33" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="178" column="42" str="."/>
+    <tok fileIndex="0" linenr="178" column="43" str="TRISB10"/>
+    <tok fileIndex="0" linenr="178" column="51" str="="/>
+    <tok fileIndex="0" linenr="178" column="53" str="1"/>
+    <tok fileIndex="0" linenr="179" column="1" str="/**  @Summary    Configures the GPIO pin, RB10, as an output.  @Description    Configures the GPIO pin, RB10, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB10 as an output    SDI3_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="202" column="1" str="#"/>
+    <tok fileIndex="0" linenr="202" column="2" str="define"/>
+    <tok fileIndex="0" linenr="202" column="9" str="SDI3_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="202" column="30" str="("/>
+    <tok fileIndex="0" linenr="202" column="31" str=")"/>
+    <tok fileIndex="0" linenr="202" column="33" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="202" column="42" str="."/>
+    <tok fileIndex="0" linenr="202" column="43" str="TRISB10"/>
+    <tok fileIndex="0" linenr="202" column="51" str="="/>
+    <tok fileIndex="0" linenr="202" column="53" str="0"/>
+    <tok fileIndex="0" linenr="203" column="1" str="/**  @Summary    Sets the GPIO pin, RB11, high using LATBbits.LATB11.  @Description    Sets the GPIO pin, RB11, high using LATBbits.LATB11.  @Preconditions    The RB11 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB11 high (1)    RFM95_INT_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="226" column="1" str="#"/>
+    <tok fileIndex="0" linenr="226" column="2" str="define"/>
+    <tok fileIndex="0" linenr="226" column="9" str="RFM95_INT_SetHigh"/>
+    <tok fileIndex="0" linenr="226" column="26" str="("/>
+    <tok fileIndex="0" linenr="226" column="27" str=")"/>
+    <tok fileIndex="0" linenr="226" column="38" str="LATBbits"/>
+    <tok fileIndex="0" linenr="226" column="46" str="."/>
+    <tok fileIndex="0" linenr="226" column="47" str="LATB11"/>
+    <tok fileIndex="0" linenr="226" column="54" str="="/>
+    <tok fileIndex="0" linenr="226" column="56" str="1"/>
+    <tok fileIndex="0" linenr="227" column="1" str="/**  @Summary    Sets the GPIO pin, RB11, low using LATBbits.LATB11.  @Description    Sets the GPIO pin, RB11, low using LATBbits.LATB11.  @Preconditions    The RB11 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB11 low (0)    RFM95_INT_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="250" column="1" str="#"/>
+    <tok fileIndex="0" linenr="250" column="2" str="define"/>
+    <tok fileIndex="0" linenr="250" column="9" str="RFM95_INT_SetLow"/>
+    <tok fileIndex="0" linenr="250" column="25" str="("/>
+    <tok fileIndex="0" linenr="250" column="26" str=")"/>
+    <tok fileIndex="0" linenr="250" column="38" str="LATBbits"/>
+    <tok fileIndex="0" linenr="250" column="46" str="."/>
+    <tok fileIndex="0" linenr="250" column="47" str="LATB11"/>
+    <tok fileIndex="0" linenr="250" column="54" str="="/>
+    <tok fileIndex="0" linenr="250" column="56" str="0"/>
+    <tok fileIndex="0" linenr="251" column="1" str="/**  @Summary    Toggles the GPIO pin, RB11, using LATBbits.LATB11.  @Description    Toggles the GPIO pin, RB11, using LATBbits.LATB11.  @Preconditions    The RB11 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RB11    RFM95_INT_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="274" column="1" str="#"/>
+    <tok fileIndex="0" linenr="274" column="2" str="define"/>
+    <tok fileIndex="0" linenr="274" column="9" str="RFM95_INT_Toggle"/>
+    <tok fileIndex="0" linenr="274" column="25" str="("/>
+    <tok fileIndex="0" linenr="274" column="26" str=")"/>
+    <tok fileIndex="0" linenr="274" column="38" str="LATBbits"/>
+    <tok fileIndex="0" linenr="274" column="46" str="."/>
+    <tok fileIndex="0" linenr="274" column="47" str="LATB11"/>
+    <tok fileIndex="0" linenr="274" column="54" str="^="/>
+    <tok fileIndex="0" linenr="274" column="57" str="1"/>
+    <tok fileIndex="0" linenr="275" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RB11.xx  @Descriptionx    Reads the value of the GPIO pin, RB11.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RB11x    postValue = RFM95_INT_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="300" column="1" str="#"/>
+    <tok fileIndex="0" linenr="300" column="2" str="define"/>
+    <tok fileIndex="0" linenr="300" column="9" str="RFM95_INT_GetValue"/>
+    <tok fileIndex="0" linenr="300" column="27" str="("/>
+    <tok fileIndex="0" linenr="300" column="28" str=")"/>
+    <tok fileIndex="0" linenr="300" column="38" str="PORTBbits"/>
+    <tok fileIndex="0" linenr="300" column="47" str="."/>
+    <tok fileIndex="0" linenr="300" column="48" str="RB11"/>
+    <tok fileIndex="0" linenr="301" column="1" str="/**  @Summary    Configures the GPIO pin, RB11, as an input.  @Description    Configures the GPIO pin, RB11, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB11 as an input    RFM95_INT_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="324" column="1" str="#"/>
+    <tok fileIndex="0" linenr="324" column="2" str="define"/>
+    <tok fileIndex="0" linenr="324" column="9" str="RFM95_INT_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="324" column="34" str="("/>
+    <tok fileIndex="0" linenr="324" column="35" str=")"/>
+    <tok fileIndex="0" linenr="324" column="38" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="324" column="47" str="."/>
+    <tok fileIndex="0" linenr="324" column="48" str="TRISB11"/>
+    <tok fileIndex="0" linenr="324" column="56" str="="/>
+    <tok fileIndex="0" linenr="324" column="58" str="1"/>
+    <tok fileIndex="0" linenr="325" column="1" str="/**  @Summary    Configures the GPIO pin, RB11, as an output.  @Description    Configures the GPIO pin, RB11, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB11 as an output    RFM95_INT_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="348" column="1" str="#"/>
+    <tok fileIndex="0" linenr="348" column="2" str="define"/>
+    <tok fileIndex="0" linenr="348" column="9" str="RFM95_INT_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="348" column="35" str="("/>
+    <tok fileIndex="0" linenr="348" column="36" str=")"/>
+    <tok fileIndex="0" linenr="348" column="38" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="348" column="47" str="."/>
+    <tok fileIndex="0" linenr="348" column="48" str="TRISB11"/>
+    <tok fileIndex="0" linenr="348" column="56" str="="/>
+    <tok fileIndex="0" linenr="348" column="58" str="0"/>
+    <tok fileIndex="0" linenr="349" column="1" str="/**  @Summary    Sets the GPIO pin, RB12, high using LATBbits.LATB12.  @Description    Sets the GPIO pin, RB12, high using LATBbits.LATB12.  @Preconditions    The RB12 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB12 high (1)    RF95_CS_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="372" column="1" str="#"/>
+    <tok fileIndex="0" linenr="372" column="2" str="define"/>
+    <tok fileIndex="0" linenr="372" column="9" str="RF95_CS_SetHigh"/>
+    <tok fileIndex="0" linenr="372" column="24" str="("/>
+    <tok fileIndex="0" linenr="372" column="25" str=")"/>
+    <tok fileIndex="0" linenr="372" column="36" str="LATBbits"/>
+    <tok fileIndex="0" linenr="372" column="44" str="."/>
+    <tok fileIndex="0" linenr="372" column="45" str="LATB12"/>
+    <tok fileIndex="0" linenr="372" column="52" str="="/>
+    <tok fileIndex="0" linenr="372" column="54" str="1"/>
+    <tok fileIndex="0" linenr="373" column="1" str="/**  @Summary    Sets the GPIO pin, RB12, low using LATBbits.LATB12.  @Description    Sets the GPIO pin, RB12, low using LATBbits.LATB12.  @Preconditions    The RB12 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB12 low (0)    RF95_CS_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="396" column="1" str="#"/>
+    <tok fileIndex="0" linenr="396" column="2" str="define"/>
+    <tok fileIndex="0" linenr="396" column="9" str="RF95_CS_SetLow"/>
+    <tok fileIndex="0" linenr="396" column="23" str="("/>
+    <tok fileIndex="0" linenr="396" column="24" str=")"/>
+    <tok fileIndex="0" linenr="396" column="36" str="LATBbits"/>
+    <tok fileIndex="0" linenr="396" column="44" str="."/>
+    <tok fileIndex="0" linenr="396" column="45" str="LATB12"/>
+    <tok fileIndex="0" linenr="396" column="52" str="="/>
+    <tok fileIndex="0" linenr="396" column="54" str="0"/>
+    <tok fileIndex="0" linenr="397" column="1" str="/**  @Summary    Toggles the GPIO pin, RB12, using LATBbits.LATB12.  @Description    Toggles the GPIO pin, RB12, using LATBbits.LATB12.  @Preconditions    The RB12 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RB12    RF95_CS_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="420" column="1" str="#"/>
+    <tok fileIndex="0" linenr="420" column="2" str="define"/>
+    <tok fileIndex="0" linenr="420" column="9" str="RF95_CS_Toggle"/>
+    <tok fileIndex="0" linenr="420" column="23" str="("/>
+    <tok fileIndex="0" linenr="420" column="24" str=")"/>
+    <tok fileIndex="0" linenr="420" column="36" str="LATBbits"/>
+    <tok fileIndex="0" linenr="420" column="44" str="."/>
+    <tok fileIndex="0" linenr="420" column="45" str="LATB12"/>
+    <tok fileIndex="0" linenr="420" column="52" str="^="/>
+    <tok fileIndex="0" linenr="420" column="55" str="1"/>
+    <tok fileIndex="0" linenr="421" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RB12.xx  @Descriptionx    Reads the value of the GPIO pin, RB12.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RB12x    postValue = RF95_CS_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="446" column="1" str="#"/>
+    <tok fileIndex="0" linenr="446" column="2" str="define"/>
+    <tok fileIndex="0" linenr="446" column="9" str="RF95_CS_GetValue"/>
+    <tok fileIndex="0" linenr="446" column="25" str="("/>
+    <tok fileIndex="0" linenr="446" column="26" str=")"/>
+    <tok fileIndex="0" linenr="446" column="36" str="PORTBbits"/>
+    <tok fileIndex="0" linenr="446" column="45" str="."/>
+    <tok fileIndex="0" linenr="446" column="46" str="RB12"/>
+    <tok fileIndex="0" linenr="447" column="1" str="/**  @Summary    Configures the GPIO pin, RB12, as an input.  @Description    Configures the GPIO pin, RB12, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB12 as an input    RF95_CS_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="470" column="1" str="#"/>
+    <tok fileIndex="0" linenr="470" column="2" str="define"/>
+    <tok fileIndex="0" linenr="470" column="9" str="RF95_CS_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="470" column="32" str="("/>
+    <tok fileIndex="0" linenr="470" column="33" str=")"/>
+    <tok fileIndex="0" linenr="470" column="36" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="470" column="45" str="."/>
+    <tok fileIndex="0" linenr="470" column="46" str="TRISB12"/>
+    <tok fileIndex="0" linenr="470" column="54" str="="/>
+    <tok fileIndex="0" linenr="470" column="56" str="1"/>
+    <tok fileIndex="0" linenr="471" column="1" str="/**  @Summary    Configures the GPIO pin, RB12, as an output.  @Description    Configures the GPIO pin, RB12, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB12 as an output    RF95_CS_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="494" column="1" str="#"/>
+    <tok fileIndex="0" linenr="494" column="2" str="define"/>
+    <tok fileIndex="0" linenr="494" column="9" str="RF95_CS_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="494" column="33" str="("/>
+    <tok fileIndex="0" linenr="494" column="34" str=")"/>
+    <tok fileIndex="0" linenr="494" column="36" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="494" column="45" str="."/>
+    <tok fileIndex="0" linenr="494" column="46" str="TRISB12"/>
+    <tok fileIndex="0" linenr="494" column="54" str="="/>
+    <tok fileIndex="0" linenr="494" column="56" str="0"/>
+    <tok fileIndex="0" linenr="495" column="1" str="/**  @Summary    Sets the GPIO pin, RB13, high using LATBbits.LATB13.  @Description    Sets the GPIO pin, RB13, high using LATBbits.LATB13.  @Preconditions    The RB13 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB13 high (1)    LED_GREEN_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="518" column="1" str="#"/>
+    <tok fileIndex="0" linenr="518" column="2" str="define"/>
+    <tok fileIndex="0" linenr="518" column="9" str="LED_GREEN_SetHigh"/>
+    <tok fileIndex="0" linenr="518" column="26" str="("/>
+    <tok fileIndex="0" linenr="518" column="27" str=")"/>
+    <tok fileIndex="0" linenr="518" column="38" str="LATBbits"/>
+    <tok fileIndex="0" linenr="518" column="46" str="."/>
+    <tok fileIndex="0" linenr="518" column="47" str="LATB13"/>
+    <tok fileIndex="0" linenr="518" column="54" str="="/>
+    <tok fileIndex="0" linenr="518" column="56" str="1"/>
+    <tok fileIndex="0" linenr="519" column="1" str="/**  @Summary    Sets the GPIO pin, RB13, low using LATBbits.LATB13.  @Description    Sets the GPIO pin, RB13, low using LATBbits.LATB13.  @Preconditions    The RB13 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB13 low (0)    LED_GREEN_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="542" column="1" str="#"/>
+    <tok fileIndex="0" linenr="542" column="2" str="define"/>
+    <tok fileIndex="0" linenr="542" column="9" str="LED_GREEN_SetLow"/>
+    <tok fileIndex="0" linenr="542" column="25" str="("/>
+    <tok fileIndex="0" linenr="542" column="26" str=")"/>
+    <tok fileIndex="0" linenr="542" column="38" str="LATBbits"/>
+    <tok fileIndex="0" linenr="542" column="46" str="."/>
+    <tok fileIndex="0" linenr="542" column="47" str="LATB13"/>
+    <tok fileIndex="0" linenr="542" column="54" str="="/>
+    <tok fileIndex="0" linenr="542" column="56" str="0"/>
+    <tok fileIndex="0" linenr="543" column="1" str="/**  @Summary    Toggles the GPIO pin, RB13, using LATBbits.LATB13.  @Description    Toggles the GPIO pin, RB13, using LATBbits.LATB13.  @Preconditions    The RB13 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RB13    LED_GREEN_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="566" column="1" str="#"/>
+    <tok fileIndex="0" linenr="566" column="2" str="define"/>
+    <tok fileIndex="0" linenr="566" column="9" str="LED_GREEN_Toggle"/>
+    <tok fileIndex="0" linenr="566" column="25" str="("/>
+    <tok fileIndex="0" linenr="566" column="26" str=")"/>
+    <tok fileIndex="0" linenr="566" column="38" str="LATBbits"/>
+    <tok fileIndex="0" linenr="566" column="46" str="."/>
+    <tok fileIndex="0" linenr="566" column="47" str="LATB13"/>
+    <tok fileIndex="0" linenr="566" column="54" str="^="/>
+    <tok fileIndex="0" linenr="566" column="57" str="1"/>
+    <tok fileIndex="0" linenr="567" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RB13.xx  @Descriptionx    Reads the value of the GPIO pin, RB13.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RB13x    postValue = LED_GREEN_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="592" column="1" str="#"/>
+    <tok fileIndex="0" linenr="592" column="2" str="define"/>
+    <tok fileIndex="0" linenr="592" column="9" str="LED_GREEN_GetValue"/>
+    <tok fileIndex="0" linenr="592" column="27" str="("/>
+    <tok fileIndex="0" linenr="592" column="28" str=")"/>
+    <tok fileIndex="0" linenr="592" column="38" str="PORTBbits"/>
+    <tok fileIndex="0" linenr="592" column="47" str="."/>
+    <tok fileIndex="0" linenr="592" column="48" str="RB13"/>
+    <tok fileIndex="0" linenr="593" column="1" str="/**  @Summary    Configures the GPIO pin, RB13, as an input.  @Description    Configures the GPIO pin, RB13, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB13 as an input    LED_GREEN_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="616" column="1" str="#"/>
+    <tok fileIndex="0" linenr="616" column="2" str="define"/>
+    <tok fileIndex="0" linenr="616" column="9" str="LED_GREEN_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="616" column="34" str="("/>
+    <tok fileIndex="0" linenr="616" column="35" str=")"/>
+    <tok fileIndex="0" linenr="616" column="38" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="616" column="47" str="."/>
+    <tok fileIndex="0" linenr="616" column="48" str="TRISB13"/>
+    <tok fileIndex="0" linenr="616" column="56" str="="/>
+    <tok fileIndex="0" linenr="616" column="58" str="1"/>
+    <tok fileIndex="0" linenr="617" column="1" str="/**  @Summary    Configures the GPIO pin, RB13, as an output.  @Description    Configures the GPIO pin, RB13, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB13 as an output    LED_GREEN_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="640" column="1" str="#"/>
+    <tok fileIndex="0" linenr="640" column="2" str="define"/>
+    <tok fileIndex="0" linenr="640" column="9" str="LED_GREEN_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="640" column="35" str="("/>
+    <tok fileIndex="0" linenr="640" column="36" str=")"/>
+    <tok fileIndex="0" linenr="640" column="38" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="640" column="47" str="."/>
+    <tok fileIndex="0" linenr="640" column="48" str="TRISB13"/>
+    <tok fileIndex="0" linenr="640" column="56" str="="/>
+    <tok fileIndex="0" linenr="640" column="58" str="0"/>
+    <tok fileIndex="0" linenr="641" column="1" str="/**  @Summary    Sets the GPIO pin, RB14, high using LATBbits.LATB14.  @Description    Sets the GPIO pin, RB14, high using LATBbits.LATB14.  @Preconditions    The RB14 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB14 high (1)    SCK3_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="664" column="1" str="#"/>
+    <tok fileIndex="0" linenr="664" column="2" str="define"/>
+    <tok fileIndex="0" linenr="664" column="9" str="SCK3_SetHigh"/>
+    <tok fileIndex="0" linenr="664" column="21" str="("/>
+    <tok fileIndex="0" linenr="664" column="22" str=")"/>
+    <tok fileIndex="0" linenr="664" column="33" str="LATBbits"/>
+    <tok fileIndex="0" linenr="664" column="41" str="."/>
+    <tok fileIndex="0" linenr="664" column="42" str="LATB14"/>
+    <tok fileIndex="0" linenr="664" column="49" str="="/>
+    <tok fileIndex="0" linenr="664" column="51" str="1"/>
+    <tok fileIndex="0" linenr="665" column="1" str="/**  @Summary    Sets the GPIO pin, RB14, low using LATBbits.LATB14.  @Description    Sets the GPIO pin, RB14, low using LATBbits.LATB14.  @Preconditions    The RB14 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB14 low (0)    SCK3_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="688" column="1" str="#"/>
+    <tok fileIndex="0" linenr="688" column="2" str="define"/>
+    <tok fileIndex="0" linenr="688" column="9" str="SCK3_SetLow"/>
+    <tok fileIndex="0" linenr="688" column="20" str="("/>
+    <tok fileIndex="0" linenr="688" column="21" str=")"/>
+    <tok fileIndex="0" linenr="688" column="33" str="LATBbits"/>
+    <tok fileIndex="0" linenr="688" column="41" str="."/>
+    <tok fileIndex="0" linenr="688" column="42" str="LATB14"/>
+    <tok fileIndex="0" linenr="688" column="49" str="="/>
+    <tok fileIndex="0" linenr="688" column="51" str="0"/>
+    <tok fileIndex="0" linenr="689" column="1" str="/**  @Summary    Toggles the GPIO pin, RB14, using LATBbits.LATB14.  @Description    Toggles the GPIO pin, RB14, using LATBbits.LATB14.  @Preconditions    The RB14 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RB14    SCK3_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="712" column="1" str="#"/>
+    <tok fileIndex="0" linenr="712" column="2" str="define"/>
+    <tok fileIndex="0" linenr="712" column="9" str="SCK3_Toggle"/>
+    <tok fileIndex="0" linenr="712" column="20" str="("/>
+    <tok fileIndex="0" linenr="712" column="21" str=")"/>
+    <tok fileIndex="0" linenr="712" column="33" str="LATBbits"/>
+    <tok fileIndex="0" linenr="712" column="41" str="."/>
+    <tok fileIndex="0" linenr="712" column="42" str="LATB14"/>
+    <tok fileIndex="0" linenr="712" column="49" str="^="/>
+    <tok fileIndex="0" linenr="712" column="52" str="1"/>
+    <tok fileIndex="0" linenr="713" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RB14.xx  @Descriptionx    Reads the value of the GPIO pin, RB14.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RB14x    postValue = SCK3_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="738" column="1" str="#"/>
+    <tok fileIndex="0" linenr="738" column="2" str="define"/>
+    <tok fileIndex="0" linenr="738" column="9" str="SCK3_GetValue"/>
+    <tok fileIndex="0" linenr="738" column="22" str="("/>
+    <tok fileIndex="0" linenr="738" column="23" str=")"/>
+    <tok fileIndex="0" linenr="738" column="33" str="PORTBbits"/>
+    <tok fileIndex="0" linenr="738" column="42" str="."/>
+    <tok fileIndex="0" linenr="738" column="43" str="RB14"/>
+    <tok fileIndex="0" linenr="739" column="1" str="/**  @Summary    Configures the GPIO pin, RB14, as an input.  @Description    Configures the GPIO pin, RB14, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB14 as an input    SCK3_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="762" column="1" str="#"/>
+    <tok fileIndex="0" linenr="762" column="2" str="define"/>
+    <tok fileIndex="0" linenr="762" column="9" str="SCK3_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="762" column="29" str="("/>
+    <tok fileIndex="0" linenr="762" column="30" str=")"/>
+    <tok fileIndex="0" linenr="762" column="33" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="762" column="42" str="."/>
+    <tok fileIndex="0" linenr="762" column="43" str="TRISB14"/>
+    <tok fileIndex="0" linenr="762" column="51" str="="/>
+    <tok fileIndex="0" linenr="762" column="53" str="1"/>
+    <tok fileIndex="0" linenr="763" column="1" str="/**  @Summary    Configures the GPIO pin, RB14, as an output.  @Description    Configures the GPIO pin, RB14, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB14 as an output    SCK3_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="786" column="1" str="#"/>
+    <tok fileIndex="0" linenr="786" column="2" str="define"/>
+    <tok fileIndex="0" linenr="786" column="9" str="SCK3_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="786" column="30" str="("/>
+    <tok fileIndex="0" linenr="786" column="31" str=")"/>
+    <tok fileIndex="0" linenr="786" column="33" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="786" column="42" str="."/>
+    <tok fileIndex="0" linenr="786" column="43" str="TRISB14"/>
+    <tok fileIndex="0" linenr="786" column="51" str="="/>
+    <tok fileIndex="0" linenr="786" column="53" str="0"/>
+    <tok fileIndex="0" linenr="787" column="1" str="/**  @Summary    Sets the GPIO pin, RB15, high using LATBbits.LATB15.  @Description    Sets the GPIO pin, RB15, high using LATBbits.LATB15.  @Preconditions    The RB15 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB15 high (1)    LED_BLUE_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="810" column="1" str="#"/>
+    <tok fileIndex="0" linenr="810" column="2" str="define"/>
+    <tok fileIndex="0" linenr="810" column="9" str="LED_BLUE_SetHigh"/>
+    <tok fileIndex="0" linenr="810" column="25" str="("/>
+    <tok fileIndex="0" linenr="810" column="26" str=")"/>
+    <tok fileIndex="0" linenr="810" column="37" str="LATBbits"/>
+    <tok fileIndex="0" linenr="810" column="45" str="."/>
+    <tok fileIndex="0" linenr="810" column="46" str="LATB15"/>
+    <tok fileIndex="0" linenr="810" column="53" str="="/>
+    <tok fileIndex="0" linenr="810" column="55" str="1"/>
+    <tok fileIndex="0" linenr="811" column="1" str="/**  @Summary    Sets the GPIO pin, RB15, low using LATBbits.LATB15.  @Description    Sets the GPIO pin, RB15, low using LATBbits.LATB15.  @Preconditions    The RB15 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB15 low (0)    LED_BLUE_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="834" column="1" str="#"/>
+    <tok fileIndex="0" linenr="834" column="2" str="define"/>
+    <tok fileIndex="0" linenr="834" column="9" str="LED_BLUE_SetLow"/>
+    <tok fileIndex="0" linenr="834" column="24" str="("/>
+    <tok fileIndex="0" linenr="834" column="25" str=")"/>
+    <tok fileIndex="0" linenr="834" column="37" str="LATBbits"/>
+    <tok fileIndex="0" linenr="834" column="45" str="."/>
+    <tok fileIndex="0" linenr="834" column="46" str="LATB15"/>
+    <tok fileIndex="0" linenr="834" column="53" str="="/>
+    <tok fileIndex="0" linenr="834" column="55" str="0"/>
+    <tok fileIndex="0" linenr="835" column="1" str="/**  @Summary    Toggles the GPIO pin, RB15, using LATBbits.LATB15.  @Description    Toggles the GPIO pin, RB15, using LATBbits.LATB15.  @Preconditions    The RB15 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RB15    LED_BLUE_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="858" column="1" str="#"/>
+    <tok fileIndex="0" linenr="858" column="2" str="define"/>
+    <tok fileIndex="0" linenr="858" column="9" str="LED_BLUE_Toggle"/>
+    <tok fileIndex="0" linenr="858" column="24" str="("/>
+    <tok fileIndex="0" linenr="858" column="25" str=")"/>
+    <tok fileIndex="0" linenr="858" column="37" str="LATBbits"/>
+    <tok fileIndex="0" linenr="858" column="45" str="."/>
+    <tok fileIndex="0" linenr="858" column="46" str="LATB15"/>
+    <tok fileIndex="0" linenr="858" column="53" str="^="/>
+    <tok fileIndex="0" linenr="858" column="56" str="1"/>
+    <tok fileIndex="0" linenr="859" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RB15.xx  @Descriptionx    Reads the value of the GPIO pin, RB15.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RB15x    postValue = LED_BLUE_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="884" column="1" str="#"/>
+    <tok fileIndex="0" linenr="884" column="2" str="define"/>
+    <tok fileIndex="0" linenr="884" column="9" str="LED_BLUE_GetValue"/>
+    <tok fileIndex="0" linenr="884" column="26" str="("/>
+    <tok fileIndex="0" linenr="884" column="27" str=")"/>
+    <tok fileIndex="0" linenr="884" column="37" str="PORTBbits"/>
+    <tok fileIndex="0" linenr="884" column="46" str="."/>
+    <tok fileIndex="0" linenr="884" column="47" str="RB15"/>
+    <tok fileIndex="0" linenr="885" column="1" str="/**  @Summary    Configures the GPIO pin, RB15, as an input.  @Description    Configures the GPIO pin, RB15, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB15 as an input    LED_BLUE_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="908" column="1" str="#"/>
+    <tok fileIndex="0" linenr="908" column="2" str="define"/>
+    <tok fileIndex="0" linenr="908" column="9" str="LED_BLUE_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="908" column="33" str="("/>
+    <tok fileIndex="0" linenr="908" column="34" str=")"/>
+    <tok fileIndex="0" linenr="908" column="37" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="908" column="46" str="."/>
+    <tok fileIndex="0" linenr="908" column="47" str="TRISB15"/>
+    <tok fileIndex="0" linenr="908" column="55" str="="/>
+    <tok fileIndex="0" linenr="908" column="57" str="1"/>
+    <tok fileIndex="0" linenr="909" column="1" str="/**  @Summary    Configures the GPIO pin, RB15, as an output.  @Description    Configures the GPIO pin, RB15, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB15 as an output    LED_BLUE_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="932" column="1" str="#"/>
+    <tok fileIndex="0" linenr="932" column="2" str="define"/>
+    <tok fileIndex="0" linenr="932" column="9" str="LED_BLUE_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="932" column="34" str="("/>
+    <tok fileIndex="0" linenr="932" column="35" str=")"/>
+    <tok fileIndex="0" linenr="932" column="37" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="932" column="46" str="."/>
+    <tok fileIndex="0" linenr="932" column="47" str="TRISB15"/>
+    <tok fileIndex="0" linenr="932" column="55" str="="/>
+    <tok fileIndex="0" linenr="932" column="57" str="0"/>
+    <tok fileIndex="0" linenr="933" column="1" str="/**  @Summary    Sets the GPIO pin, RB4, high using LATBbits.LATB4.  @Description    Sets the GPIO pin, RB4, high using LATBbits.LATB4.  @Preconditions    The RB4 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB4 high (1)    RFM95_RESET_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="956" column="1" str="#"/>
+    <tok fileIndex="0" linenr="956" column="2" str="define"/>
+    <tok fileIndex="0" linenr="956" column="9" str="RFM95_RESET_SetHigh"/>
+    <tok fileIndex="0" linenr="956" column="28" str="("/>
+    <tok fileIndex="0" linenr="956" column="29" str=")"/>
+    <tok fileIndex="0" linenr="956" column="40" str="LATBbits"/>
+    <tok fileIndex="0" linenr="956" column="48" str="."/>
+    <tok fileIndex="0" linenr="956" column="49" str="LATB4"/>
+    <tok fileIndex="0" linenr="956" column="55" str="="/>
+    <tok fileIndex="0" linenr="956" column="57" str="1"/>
+    <tok fileIndex="0" linenr="957" column="1" str="/**  @Summary    Sets the GPIO pin, RB4, low using LATBbits.LATB4.  @Description    Sets the GPIO pin, RB4, low using LATBbits.LATB4.  @Preconditions    The RB4 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB4 low (0)    RFM95_RESET_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="980" column="1" str="#"/>
+    <tok fileIndex="0" linenr="980" column="2" str="define"/>
+    <tok fileIndex="0" linenr="980" column="9" str="RFM95_RESET_SetLow"/>
+    <tok fileIndex="0" linenr="980" column="27" str="("/>
+    <tok fileIndex="0" linenr="980" column="28" str=")"/>
+    <tok fileIndex="0" linenr="980" column="40" str="LATBbits"/>
+    <tok fileIndex="0" linenr="980" column="48" str="."/>
+    <tok fileIndex="0" linenr="980" column="49" str="LATB4"/>
+    <tok fileIndex="0" linenr="980" column="55" str="="/>
+    <tok fileIndex="0" linenr="980" column="57" str="0"/>
+    <tok fileIndex="0" linenr="981" column="1" str="/**  @Summary    Toggles the GPIO pin, RB4, using LATBbits.LATB4.  @Description    Toggles the GPIO pin, RB4, using LATBbits.LATB4.  @Preconditions    The RB4 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RB4    RFM95_RESET_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1004" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1004" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1004" column="9" str="RFM95_RESET_Toggle"/>
+    <tok fileIndex="0" linenr="1004" column="27" str="("/>
+    <tok fileIndex="0" linenr="1004" column="28" str=")"/>
+    <tok fileIndex="0" linenr="1004" column="40" str="LATBbits"/>
+    <tok fileIndex="0" linenr="1004" column="48" str="."/>
+    <tok fileIndex="0" linenr="1004" column="49" str="LATB4"/>
+    <tok fileIndex="0" linenr="1004" column="55" str="^="/>
+    <tok fileIndex="0" linenr="1004" column="58" str="1"/>
+    <tok fileIndex="0" linenr="1005" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RB4.xx  @Descriptionx    Reads the value of the GPIO pin, RB4.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RB4x    postValue = RFM95_RESET_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="1030" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1030" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1030" column="9" str="RFM95_RESET_GetValue"/>
+    <tok fileIndex="0" linenr="1030" column="29" str="("/>
+    <tok fileIndex="0" linenr="1030" column="30" str=")"/>
+    <tok fileIndex="0" linenr="1030" column="40" str="PORTBbits"/>
+    <tok fileIndex="0" linenr="1030" column="49" str="."/>
+    <tok fileIndex="0" linenr="1030" column="50" str="RB4"/>
+    <tok fileIndex="0" linenr="1031" column="1" str="/**  @Summary    Configures the GPIO pin, RB4, as an input.  @Description    Configures the GPIO pin, RB4, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB4 as an input    RFM95_RESET_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1054" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1054" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1054" column="9" str="RFM95_RESET_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="1054" column="36" str="("/>
+    <tok fileIndex="0" linenr="1054" column="37" str=")"/>
+    <tok fileIndex="0" linenr="1054" column="40" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="1054" column="49" str="."/>
+    <tok fileIndex="0" linenr="1054" column="50" str="TRISB4"/>
+    <tok fileIndex="0" linenr="1054" column="57" str="="/>
+    <tok fileIndex="0" linenr="1054" column="59" str="1"/>
+    <tok fileIndex="0" linenr="1055" column="1" str="/**  @Summary    Configures the GPIO pin, RB4, as an output.  @Description    Configures the GPIO pin, RB4, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB4 as an output    RFM95_RESET_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1078" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1078" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1078" column="9" str="RFM95_RESET_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="1078" column="37" str="("/>
+    <tok fileIndex="0" linenr="1078" column="38" str=")"/>
+    <tok fileIndex="0" linenr="1078" column="40" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="1078" column="49" str="."/>
+    <tok fileIndex="0" linenr="1078" column="50" str="TRISB4"/>
+    <tok fileIndex="0" linenr="1078" column="57" str="="/>
+    <tok fileIndex="0" linenr="1078" column="59" str="0"/>
+    <tok fileIndex="0" linenr="1079" column="1" str="/**  @Summary    Sets the GPIO pin, RB5, high using LATBbits.LATB5.  @Description    Sets the GPIO pin, RB5, high using LATBbits.LATB5.  @Preconditions    The RB5 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB5 high (1)    SDO3_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1102" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1102" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1102" column="9" str="SDO3_SetHigh"/>
+    <tok fileIndex="0" linenr="1102" column="21" str="("/>
+    <tok fileIndex="0" linenr="1102" column="22" str=")"/>
+    <tok fileIndex="0" linenr="1102" column="33" str="LATBbits"/>
+    <tok fileIndex="0" linenr="1102" column="41" str="."/>
+    <tok fileIndex="0" linenr="1102" column="42" str="LATB5"/>
+    <tok fileIndex="0" linenr="1102" column="48" str="="/>
+    <tok fileIndex="0" linenr="1102" column="50" str="1"/>
+    <tok fileIndex="0" linenr="1103" column="1" str="/**  @Summary    Sets the GPIO pin, RB5, low using LATBbits.LATB5.  @Description    Sets the GPIO pin, RB5, low using LATBbits.LATB5.  @Preconditions    The RB5 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB5 low (0)    SDO3_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1126" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1126" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1126" column="9" str="SDO3_SetLow"/>
+    <tok fileIndex="0" linenr="1126" column="20" str="("/>
+    <tok fileIndex="0" linenr="1126" column="21" str=")"/>
+    <tok fileIndex="0" linenr="1126" column="33" str="LATBbits"/>
+    <tok fileIndex="0" linenr="1126" column="41" str="."/>
+    <tok fileIndex="0" linenr="1126" column="42" str="LATB5"/>
+    <tok fileIndex="0" linenr="1126" column="48" str="="/>
+    <tok fileIndex="0" linenr="1126" column="50" str="0"/>
+    <tok fileIndex="0" linenr="1127" column="1" str="/**  @Summary    Toggles the GPIO pin, RB5, using LATBbits.LATB5.  @Description    Toggles the GPIO pin, RB5, using LATBbits.LATB5.  @Preconditions    The RB5 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RB5    SDO3_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1150" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1150" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1150" column="9" str="SDO3_Toggle"/>
+    <tok fileIndex="0" linenr="1150" column="20" str="("/>
+    <tok fileIndex="0" linenr="1150" column="21" str=")"/>
+    <tok fileIndex="0" linenr="1150" column="33" str="LATBbits"/>
+    <tok fileIndex="0" linenr="1150" column="41" str="."/>
+    <tok fileIndex="0" linenr="1150" column="42" str="LATB5"/>
+    <tok fileIndex="0" linenr="1150" column="48" str="^="/>
+    <tok fileIndex="0" linenr="1150" column="51" str="1"/>
+    <tok fileIndex="0" linenr="1151" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RB5.xx  @Descriptionx    Reads the value of the GPIO pin, RB5.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RB5x    postValue = SDO3_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="1176" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1176" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1176" column="9" str="SDO3_GetValue"/>
+    <tok fileIndex="0" linenr="1176" column="22" str="("/>
+    <tok fileIndex="0" linenr="1176" column="23" str=")"/>
+    <tok fileIndex="0" linenr="1176" column="33" str="PORTBbits"/>
+    <tok fileIndex="0" linenr="1176" column="42" str="."/>
+    <tok fileIndex="0" linenr="1176" column="43" str="RB5"/>
+    <tok fileIndex="0" linenr="1177" column="1" str="/**  @Summary    Configures the GPIO pin, RB5, as an input.  @Description    Configures the GPIO pin, RB5, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB5 as an input    SDO3_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1200" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1200" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1200" column="9" str="SDO3_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="1200" column="29" str="("/>
+    <tok fileIndex="0" linenr="1200" column="30" str=")"/>
+    <tok fileIndex="0" linenr="1200" column="33" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="1200" column="42" str="."/>
+    <tok fileIndex="0" linenr="1200" column="43" str="TRISB5"/>
+    <tok fileIndex="0" linenr="1200" column="50" str="="/>
+    <tok fileIndex="0" linenr="1200" column="52" str="1"/>
+    <tok fileIndex="0" linenr="1201" column="1" str="/**  @Summary    Configures the GPIO pin, RB5, as an output.  @Description    Configures the GPIO pin, RB5, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB5 as an output    SDO3_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1224" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1224" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1224" column="9" str="SDO3_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="1224" column="30" str="("/>
+    <tok fileIndex="0" linenr="1224" column="31" str=")"/>
+    <tok fileIndex="0" linenr="1224" column="33" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="1224" column="42" str="."/>
+    <tok fileIndex="0" linenr="1224" column="43" str="TRISB5"/>
+    <tok fileIndex="0" linenr="1224" column="50" str="="/>
+    <tok fileIndex="0" linenr="1224" column="52" str="0"/>
+    <tok fileIndex="0" linenr="1225" column="1" str="/**  @Summary    Sets the GPIO pin, RB6, high using LATBbits.LATB6.  @Description    Sets the GPIO pin, RB6, high using LATBbits.LATB6.  @Preconditions    The RB6 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB6 high (1)    LED_RED_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1248" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1248" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1248" column="9" str="LED_RED_SetHigh"/>
+    <tok fileIndex="0" linenr="1248" column="24" str="("/>
+    <tok fileIndex="0" linenr="1248" column="25" str=")"/>
+    <tok fileIndex="0" linenr="1248" column="36" str="LATBbits"/>
+    <tok fileIndex="0" linenr="1248" column="44" str="."/>
+    <tok fileIndex="0" linenr="1248" column="45" str="LATB6"/>
+    <tok fileIndex="0" linenr="1248" column="51" str="="/>
+    <tok fileIndex="0" linenr="1248" column="53" str="1"/>
+    <tok fileIndex="0" linenr="1249" column="1" str="/**  @Summary    Sets the GPIO pin, RB6, low using LATBbits.LATB6.  @Description    Sets the GPIO pin, RB6, low using LATBbits.LATB6.  @Preconditions    The RB6 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB6 low (0)    LED_RED_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1272" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1272" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1272" column="9" str="LED_RED_SetLow"/>
+    <tok fileIndex="0" linenr="1272" column="23" str="("/>
+    <tok fileIndex="0" linenr="1272" column="24" str=")"/>
+    <tok fileIndex="0" linenr="1272" column="36" str="LATBbits"/>
+    <tok fileIndex="0" linenr="1272" column="44" str="."/>
+    <tok fileIndex="0" linenr="1272" column="45" str="LATB6"/>
+    <tok fileIndex="0" linenr="1272" column="51" str="="/>
+    <tok fileIndex="0" linenr="1272" column="53" str="0"/>
+    <tok fileIndex="0" linenr="1273" column="1" str="/**  @Summary    Toggles the GPIO pin, RB6, using LATBbits.LATB6.  @Description    Toggles the GPIO pin, RB6, using LATBbits.LATB6.  @Preconditions    The RB6 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RB6    LED_RED_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1296" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1296" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1296" column="9" str="LED_RED_Toggle"/>
+    <tok fileIndex="0" linenr="1296" column="23" str="("/>
+    <tok fileIndex="0" linenr="1296" column="24" str=")"/>
+    <tok fileIndex="0" linenr="1296" column="36" str="LATBbits"/>
+    <tok fileIndex="0" linenr="1296" column="44" str="."/>
+    <tok fileIndex="0" linenr="1296" column="45" str="LATB6"/>
+    <tok fileIndex="0" linenr="1296" column="51" str="^="/>
+    <tok fileIndex="0" linenr="1296" column="54" str="1"/>
+    <tok fileIndex="0" linenr="1297" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RB6.xx  @Descriptionx    Reads the value of the GPIO pin, RB6.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RB6x    postValue = LED_RED_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="1322" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1322" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1322" column="9" str="LED_RED_GetValue"/>
+    <tok fileIndex="0" linenr="1322" column="25" str="("/>
+    <tok fileIndex="0" linenr="1322" column="26" str=")"/>
+    <tok fileIndex="0" linenr="1322" column="36" str="PORTBbits"/>
+    <tok fileIndex="0" linenr="1322" column="45" str="."/>
+    <tok fileIndex="0" linenr="1322" column="46" str="RB6"/>
+    <tok fileIndex="0" linenr="1323" column="1" str="/**  @Summary    Configures the GPIO pin, RB6, as an input.  @Description    Configures the GPIO pin, RB6, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB6 as an input    LED_RED_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1346" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1346" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1346" column="9" str="LED_RED_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="1346" column="32" str="("/>
+    <tok fileIndex="0" linenr="1346" column="33" str=")"/>
+    <tok fileIndex="0" linenr="1346" column="36" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="1346" column="45" str="."/>
+    <tok fileIndex="0" linenr="1346" column="46" str="TRISB6"/>
+    <tok fileIndex="0" linenr="1346" column="53" str="="/>
+    <tok fileIndex="0" linenr="1346" column="55" str="1"/>
+    <tok fileIndex="0" linenr="1347" column="1" str="/**  @Summary    Configures the GPIO pin, RB6, as an output.  @Description    Configures the GPIO pin, RB6, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB6 as an output    LED_RED_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1370" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1370" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1370" column="9" str="LED_RED_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="1370" column="33" str="("/>
+    <tok fileIndex="0" linenr="1370" column="34" str=")"/>
+    <tok fileIndex="0" linenr="1370" column="36" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="1370" column="45" str="."/>
+    <tok fileIndex="0" linenr="1370" column="46" str="TRISB6"/>
+    <tok fileIndex="0" linenr="1370" column="53" str="="/>
+    <tok fileIndex="0" linenr="1370" column="55" str="0"/>
+    <tok fileIndex="0" linenr="1371" column="1" str="/**  @Summary    Sets the GPIO pin, RB7, high using LATBbits.LATB7.  @Description    Sets the GPIO pin, RB7, high using LATBbits.LATB7.  @Preconditions    The RB7 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB7 high (1)    LED_YELLOW_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1394" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1394" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1394" column="9" str="LED_YELLOW_SetHigh"/>
+    <tok fileIndex="0" linenr="1394" column="27" str="("/>
+    <tok fileIndex="0" linenr="1394" column="28" str=")"/>
+    <tok fileIndex="0" linenr="1394" column="39" str="LATBbits"/>
+    <tok fileIndex="0" linenr="1394" column="47" str="."/>
+    <tok fileIndex="0" linenr="1394" column="48" str="LATB7"/>
+    <tok fileIndex="0" linenr="1394" column="54" str="="/>
+    <tok fileIndex="0" linenr="1394" column="56" str="1"/>
+    <tok fileIndex="0" linenr="1395" column="1" str="/**  @Summary    Sets the GPIO pin, RB7, low using LATBbits.LATB7.  @Description    Sets the GPIO pin, RB7, low using LATBbits.LATB7.  @Preconditions    The RB7 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB7 low (0)    LED_YELLOW_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1418" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1418" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1418" column="9" str="LED_YELLOW_SetLow"/>
+    <tok fileIndex="0" linenr="1418" column="26" str="("/>
+    <tok fileIndex="0" linenr="1418" column="27" str=")"/>
+    <tok fileIndex="0" linenr="1418" column="39" str="LATBbits"/>
+    <tok fileIndex="0" linenr="1418" column="47" str="."/>
+    <tok fileIndex="0" linenr="1418" column="48" str="LATB7"/>
+    <tok fileIndex="0" linenr="1418" column="54" str="="/>
+    <tok fileIndex="0" linenr="1418" column="56" str="0"/>
+    <tok fileIndex="0" linenr="1419" column="1" str="/**  @Summary    Toggles the GPIO pin, RB7, using LATBbits.LATB7.  @Description    Toggles the GPIO pin, RB7, using LATBbits.LATB7.  @Preconditions    The RB7 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RB7    LED_YELLOW_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1442" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1442" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1442" column="9" str="LED_YELLOW_Toggle"/>
+    <tok fileIndex="0" linenr="1442" column="26" str="("/>
+    <tok fileIndex="0" linenr="1442" column="27" str=")"/>
+    <tok fileIndex="0" linenr="1442" column="39" str="LATBbits"/>
+    <tok fileIndex="0" linenr="1442" column="47" str="."/>
+    <tok fileIndex="0" linenr="1442" column="48" str="LATB7"/>
+    <tok fileIndex="0" linenr="1442" column="54" str="^="/>
+    <tok fileIndex="0" linenr="1442" column="57" str="1"/>
+    <tok fileIndex="0" linenr="1443" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RB7.xx  @Descriptionx    Reads the value of the GPIO pin, RB7.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RB7x    postValue = LED_YELLOW_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="1468" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1468" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1468" column="9" str="LED_YELLOW_GetValue"/>
+    <tok fileIndex="0" linenr="1468" column="28" str="("/>
+    <tok fileIndex="0" linenr="1468" column="29" str=")"/>
+    <tok fileIndex="0" linenr="1468" column="39" str="PORTBbits"/>
+    <tok fileIndex="0" linenr="1468" column="48" str="."/>
+    <tok fileIndex="0" linenr="1468" column="49" str="RB7"/>
+    <tok fileIndex="0" linenr="1469" column="1" str="/**  @Summary    Configures the GPIO pin, RB7, as an input.  @Description    Configures the GPIO pin, RB7, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB7 as an input    LED_YELLOW_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1492" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1492" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1492" column="9" str="LED_YELLOW_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="1492" column="35" str="("/>
+    <tok fileIndex="0" linenr="1492" column="36" str=")"/>
+    <tok fileIndex="0" linenr="1492" column="39" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="1492" column="48" str="."/>
+    <tok fileIndex="0" linenr="1492" column="49" str="TRISB7"/>
+    <tok fileIndex="0" linenr="1492" column="56" str="="/>
+    <tok fileIndex="0" linenr="1492" column="58" str="1"/>
+    <tok fileIndex="0" linenr="1493" column="1" str="/**  @Summary    Configures the GPIO pin, RB7, as an output.  @Description    Configures the GPIO pin, RB7, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB7 as an output    LED_YELLOW_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1516" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1516" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1516" column="9" str="LED_YELLOW_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="1516" column="36" str="("/>
+    <tok fileIndex="0" linenr="1516" column="37" str=")"/>
+    <tok fileIndex="0" linenr="1516" column="39" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="1516" column="48" str="."/>
+    <tok fileIndex="0" linenr="1516" column="49" str="TRISB7"/>
+    <tok fileIndex="0" linenr="1516" column="56" str="="/>
+    <tok fileIndex="0" linenr="1516" column="58" str="0"/>
+    <tok fileIndex="0" linenr="1517" column="1" str="/**  @Summary    Sets the GPIO pin, RB8, high using LATBbits.LATB8.  @Description    Sets the GPIO pin, RB8, high using LATBbits.LATB8.  @Preconditions    The RB8 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB8 high (1)    RTC_CS_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1540" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1540" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1540" column="9" str="RTC_CS_SetHigh"/>
+    <tok fileIndex="0" linenr="1540" column="23" str="("/>
+    <tok fileIndex="0" linenr="1540" column="24" str=")"/>
+    <tok fileIndex="0" linenr="1540" column="35" str="LATBbits"/>
+    <tok fileIndex="0" linenr="1540" column="43" str="."/>
+    <tok fileIndex="0" linenr="1540" column="44" str="LATB8"/>
+    <tok fileIndex="0" linenr="1540" column="50" str="="/>
+    <tok fileIndex="0" linenr="1540" column="52" str="1"/>
+    <tok fileIndex="0" linenr="1541" column="1" str="/**  @Summary    Sets the GPIO pin, RB8, low using LATBbits.LATB8.  @Description    Sets the GPIO pin, RB8, low using LATBbits.LATB8.  @Preconditions    The RB8 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RB8 low (0)    RTC_CS_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1564" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1564" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1564" column="9" str="RTC_CS_SetLow"/>
+    <tok fileIndex="0" linenr="1564" column="22" str="("/>
+    <tok fileIndex="0" linenr="1564" column="23" str=")"/>
+    <tok fileIndex="0" linenr="1564" column="35" str="LATBbits"/>
+    <tok fileIndex="0" linenr="1564" column="43" str="."/>
+    <tok fileIndex="0" linenr="1564" column="44" str="LATB8"/>
+    <tok fileIndex="0" linenr="1564" column="50" str="="/>
+    <tok fileIndex="0" linenr="1564" column="52" str="0"/>
+    <tok fileIndex="0" linenr="1565" column="1" str="/**  @Summary    Toggles the GPIO pin, RB8, using LATBbits.LATB8.  @Description    Toggles the GPIO pin, RB8, using LATBbits.LATB8.  @Preconditions    The RB8 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RB8    RTC_CS_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1588" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1588" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1588" column="9" str="RTC_CS_Toggle"/>
+    <tok fileIndex="0" linenr="1588" column="22" str="("/>
+    <tok fileIndex="0" linenr="1588" column="23" str=")"/>
+    <tok fileIndex="0" linenr="1588" column="35" str="LATBbits"/>
+    <tok fileIndex="0" linenr="1588" column="43" str="."/>
+    <tok fileIndex="0" linenr="1588" column="44" str="LATB8"/>
+    <tok fileIndex="0" linenr="1588" column="50" str="^="/>
+    <tok fileIndex="0" linenr="1588" column="53" str="1"/>
+    <tok fileIndex="0" linenr="1589" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RB8.xx  @Descriptionx    Reads the value of the GPIO pin, RB8.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RB8x    postValue = RTC_CS_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="1614" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1614" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1614" column="9" str="RTC_CS_GetValue"/>
+    <tok fileIndex="0" linenr="1614" column="24" str="("/>
+    <tok fileIndex="0" linenr="1614" column="25" str=")"/>
+    <tok fileIndex="0" linenr="1614" column="35" str="PORTBbits"/>
+    <tok fileIndex="0" linenr="1614" column="44" str="."/>
+    <tok fileIndex="0" linenr="1614" column="45" str="RB8"/>
+    <tok fileIndex="0" linenr="1615" column="1" str="/**  @Summary    Configures the GPIO pin, RB8, as an input.  @Description    Configures the GPIO pin, RB8, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB8 as an input    RTC_CS_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1638" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1638" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1638" column="9" str="RTC_CS_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="1638" column="31" str="("/>
+    <tok fileIndex="0" linenr="1638" column="32" str=")"/>
+    <tok fileIndex="0" linenr="1638" column="35" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="1638" column="44" str="."/>
+    <tok fileIndex="0" linenr="1638" column="45" str="TRISB8"/>
+    <tok fileIndex="0" linenr="1638" column="52" str="="/>
+    <tok fileIndex="0" linenr="1638" column="54" str="1"/>
+    <tok fileIndex="0" linenr="1639" column="1" str="/**  @Summary    Configures the GPIO pin, RB8, as an output.  @Description    Configures the GPIO pin, RB8, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RB8 as an output    RTC_CS_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1662" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1662" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1662" column="9" str="RTC_CS_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="1662" column="32" str="("/>
+    <tok fileIndex="0" linenr="1662" column="33" str=")"/>
+    <tok fileIndex="0" linenr="1662" column="35" str="TRISBbits"/>
+    <tok fileIndex="0" linenr="1662" column="44" str="."/>
+    <tok fileIndex="0" linenr="1662" column="45" str="TRISB8"/>
+    <tok fileIndex="0" linenr="1662" column="52" str="="/>
+    <tok fileIndex="0" linenr="1662" column="54" str="0"/>
+    <tok fileIndex="0" linenr="1663" column="1" str="/**  @Summary    Sets the GPIO pin, RD0, high using LATDbits.LATD0.  @Description    Sets the GPIO pin, RD0, high using LATDbits.LATD0.  @Preconditions    The RD0 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RD0 high (1)    BTN_OK_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1686" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1686" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1686" column="9" str="BTN_OK_SetHigh"/>
+    <tok fileIndex="0" linenr="1686" column="23" str="("/>
+    <tok fileIndex="0" linenr="1686" column="24" str=")"/>
+    <tok fileIndex="0" linenr="1686" column="35" str="LATDbits"/>
+    <tok fileIndex="0" linenr="1686" column="43" str="."/>
+    <tok fileIndex="0" linenr="1686" column="44" str="LATD0"/>
+    <tok fileIndex="0" linenr="1686" column="50" str="="/>
+    <tok fileIndex="0" linenr="1686" column="52" str="1"/>
+    <tok fileIndex="0" linenr="1687" column="1" str="/**  @Summary    Sets the GPIO pin, RD0, low using LATDbits.LATD0.  @Description    Sets the GPIO pin, RD0, low using LATDbits.LATD0.  @Preconditions    The RD0 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RD0 low (0)    BTN_OK_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1710" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1710" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1710" column="9" str="BTN_OK_SetLow"/>
+    <tok fileIndex="0" linenr="1710" column="22" str="("/>
+    <tok fileIndex="0" linenr="1710" column="23" str=")"/>
+    <tok fileIndex="0" linenr="1710" column="35" str="LATDbits"/>
+    <tok fileIndex="0" linenr="1710" column="43" str="."/>
+    <tok fileIndex="0" linenr="1710" column="44" str="LATD0"/>
+    <tok fileIndex="0" linenr="1710" column="50" str="="/>
+    <tok fileIndex="0" linenr="1710" column="52" str="0"/>
+    <tok fileIndex="0" linenr="1711" column="1" str="/**  @Summary    Toggles the GPIO pin, RD0, using LATDbits.LATD0.  @Description    Toggles the GPIO pin, RD0, using LATDbits.LATD0.  @Preconditions    The RD0 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RD0    BTN_OK_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1734" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1734" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1734" column="9" str="BTN_OK_Toggle"/>
+    <tok fileIndex="0" linenr="1734" column="22" str="("/>
+    <tok fileIndex="0" linenr="1734" column="23" str=")"/>
+    <tok fileIndex="0" linenr="1734" column="35" str="LATDbits"/>
+    <tok fileIndex="0" linenr="1734" column="43" str="."/>
+    <tok fileIndex="0" linenr="1734" column="44" str="LATD0"/>
+    <tok fileIndex="0" linenr="1734" column="50" str="^="/>
+    <tok fileIndex="0" linenr="1734" column="53" str="1"/>
+    <tok fileIndex="0" linenr="1735" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RD0.xx  @Descriptionx    Reads the value of the GPIO pin, RD0.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RD0x    postValue = BTN_OK_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="1760" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1760" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1760" column="9" str="BTN_OK_GetValue"/>
+    <tok fileIndex="0" linenr="1760" column="24" str="("/>
+    <tok fileIndex="0" linenr="1760" column="25" str=")"/>
+    <tok fileIndex="0" linenr="1760" column="35" str="PORTDbits"/>
+    <tok fileIndex="0" linenr="1760" column="44" str="."/>
+    <tok fileIndex="0" linenr="1760" column="45" str="RD0"/>
+    <tok fileIndex="0" linenr="1761" column="1" str="/**  @Summary    Configures the GPIO pin, RD0, as an input.  @Description    Configures the GPIO pin, RD0, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RD0 as an input    BTN_OK_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1784" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1784" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1784" column="9" str="BTN_OK_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="1784" column="31" str="("/>
+    <tok fileIndex="0" linenr="1784" column="32" str=")"/>
+    <tok fileIndex="0" linenr="1784" column="35" str="TRISDbits"/>
+    <tok fileIndex="0" linenr="1784" column="44" str="."/>
+    <tok fileIndex="0" linenr="1784" column="45" str="TRISD0"/>
+    <tok fileIndex="0" linenr="1784" column="52" str="="/>
+    <tok fileIndex="0" linenr="1784" column="54" str="1"/>
+    <tok fileIndex="0" linenr="1785" column="1" str="/**  @Summary    Configures the GPIO pin, RD0, as an output.  @Description    Configures the GPIO pin, RD0, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RD0 as an output    BTN_OK_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1808" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1808" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1808" column="9" str="BTN_OK_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="1808" column="32" str="("/>
+    <tok fileIndex="0" linenr="1808" column="33" str=")"/>
+    <tok fileIndex="0" linenr="1808" column="35" str="TRISDbits"/>
+    <tok fileIndex="0" linenr="1808" column="44" str="."/>
+    <tok fileIndex="0" linenr="1808" column="45" str="TRISD0"/>
+    <tok fileIndex="0" linenr="1808" column="52" str="="/>
+    <tok fileIndex="0" linenr="1808" column="54" str="0"/>
+    <tok fileIndex="0" linenr="1809" column="1" str="/**  @Summary    Sets the GPIO pin, RD1, high using LATDbits.LATD1.  @Description    Sets the GPIO pin, RD1, high using LATDbits.LATD1.  @Preconditions    The RD1 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RD1 high (1)    BTN_UP_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1832" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1832" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1832" column="9" str="BTN_UP_SetHigh"/>
+    <tok fileIndex="0" linenr="1832" column="23" str="("/>
+    <tok fileIndex="0" linenr="1832" column="24" str=")"/>
+    <tok fileIndex="0" linenr="1832" column="35" str="LATDbits"/>
+    <tok fileIndex="0" linenr="1832" column="43" str="."/>
+    <tok fileIndex="0" linenr="1832" column="44" str="LATD1"/>
+    <tok fileIndex="0" linenr="1832" column="50" str="="/>
+    <tok fileIndex="0" linenr="1832" column="52" str="1"/>
+    <tok fileIndex="0" linenr="1833" column="1" str="/**  @Summary    Sets the GPIO pin, RD1, low using LATDbits.LATD1.  @Description    Sets the GPIO pin, RD1, low using LATDbits.LATD1.  @Preconditions    The RD1 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RD1 low (0)    BTN_UP_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1856" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1856" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1856" column="9" str="BTN_UP_SetLow"/>
+    <tok fileIndex="0" linenr="1856" column="22" str="("/>
+    <tok fileIndex="0" linenr="1856" column="23" str=")"/>
+    <tok fileIndex="0" linenr="1856" column="35" str="LATDbits"/>
+    <tok fileIndex="0" linenr="1856" column="43" str="."/>
+    <tok fileIndex="0" linenr="1856" column="44" str="LATD1"/>
+    <tok fileIndex="0" linenr="1856" column="50" str="="/>
+    <tok fileIndex="0" linenr="1856" column="52" str="0"/>
+    <tok fileIndex="0" linenr="1857" column="1" str="/**  @Summary    Toggles the GPIO pin, RD1, using LATDbits.LATD1.  @Description    Toggles the GPIO pin, RD1, using LATDbits.LATD1.  @Preconditions    The RD1 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RD1    BTN_UP_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1880" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1880" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1880" column="9" str="BTN_UP_Toggle"/>
+    <tok fileIndex="0" linenr="1880" column="22" str="("/>
+    <tok fileIndex="0" linenr="1880" column="23" str=")"/>
+    <tok fileIndex="0" linenr="1880" column="35" str="LATDbits"/>
+    <tok fileIndex="0" linenr="1880" column="43" str="."/>
+    <tok fileIndex="0" linenr="1880" column="44" str="LATD1"/>
+    <tok fileIndex="0" linenr="1880" column="50" str="^="/>
+    <tok fileIndex="0" linenr="1880" column="53" str="1"/>
+    <tok fileIndex="0" linenr="1881" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RD1.xx  @Descriptionx    Reads the value of the GPIO pin, RD1.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RD1x    postValue = BTN_UP_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="1906" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1906" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1906" column="9" str="BTN_UP_GetValue"/>
+    <tok fileIndex="0" linenr="1906" column="24" str="("/>
+    <tok fileIndex="0" linenr="1906" column="25" str=")"/>
+    <tok fileIndex="0" linenr="1906" column="35" str="PORTDbits"/>
+    <tok fileIndex="0" linenr="1906" column="44" str="."/>
+    <tok fileIndex="0" linenr="1906" column="45" str="RD1"/>
+    <tok fileIndex="0" linenr="1907" column="1" str="/**  @Summary    Configures the GPIO pin, RD1, as an input.  @Description    Configures the GPIO pin, RD1, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RD1 as an input    BTN_UP_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1930" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1930" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1930" column="9" str="BTN_UP_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="1930" column="31" str="("/>
+    <tok fileIndex="0" linenr="1930" column="32" str=")"/>
+    <tok fileIndex="0" linenr="1930" column="35" str="TRISDbits"/>
+    <tok fileIndex="0" linenr="1930" column="44" str="."/>
+    <tok fileIndex="0" linenr="1930" column="45" str="TRISD1"/>
+    <tok fileIndex="0" linenr="1930" column="52" str="="/>
+    <tok fileIndex="0" linenr="1930" column="54" str="1"/>
+    <tok fileIndex="0" linenr="1931" column="1" str="/**  @Summary    Configures the GPIO pin, RD1, as an output.  @Description    Configures the GPIO pin, RD1, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RD1 as an output    BTN_UP_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1954" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1954" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1954" column="9" str="BTN_UP_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="1954" column="32" str="("/>
+    <tok fileIndex="0" linenr="1954" column="33" str=")"/>
+    <tok fileIndex="0" linenr="1954" column="35" str="TRISDbits"/>
+    <tok fileIndex="0" linenr="1954" column="44" str="."/>
+    <tok fileIndex="0" linenr="1954" column="45" str="TRISD1"/>
+    <tok fileIndex="0" linenr="1954" column="52" str="="/>
+    <tok fileIndex="0" linenr="1954" column="54" str="0"/>
+    <tok fileIndex="0" linenr="1955" column="1" str="/**  @Summary    Sets the GPIO pin, RD2, high using LATDbits.LATD2.  @Description    Sets the GPIO pin, RD2, high using LATDbits.LATD2.  @Preconditions    The RD2 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RD2 high (1)    BTN_DOWN_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="1978" column="1" str="#"/>
+    <tok fileIndex="0" linenr="1978" column="2" str="define"/>
+    <tok fileIndex="0" linenr="1978" column="9" str="BTN_DOWN_SetHigh"/>
+    <tok fileIndex="0" linenr="1978" column="25" str="("/>
+    <tok fileIndex="0" linenr="1978" column="26" str=")"/>
+    <tok fileIndex="0" linenr="1978" column="37" str="LATDbits"/>
+    <tok fileIndex="0" linenr="1978" column="45" str="."/>
+    <tok fileIndex="0" linenr="1978" column="46" str="LATD2"/>
+    <tok fileIndex="0" linenr="1978" column="52" str="="/>
+    <tok fileIndex="0" linenr="1978" column="54" str="1"/>
+    <tok fileIndex="0" linenr="1979" column="1" str="/**  @Summary    Sets the GPIO pin, RD2, low using LATDbits.LATD2.  @Description    Sets the GPIO pin, RD2, low using LATDbits.LATD2.  @Preconditions    The RD2 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RD2 low (0)    BTN_DOWN_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2002" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2002" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2002" column="9" str="BTN_DOWN_SetLow"/>
+    <tok fileIndex="0" linenr="2002" column="24" str="("/>
+    <tok fileIndex="0" linenr="2002" column="25" str=")"/>
+    <tok fileIndex="0" linenr="2002" column="37" str="LATDbits"/>
+    <tok fileIndex="0" linenr="2002" column="45" str="."/>
+    <tok fileIndex="0" linenr="2002" column="46" str="LATD2"/>
+    <tok fileIndex="0" linenr="2002" column="52" str="="/>
+    <tok fileIndex="0" linenr="2002" column="54" str="0"/>
+    <tok fileIndex="0" linenr="2003" column="1" str="/**  @Summary    Toggles the GPIO pin, RD2, using LATDbits.LATD2.  @Description    Toggles the GPIO pin, RD2, using LATDbits.LATD2.  @Preconditions    The RD2 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RD2    BTN_DOWN_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2026" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2026" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2026" column="9" str="BTN_DOWN_Toggle"/>
+    <tok fileIndex="0" linenr="2026" column="24" str="("/>
+    <tok fileIndex="0" linenr="2026" column="25" str=")"/>
+    <tok fileIndex="0" linenr="2026" column="37" str="LATDbits"/>
+    <tok fileIndex="0" linenr="2026" column="45" str="."/>
+    <tok fileIndex="0" linenr="2026" column="46" str="LATD2"/>
+    <tok fileIndex="0" linenr="2026" column="52" str="^="/>
+    <tok fileIndex="0" linenr="2026" column="55" str="1"/>
+    <tok fileIndex="0" linenr="2027" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RD2.xx  @Descriptionx    Reads the value of the GPIO pin, RD2.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RD2x    postValue = BTN_DOWN_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="2052" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2052" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2052" column="9" str="BTN_DOWN_GetValue"/>
+    <tok fileIndex="0" linenr="2052" column="26" str="("/>
+    <tok fileIndex="0" linenr="2052" column="27" str=")"/>
+    <tok fileIndex="0" linenr="2052" column="37" str="PORTDbits"/>
+    <tok fileIndex="0" linenr="2052" column="46" str="."/>
+    <tok fileIndex="0" linenr="2052" column="47" str="RD2"/>
+    <tok fileIndex="0" linenr="2053" column="1" str="/**  @Summary    Configures the GPIO pin, RD2, as an input.  @Description    Configures the GPIO pin, RD2, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RD2 as an input    BTN_DOWN_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2076" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2076" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2076" column="9" str="BTN_DOWN_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="2076" column="33" str="("/>
+    <tok fileIndex="0" linenr="2076" column="34" str=")"/>
+    <tok fileIndex="0" linenr="2076" column="37" str="TRISDbits"/>
+    <tok fileIndex="0" linenr="2076" column="46" str="."/>
+    <tok fileIndex="0" linenr="2076" column="47" str="TRISD2"/>
+    <tok fileIndex="0" linenr="2076" column="54" str="="/>
+    <tok fileIndex="0" linenr="2076" column="56" str="1"/>
+    <tok fileIndex="0" linenr="2077" column="1" str="/**  @Summary    Configures the GPIO pin, RD2, as an output.  @Description    Configures the GPIO pin, RD2, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RD2 as an output    BTN_DOWN_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2100" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2100" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2100" column="9" str="BTN_DOWN_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="2100" column="34" str="("/>
+    <tok fileIndex="0" linenr="2100" column="35" str=")"/>
+    <tok fileIndex="0" linenr="2100" column="37" str="TRISDbits"/>
+    <tok fileIndex="0" linenr="2100" column="46" str="."/>
+    <tok fileIndex="0" linenr="2100" column="47" str="TRISD2"/>
+    <tok fileIndex="0" linenr="2100" column="54" str="="/>
+    <tok fileIndex="0" linenr="2100" column="56" str="0"/>
+    <tok fileIndex="0" linenr="2101" column="1" str="/**  @Summary    Sets the GPIO pin, RD3, high using LATDbits.LATD3.  @Description    Sets the GPIO pin, RD3, high using LATDbits.LATD3.  @Preconditions    The RD3 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RD3 high (1)    BTN_LEFT_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2124" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2124" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2124" column="9" str="BTN_LEFT_SetHigh"/>
+    <tok fileIndex="0" linenr="2124" column="25" str="("/>
+    <tok fileIndex="0" linenr="2124" column="26" str=")"/>
+    <tok fileIndex="0" linenr="2124" column="37" str="LATDbits"/>
+    <tok fileIndex="0" linenr="2124" column="45" str="."/>
+    <tok fileIndex="0" linenr="2124" column="46" str="LATD3"/>
+    <tok fileIndex="0" linenr="2124" column="52" str="="/>
+    <tok fileIndex="0" linenr="2124" column="54" str="1"/>
+    <tok fileIndex="0" linenr="2125" column="1" str="/**  @Summary    Sets the GPIO pin, RD3, low using LATDbits.LATD3.  @Description    Sets the GPIO pin, RD3, low using LATDbits.LATD3.  @Preconditions    The RD3 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RD3 low (0)    BTN_LEFT_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2148" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2148" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2148" column="9" str="BTN_LEFT_SetLow"/>
+    <tok fileIndex="0" linenr="2148" column="24" str="("/>
+    <tok fileIndex="0" linenr="2148" column="25" str=")"/>
+    <tok fileIndex="0" linenr="2148" column="37" str="LATDbits"/>
+    <tok fileIndex="0" linenr="2148" column="45" str="."/>
+    <tok fileIndex="0" linenr="2148" column="46" str="LATD3"/>
+    <tok fileIndex="0" linenr="2148" column="52" str="="/>
+    <tok fileIndex="0" linenr="2148" column="54" str="0"/>
+    <tok fileIndex="0" linenr="2149" column="1" str="/**  @Summary    Toggles the GPIO pin, RD3, using LATDbits.LATD3.  @Description    Toggles the GPIO pin, RD3, using LATDbits.LATD3.  @Preconditions    The RD3 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RD3    BTN_LEFT_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2172" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2172" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2172" column="9" str="BTN_LEFT_Toggle"/>
+    <tok fileIndex="0" linenr="2172" column="24" str="("/>
+    <tok fileIndex="0" linenr="2172" column="25" str=")"/>
+    <tok fileIndex="0" linenr="2172" column="37" str="LATDbits"/>
+    <tok fileIndex="0" linenr="2172" column="45" str="."/>
+    <tok fileIndex="0" linenr="2172" column="46" str="LATD3"/>
+    <tok fileIndex="0" linenr="2172" column="52" str="^="/>
+    <tok fileIndex="0" linenr="2172" column="55" str="1"/>
+    <tok fileIndex="0" linenr="2173" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RD3.xx  @Descriptionx    Reads the value of the GPIO pin, RD3.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RD3x    postValue = BTN_LEFT_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="2198" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2198" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2198" column="9" str="BTN_LEFT_GetValue"/>
+    <tok fileIndex="0" linenr="2198" column="26" str="("/>
+    <tok fileIndex="0" linenr="2198" column="27" str=")"/>
+    <tok fileIndex="0" linenr="2198" column="37" str="PORTDbits"/>
+    <tok fileIndex="0" linenr="2198" column="46" str="."/>
+    <tok fileIndex="0" linenr="2198" column="47" str="RD3"/>
+    <tok fileIndex="0" linenr="2199" column="1" str="/**  @Summary    Configures the GPIO pin, RD3, as an input.  @Description    Configures the GPIO pin, RD3, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RD3 as an input    BTN_LEFT_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2222" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2222" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2222" column="9" str="BTN_LEFT_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="2222" column="33" str="("/>
+    <tok fileIndex="0" linenr="2222" column="34" str=")"/>
+    <tok fileIndex="0" linenr="2222" column="37" str="TRISDbits"/>
+    <tok fileIndex="0" linenr="2222" column="46" str="."/>
+    <tok fileIndex="0" linenr="2222" column="47" str="TRISD3"/>
+    <tok fileIndex="0" linenr="2222" column="54" str="="/>
+    <tok fileIndex="0" linenr="2222" column="56" str="1"/>
+    <tok fileIndex="0" linenr="2223" column="1" str="/**  @Summary    Configures the GPIO pin, RD3, as an output.  @Description    Configures the GPIO pin, RD3, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RD3 as an output    BTN_LEFT_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2246" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2246" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2246" column="9" str="BTN_LEFT_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="2246" column="34" str="("/>
+    <tok fileIndex="0" linenr="2246" column="35" str=")"/>
+    <tok fileIndex="0" linenr="2246" column="37" str="TRISDbits"/>
+    <tok fileIndex="0" linenr="2246" column="46" str="."/>
+    <tok fileIndex="0" linenr="2246" column="47" str="TRISD3"/>
+    <tok fileIndex="0" linenr="2246" column="54" str="="/>
+    <tok fileIndex="0" linenr="2246" column="56" str="0"/>
+    <tok fileIndex="0" linenr="2247" column="1" str="/**  @Summary    Sets the GPIO pin, RD4, high using LATDbits.LATD4.  @Description    Sets the GPIO pin, RD4, high using LATDbits.LATD4.  @Preconditions    The RD4 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RD4 high (1)    BTN_RIGHT_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2270" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2270" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2270" column="9" str="BTN_RIGHT_SetHigh"/>
+    <tok fileIndex="0" linenr="2270" column="26" str="("/>
+    <tok fileIndex="0" linenr="2270" column="27" str=")"/>
+    <tok fileIndex="0" linenr="2270" column="38" str="LATDbits"/>
+    <tok fileIndex="0" linenr="2270" column="46" str="."/>
+    <tok fileIndex="0" linenr="2270" column="47" str="LATD4"/>
+    <tok fileIndex="0" linenr="2270" column="53" str="="/>
+    <tok fileIndex="0" linenr="2270" column="55" str="1"/>
+    <tok fileIndex="0" linenr="2271" column="1" str="/**  @Summary    Sets the GPIO pin, RD4, low using LATDbits.LATD4.  @Description    Sets the GPIO pin, RD4, low using LATDbits.LATD4.  @Preconditions    The RD4 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RD4 low (0)    BTN_RIGHT_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2294" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2294" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2294" column="9" str="BTN_RIGHT_SetLow"/>
+    <tok fileIndex="0" linenr="2294" column="25" str="("/>
+    <tok fileIndex="0" linenr="2294" column="26" str=")"/>
+    <tok fileIndex="0" linenr="2294" column="38" str="LATDbits"/>
+    <tok fileIndex="0" linenr="2294" column="46" str="."/>
+    <tok fileIndex="0" linenr="2294" column="47" str="LATD4"/>
+    <tok fileIndex="0" linenr="2294" column="53" str="="/>
+    <tok fileIndex="0" linenr="2294" column="55" str="0"/>
+    <tok fileIndex="0" linenr="2295" column="1" str="/**  @Summary    Toggles the GPIO pin, RD4, using LATDbits.LATD4.  @Description    Toggles the GPIO pin, RD4, using LATDbits.LATD4.  @Preconditions    The RD4 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RD4    BTN_RIGHT_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2318" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2318" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2318" column="9" str="BTN_RIGHT_Toggle"/>
+    <tok fileIndex="0" linenr="2318" column="25" str="("/>
+    <tok fileIndex="0" linenr="2318" column="26" str=")"/>
+    <tok fileIndex="0" linenr="2318" column="38" str="LATDbits"/>
+    <tok fileIndex="0" linenr="2318" column="46" str="."/>
+    <tok fileIndex="0" linenr="2318" column="47" str="LATD4"/>
+    <tok fileIndex="0" linenr="2318" column="53" str="^="/>
+    <tok fileIndex="0" linenr="2318" column="56" str="1"/>
+    <tok fileIndex="0" linenr="2319" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RD4.xx  @Descriptionx    Reads the value of the GPIO pin, RD4.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RD4x    postValue = BTN_RIGHT_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="2344" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2344" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2344" column="9" str="BTN_RIGHT_GetValue"/>
+    <tok fileIndex="0" linenr="2344" column="27" str="("/>
+    <tok fileIndex="0" linenr="2344" column="28" str=")"/>
+    <tok fileIndex="0" linenr="2344" column="38" str="PORTDbits"/>
+    <tok fileIndex="0" linenr="2344" column="47" str="."/>
+    <tok fileIndex="0" linenr="2344" column="48" str="RD4"/>
+    <tok fileIndex="0" linenr="2345" column="1" str="/**  @Summary    Configures the GPIO pin, RD4, as an input.  @Description    Configures the GPIO pin, RD4, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RD4 as an input    BTN_RIGHT_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2368" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2368" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2368" column="9" str="BTN_RIGHT_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="2368" column="34" str="("/>
+    <tok fileIndex="0" linenr="2368" column="35" str=")"/>
+    <tok fileIndex="0" linenr="2368" column="38" str="TRISDbits"/>
+    <tok fileIndex="0" linenr="2368" column="47" str="."/>
+    <tok fileIndex="0" linenr="2368" column="48" str="TRISD4"/>
+    <tok fileIndex="0" linenr="2368" column="55" str="="/>
+    <tok fileIndex="0" linenr="2368" column="57" str="1"/>
+    <tok fileIndex="0" linenr="2369" column="1" str="/**  @Summary    Configures the GPIO pin, RD4, as an output.  @Description    Configures the GPIO pin, RD4, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RD4 as an output    BTN_RIGHT_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2392" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2392" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2392" column="9" str="BTN_RIGHT_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="2392" column="35" str="("/>
+    <tok fileIndex="0" linenr="2392" column="36" str=")"/>
+    <tok fileIndex="0" linenr="2392" column="38" str="TRISDbits"/>
+    <tok fileIndex="0" linenr="2392" column="47" str="."/>
+    <tok fileIndex="0" linenr="2392" column="48" str="TRISD4"/>
+    <tok fileIndex="0" linenr="2392" column="55" str="="/>
+    <tok fileIndex="0" linenr="2392" column="57" str="0"/>
+    <tok fileIndex="0" linenr="2393" column="1" str="/**  @Summary    Sets the GPIO pin, RD8, high using LATDbits.LATD8.  @Description    Sets the GPIO pin, RD8, high using LATDbits.LATD8.  @Preconditions    The RD8 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RD8 high (1)    GSM_RX_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2416" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2416" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2416" column="9" str="GSM_RX_SetHigh"/>
+    <tok fileIndex="0" linenr="2416" column="23" str="("/>
+    <tok fileIndex="0" linenr="2416" column="24" str=")"/>
+    <tok fileIndex="0" linenr="2416" column="35" str="LATDbits"/>
+    <tok fileIndex="0" linenr="2416" column="43" str="."/>
+    <tok fileIndex="0" linenr="2416" column="44" str="LATD8"/>
+    <tok fileIndex="0" linenr="2416" column="50" str="="/>
+    <tok fileIndex="0" linenr="2416" column="52" str="1"/>
+    <tok fileIndex="0" linenr="2417" column="1" str="/**  @Summary    Sets the GPIO pin, RD8, low using LATDbits.LATD8.  @Description    Sets the GPIO pin, RD8, low using LATDbits.LATD8.  @Preconditions    The RD8 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RD8 low (0)    GSM_RX_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2440" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2440" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2440" column="9" str="GSM_RX_SetLow"/>
+    <tok fileIndex="0" linenr="2440" column="22" str="("/>
+    <tok fileIndex="0" linenr="2440" column="23" str=")"/>
+    <tok fileIndex="0" linenr="2440" column="35" str="LATDbits"/>
+    <tok fileIndex="0" linenr="2440" column="43" str="."/>
+    <tok fileIndex="0" linenr="2440" column="44" str="LATD8"/>
+    <tok fileIndex="0" linenr="2440" column="50" str="="/>
+    <tok fileIndex="0" linenr="2440" column="52" str="0"/>
+    <tok fileIndex="0" linenr="2441" column="1" str="/**  @Summary    Toggles the GPIO pin, RD8, using LATDbits.LATD8.  @Description    Toggles the GPIO pin, RD8, using LATDbits.LATD8.  @Preconditions    The RD8 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RD8    GSM_RX_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2464" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2464" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2464" column="9" str="GSM_RX_Toggle"/>
+    <tok fileIndex="0" linenr="2464" column="22" str="("/>
+    <tok fileIndex="0" linenr="2464" column="23" str=")"/>
+    <tok fileIndex="0" linenr="2464" column="35" str="LATDbits"/>
+    <tok fileIndex="0" linenr="2464" column="43" str="."/>
+    <tok fileIndex="0" linenr="2464" column="44" str="LATD8"/>
+    <tok fileIndex="0" linenr="2464" column="50" str="^="/>
+    <tok fileIndex="0" linenr="2464" column="53" str="1"/>
+    <tok fileIndex="0" linenr="2465" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RD8.xx  @Descriptionx    Reads the value of the GPIO pin, RD8.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RD8x    postValue = GSM_RX_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="2490" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2490" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2490" column="9" str="GSM_RX_GetValue"/>
+    <tok fileIndex="0" linenr="2490" column="24" str="("/>
+    <tok fileIndex="0" linenr="2490" column="25" str=")"/>
+    <tok fileIndex="0" linenr="2490" column="35" str="PORTDbits"/>
+    <tok fileIndex="0" linenr="2490" column="44" str="."/>
+    <tok fileIndex="0" linenr="2490" column="45" str="RD8"/>
+    <tok fileIndex="0" linenr="2491" column="1" str="/**  @Summary    Configures the GPIO pin, RD8, as an input.  @Description    Configures the GPIO pin, RD8, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RD8 as an input    GSM_RX_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2514" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2514" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2514" column="9" str="GSM_RX_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="2514" column="31" str="("/>
+    <tok fileIndex="0" linenr="2514" column="32" str=")"/>
+    <tok fileIndex="0" linenr="2514" column="35" str="TRISDbits"/>
+    <tok fileIndex="0" linenr="2514" column="44" str="."/>
+    <tok fileIndex="0" linenr="2514" column="45" str="TRISD8"/>
+    <tok fileIndex="0" linenr="2514" column="52" str="="/>
+    <tok fileIndex="0" linenr="2514" column="54" str="1"/>
+    <tok fileIndex="0" linenr="2515" column="1" str="/**  @Summary    Configures the GPIO pin, RD8, as an output.  @Description    Configures the GPIO pin, RD8, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RD8 as an output    GSM_RX_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2538" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2538" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2538" column="9" str="GSM_RX_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="2538" column="32" str="("/>
+    <tok fileIndex="0" linenr="2538" column="33" str=")"/>
+    <tok fileIndex="0" linenr="2538" column="35" str="TRISDbits"/>
+    <tok fileIndex="0" linenr="2538" column="44" str="."/>
+    <tok fileIndex="0" linenr="2538" column="45" str="TRISD8"/>
+    <tok fileIndex="0" linenr="2538" column="52" str="="/>
+    <tok fileIndex="0" linenr="2538" column="54" str="0"/>
+    <tok fileIndex="0" linenr="2539" column="1" str="/**  @Summary    Sets the GPIO pin, RE0, high using LATEbits.LATE0.  @Description    Sets the GPIO pin, RE0, high using LATEbits.LATE0.  @Preconditions    The RE0 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RE0 high (1)    IO_CFG0_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2562" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2562" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2562" column="9" str="IO_CFG0_SetHigh"/>
+    <tok fileIndex="0" linenr="2562" column="24" str="("/>
+    <tok fileIndex="0" linenr="2562" column="25" str=")"/>
+    <tok fileIndex="0" linenr="2562" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="2562" column="44" str="."/>
+    <tok fileIndex="0" linenr="2562" column="45" str="LATE0"/>
+    <tok fileIndex="0" linenr="2562" column="51" str="="/>
+    <tok fileIndex="0" linenr="2562" column="53" str="1"/>
+    <tok fileIndex="0" linenr="2563" column="1" str="/**  @Summary    Sets the GPIO pin, RE0, low using LATEbits.LATE0.  @Description    Sets the GPIO pin, RE0, low using LATEbits.LATE0.  @Preconditions    The RE0 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RE0 low (0)    IO_CFG0_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2586" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2586" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2586" column="9" str="IO_CFG0_SetLow"/>
+    <tok fileIndex="0" linenr="2586" column="23" str="("/>
+    <tok fileIndex="0" linenr="2586" column="24" str=")"/>
+    <tok fileIndex="0" linenr="2586" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="2586" column="44" str="."/>
+    <tok fileIndex="0" linenr="2586" column="45" str="LATE0"/>
+    <tok fileIndex="0" linenr="2586" column="51" str="="/>
+    <tok fileIndex="0" linenr="2586" column="53" str="0"/>
+    <tok fileIndex="0" linenr="2587" column="1" str="/**  @Summary    Toggles the GPIO pin, RE0, using LATEbits.LATE0.  @Description    Toggles the GPIO pin, RE0, using LATEbits.LATE0.  @Preconditions    The RE0 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RE0    IO_CFG0_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2610" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2610" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2610" column="9" str="IO_CFG0_Toggle"/>
+    <tok fileIndex="0" linenr="2610" column="23" str="("/>
+    <tok fileIndex="0" linenr="2610" column="24" str=")"/>
+    <tok fileIndex="0" linenr="2610" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="2610" column="44" str="."/>
+    <tok fileIndex="0" linenr="2610" column="45" str="LATE0"/>
+    <tok fileIndex="0" linenr="2610" column="51" str="^="/>
+    <tok fileIndex="0" linenr="2610" column="54" str="1"/>
+    <tok fileIndex="0" linenr="2611" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RE0.xx  @Descriptionx    Reads the value of the GPIO pin, RE0.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RE0x    postValue = IO_CFG0_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="2636" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2636" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2636" column="9" str="IO_CFG0_GetValue"/>
+    <tok fileIndex="0" linenr="2636" column="25" str="("/>
+    <tok fileIndex="0" linenr="2636" column="26" str=")"/>
+    <tok fileIndex="0" linenr="2636" column="36" str="PORTEbits"/>
+    <tok fileIndex="0" linenr="2636" column="45" str="."/>
+    <tok fileIndex="0" linenr="2636" column="46" str="RE0"/>
+    <tok fileIndex="0" linenr="2637" column="1" str="/**  @Summary    Configures the GPIO pin, RE0, as an input.  @Description    Configures the GPIO pin, RE0, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RE0 as an input    IO_CFG0_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2660" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2660" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2660" column="9" str="IO_CFG0_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="2660" column="32" str="("/>
+    <tok fileIndex="0" linenr="2660" column="33" str=")"/>
+    <tok fileIndex="0" linenr="2660" column="36" str="TRISEbits"/>
+    <tok fileIndex="0" linenr="2660" column="45" str="."/>
+    <tok fileIndex="0" linenr="2660" column="46" str="TRISE0"/>
+    <tok fileIndex="0" linenr="2660" column="53" str="="/>
+    <tok fileIndex="0" linenr="2660" column="55" str="1"/>
+    <tok fileIndex="0" linenr="2661" column="1" str="/**  @Summary    Configures the GPIO pin, RE0, as an output.  @Description    Configures the GPIO pin, RE0, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RE0 as an output    IO_CFG0_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2684" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2684" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2684" column="9" str="IO_CFG0_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="2684" column="33" str="("/>
+    <tok fileIndex="0" linenr="2684" column="34" str=")"/>
+    <tok fileIndex="0" linenr="2684" column="36" str="TRISEbits"/>
+    <tok fileIndex="0" linenr="2684" column="45" str="."/>
+    <tok fileIndex="0" linenr="2684" column="46" str="TRISE0"/>
+    <tok fileIndex="0" linenr="2684" column="53" str="="/>
+    <tok fileIndex="0" linenr="2684" column="55" str="0"/>
+    <tok fileIndex="0" linenr="2685" column="1" str="/**  @Summary    Sets the GPIO pin, RE1, high using LATEbits.LATE1.  @Description    Sets the GPIO pin, RE1, high using LATEbits.LATE1.  @Preconditions    The RE1 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RE1 high (1)    IO_CFG1_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2708" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2708" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2708" column="9" str="IO_CFG1_SetHigh"/>
+    <tok fileIndex="0" linenr="2708" column="24" str="("/>
+    <tok fileIndex="0" linenr="2708" column="25" str=")"/>
+    <tok fileIndex="0" linenr="2708" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="2708" column="44" str="."/>
+    <tok fileIndex="0" linenr="2708" column="45" str="LATE1"/>
+    <tok fileIndex="0" linenr="2708" column="51" str="="/>
+    <tok fileIndex="0" linenr="2708" column="53" str="1"/>
+    <tok fileIndex="0" linenr="2709" column="1" str="/**  @Summary    Sets the GPIO pin, RE1, low using LATEbits.LATE1.  @Description    Sets the GPIO pin, RE1, low using LATEbits.LATE1.  @Preconditions    The RE1 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RE1 low (0)    IO_CFG1_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2732" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2732" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2732" column="9" str="IO_CFG1_SetLow"/>
+    <tok fileIndex="0" linenr="2732" column="23" str="("/>
+    <tok fileIndex="0" linenr="2732" column="24" str=")"/>
+    <tok fileIndex="0" linenr="2732" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="2732" column="44" str="."/>
+    <tok fileIndex="0" linenr="2732" column="45" str="LATE1"/>
+    <tok fileIndex="0" linenr="2732" column="51" str="="/>
+    <tok fileIndex="0" linenr="2732" column="53" str="0"/>
+    <tok fileIndex="0" linenr="2733" column="1" str="/**  @Summary    Toggles the GPIO pin, RE1, using LATEbits.LATE1.  @Description    Toggles the GPIO pin, RE1, using LATEbits.LATE1.  @Preconditions    The RE1 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RE1    IO_CFG1_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2756" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2756" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2756" column="9" str="IO_CFG1_Toggle"/>
+    <tok fileIndex="0" linenr="2756" column="23" str="("/>
+    <tok fileIndex="0" linenr="2756" column="24" str=")"/>
+    <tok fileIndex="0" linenr="2756" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="2756" column="44" str="."/>
+    <tok fileIndex="0" linenr="2756" column="45" str="LATE1"/>
+    <tok fileIndex="0" linenr="2756" column="51" str="^="/>
+    <tok fileIndex="0" linenr="2756" column="54" str="1"/>
+    <tok fileIndex="0" linenr="2757" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RE1.xx  @Descriptionx    Reads the value of the GPIO pin, RE1.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RE1x    postValue = IO_CFG1_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="2782" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2782" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2782" column="9" str="IO_CFG1_GetValue"/>
+    <tok fileIndex="0" linenr="2782" column="25" str="("/>
+    <tok fileIndex="0" linenr="2782" column="26" str=")"/>
+    <tok fileIndex="0" linenr="2782" column="36" str="PORTEbits"/>
+    <tok fileIndex="0" linenr="2782" column="45" str="."/>
+    <tok fileIndex="0" linenr="2782" column="46" str="RE1"/>
+    <tok fileIndex="0" linenr="2783" column="1" str="/**  @Summary    Configures the GPIO pin, RE1, as an input.  @Description    Configures the GPIO pin, RE1, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RE1 as an input    IO_CFG1_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2806" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2806" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2806" column="9" str="IO_CFG1_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="2806" column="32" str="("/>
+    <tok fileIndex="0" linenr="2806" column="33" str=")"/>
+    <tok fileIndex="0" linenr="2806" column="36" str="TRISEbits"/>
+    <tok fileIndex="0" linenr="2806" column="45" str="."/>
+    <tok fileIndex="0" linenr="2806" column="46" str="TRISE1"/>
+    <tok fileIndex="0" linenr="2806" column="53" str="="/>
+    <tok fileIndex="0" linenr="2806" column="55" str="1"/>
+    <tok fileIndex="0" linenr="2807" column="1" str="/**  @Summary    Configures the GPIO pin, RE1, as an output.  @Description    Configures the GPIO pin, RE1, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RE1 as an output    IO_CFG1_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2830" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2830" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2830" column="9" str="IO_CFG1_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="2830" column="33" str="("/>
+    <tok fileIndex="0" linenr="2830" column="34" str=")"/>
+    <tok fileIndex="0" linenr="2830" column="36" str="TRISEbits"/>
+    <tok fileIndex="0" linenr="2830" column="45" str="."/>
+    <tok fileIndex="0" linenr="2830" column="46" str="TRISE1"/>
+    <tok fileIndex="0" linenr="2830" column="53" str="="/>
+    <tok fileIndex="0" linenr="2830" column="55" str="0"/>
+    <tok fileIndex="0" linenr="2831" column="1" str="/**  @Summary    Sets the GPIO pin, RE2, high using LATEbits.LATE2.  @Description    Sets the GPIO pin, RE2, high using LATEbits.LATE2.  @Preconditions    The RE2 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RE2 high (1)    IO_CFG2_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2854" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2854" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2854" column="9" str="IO_CFG2_SetHigh"/>
+    <tok fileIndex="0" linenr="2854" column="24" str="("/>
+    <tok fileIndex="0" linenr="2854" column="25" str=")"/>
+    <tok fileIndex="0" linenr="2854" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="2854" column="44" str="."/>
+    <tok fileIndex="0" linenr="2854" column="45" str="LATE2"/>
+    <tok fileIndex="0" linenr="2854" column="51" str="="/>
+    <tok fileIndex="0" linenr="2854" column="53" str="1"/>
+    <tok fileIndex="0" linenr="2855" column="1" str="/**  @Summary    Sets the GPIO pin, RE2, low using LATEbits.LATE2.  @Description    Sets the GPIO pin, RE2, low using LATEbits.LATE2.  @Preconditions    The RE2 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RE2 low (0)    IO_CFG2_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2878" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2878" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2878" column="9" str="IO_CFG2_SetLow"/>
+    <tok fileIndex="0" linenr="2878" column="23" str="("/>
+    <tok fileIndex="0" linenr="2878" column="24" str=")"/>
+    <tok fileIndex="0" linenr="2878" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="2878" column="44" str="."/>
+    <tok fileIndex="0" linenr="2878" column="45" str="LATE2"/>
+    <tok fileIndex="0" linenr="2878" column="51" str="="/>
+    <tok fileIndex="0" linenr="2878" column="53" str="0"/>
+    <tok fileIndex="0" linenr="2879" column="1" str="/**  @Summary    Toggles the GPIO pin, RE2, using LATEbits.LATE2.  @Description    Toggles the GPIO pin, RE2, using LATEbits.LATE2.  @Preconditions    The RE2 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RE2    IO_CFG2_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2902" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2902" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2902" column="9" str="IO_CFG2_Toggle"/>
+    <tok fileIndex="0" linenr="2902" column="23" str="("/>
+    <tok fileIndex="0" linenr="2902" column="24" str=")"/>
+    <tok fileIndex="0" linenr="2902" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="2902" column="44" str="."/>
+    <tok fileIndex="0" linenr="2902" column="45" str="LATE2"/>
+    <tok fileIndex="0" linenr="2902" column="51" str="^="/>
+    <tok fileIndex="0" linenr="2902" column="54" str="1"/>
+    <tok fileIndex="0" linenr="2903" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RE2.xx  @Descriptionx    Reads the value of the GPIO pin, RE2.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RE2x    postValue = IO_CFG2_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="2928" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2928" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2928" column="9" str="IO_CFG2_GetValue"/>
+    <tok fileIndex="0" linenr="2928" column="25" str="("/>
+    <tok fileIndex="0" linenr="2928" column="26" str=")"/>
+    <tok fileIndex="0" linenr="2928" column="36" str="PORTEbits"/>
+    <tok fileIndex="0" linenr="2928" column="45" str="."/>
+    <tok fileIndex="0" linenr="2928" column="46" str="RE2"/>
+    <tok fileIndex="0" linenr="2929" column="1" str="/**  @Summary    Configures the GPIO pin, RE2, as an input.  @Description    Configures the GPIO pin, RE2, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RE2 as an input    IO_CFG2_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2952" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2952" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2952" column="9" str="IO_CFG2_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="2952" column="32" str="("/>
+    <tok fileIndex="0" linenr="2952" column="33" str=")"/>
+    <tok fileIndex="0" linenr="2952" column="36" str="TRISEbits"/>
+    <tok fileIndex="0" linenr="2952" column="45" str="."/>
+    <tok fileIndex="0" linenr="2952" column="46" str="TRISE2"/>
+    <tok fileIndex="0" linenr="2952" column="53" str="="/>
+    <tok fileIndex="0" linenr="2952" column="55" str="1"/>
+    <tok fileIndex="0" linenr="2953" column="1" str="/**  @Summary    Configures the GPIO pin, RE2, as an output.  @Description    Configures the GPIO pin, RE2, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RE2 as an output    IO_CFG2_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="2976" column="1" str="#"/>
+    <tok fileIndex="0" linenr="2976" column="2" str="define"/>
+    <tok fileIndex="0" linenr="2976" column="9" str="IO_CFG2_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="2976" column="33" str="("/>
+    <tok fileIndex="0" linenr="2976" column="34" str=")"/>
+    <tok fileIndex="0" linenr="2976" column="36" str="TRISEbits"/>
+    <tok fileIndex="0" linenr="2976" column="45" str="."/>
+    <tok fileIndex="0" linenr="2976" column="46" str="TRISE2"/>
+    <tok fileIndex="0" linenr="2976" column="53" str="="/>
+    <tok fileIndex="0" linenr="2976" column="55" str="0"/>
+    <tok fileIndex="0" linenr="2977" column="1" str="/**  @Summary    Sets the GPIO pin, RE3, high using LATEbits.LATE3.  @Description    Sets the GPIO pin, RE3, high using LATEbits.LATE3.  @Preconditions    The RE3 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RE3 high (1)    IO_CFG3_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3000" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3000" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3000" column="9" str="IO_CFG3_SetHigh"/>
+    <tok fileIndex="0" linenr="3000" column="24" str="("/>
+    <tok fileIndex="0" linenr="3000" column="25" str=")"/>
+    <tok fileIndex="0" linenr="3000" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="3000" column="44" str="."/>
+    <tok fileIndex="0" linenr="3000" column="45" str="LATE3"/>
+    <tok fileIndex="0" linenr="3000" column="51" str="="/>
+    <tok fileIndex="0" linenr="3000" column="53" str="1"/>
+    <tok fileIndex="0" linenr="3001" column="1" str="/**  @Summary    Sets the GPIO pin, RE3, low using LATEbits.LATE3.  @Description    Sets the GPIO pin, RE3, low using LATEbits.LATE3.  @Preconditions    The RE3 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RE3 low (0)    IO_CFG3_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3024" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3024" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3024" column="9" str="IO_CFG3_SetLow"/>
+    <tok fileIndex="0" linenr="3024" column="23" str="("/>
+    <tok fileIndex="0" linenr="3024" column="24" str=")"/>
+    <tok fileIndex="0" linenr="3024" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="3024" column="44" str="."/>
+    <tok fileIndex="0" linenr="3024" column="45" str="LATE3"/>
+    <tok fileIndex="0" linenr="3024" column="51" str="="/>
+    <tok fileIndex="0" linenr="3024" column="53" str="0"/>
+    <tok fileIndex="0" linenr="3025" column="1" str="/**  @Summary    Toggles the GPIO pin, RE3, using LATEbits.LATE3.  @Description    Toggles the GPIO pin, RE3, using LATEbits.LATE3.  @Preconditions    The RE3 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RE3    IO_CFG3_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3048" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3048" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3048" column="9" str="IO_CFG3_Toggle"/>
+    <tok fileIndex="0" linenr="3048" column="23" str="("/>
+    <tok fileIndex="0" linenr="3048" column="24" str=")"/>
+    <tok fileIndex="0" linenr="3048" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="3048" column="44" str="."/>
+    <tok fileIndex="0" linenr="3048" column="45" str="LATE3"/>
+    <tok fileIndex="0" linenr="3048" column="51" str="^="/>
+    <tok fileIndex="0" linenr="3048" column="54" str="1"/>
+    <tok fileIndex="0" linenr="3049" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RE3.xx  @Descriptionx    Reads the value of the GPIO pin, RE3.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RE3x    postValue = IO_CFG3_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="3074" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3074" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3074" column="9" str="IO_CFG3_GetValue"/>
+    <tok fileIndex="0" linenr="3074" column="25" str="("/>
+    <tok fileIndex="0" linenr="3074" column="26" str=")"/>
+    <tok fileIndex="0" linenr="3074" column="36" str="PORTEbits"/>
+    <tok fileIndex="0" linenr="3074" column="45" str="."/>
+    <tok fileIndex="0" linenr="3074" column="46" str="RE3"/>
+    <tok fileIndex="0" linenr="3075" column="1" str="/**  @Summary    Configures the GPIO pin, RE3, as an input.  @Description    Configures the GPIO pin, RE3, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RE3 as an input    IO_CFG3_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3098" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3098" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3098" column="9" str="IO_CFG3_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="3098" column="32" str="("/>
+    <tok fileIndex="0" linenr="3098" column="33" str=")"/>
+    <tok fileIndex="0" linenr="3098" column="36" str="TRISEbits"/>
+    <tok fileIndex="0" linenr="3098" column="45" str="."/>
+    <tok fileIndex="0" linenr="3098" column="46" str="TRISE3"/>
+    <tok fileIndex="0" linenr="3098" column="53" str="="/>
+    <tok fileIndex="0" linenr="3098" column="55" str="1"/>
+    <tok fileIndex="0" linenr="3099" column="1" str="/**  @Summary    Configures the GPIO pin, RE3, as an output.  @Description    Configures the GPIO pin, RE3, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RE3 as an output    IO_CFG3_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3122" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3122" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3122" column="9" str="IO_CFG3_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="3122" column="33" str="("/>
+    <tok fileIndex="0" linenr="3122" column="34" str=")"/>
+    <tok fileIndex="0" linenr="3122" column="36" str="TRISEbits"/>
+    <tok fileIndex="0" linenr="3122" column="45" str="."/>
+    <tok fileIndex="0" linenr="3122" column="46" str="TRISE3"/>
+    <tok fileIndex="0" linenr="3122" column="53" str="="/>
+    <tok fileIndex="0" linenr="3122" column="55" str="0"/>
+    <tok fileIndex="0" linenr="3123" column="1" str="/**  @Summary    Sets the GPIO pin, RE4, high using LATEbits.LATE4.  @Description    Sets the GPIO pin, RE4, high using LATEbits.LATE4.  @Preconditions    The RE4 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RE4 high (1)    IO_CFG4_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3146" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3146" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3146" column="9" str="IO_CFG4_SetHigh"/>
+    <tok fileIndex="0" linenr="3146" column="24" str="("/>
+    <tok fileIndex="0" linenr="3146" column="25" str=")"/>
+    <tok fileIndex="0" linenr="3146" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="3146" column="44" str="."/>
+    <tok fileIndex="0" linenr="3146" column="45" str="LATE4"/>
+    <tok fileIndex="0" linenr="3146" column="51" str="="/>
+    <tok fileIndex="0" linenr="3146" column="53" str="1"/>
+    <tok fileIndex="0" linenr="3147" column="1" str="/**  @Summary    Sets the GPIO pin, RE4, low using LATEbits.LATE4.  @Description    Sets the GPIO pin, RE4, low using LATEbits.LATE4.  @Preconditions    The RE4 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RE4 low (0)    IO_CFG4_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3170" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3170" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3170" column="9" str="IO_CFG4_SetLow"/>
+    <tok fileIndex="0" linenr="3170" column="23" str="("/>
+    <tok fileIndex="0" linenr="3170" column="24" str=")"/>
+    <tok fileIndex="0" linenr="3170" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="3170" column="44" str="."/>
+    <tok fileIndex="0" linenr="3170" column="45" str="LATE4"/>
+    <tok fileIndex="0" linenr="3170" column="51" str="="/>
+    <tok fileIndex="0" linenr="3170" column="53" str="0"/>
+    <tok fileIndex="0" linenr="3171" column="1" str="/**  @Summary    Toggles the GPIO pin, RE4, using LATEbits.LATE4.  @Description    Toggles the GPIO pin, RE4, using LATEbits.LATE4.  @Preconditions    The RE4 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RE4    IO_CFG4_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3194" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3194" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3194" column="9" str="IO_CFG4_Toggle"/>
+    <tok fileIndex="0" linenr="3194" column="23" str="("/>
+    <tok fileIndex="0" linenr="3194" column="24" str=")"/>
+    <tok fileIndex="0" linenr="3194" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="3194" column="44" str="."/>
+    <tok fileIndex="0" linenr="3194" column="45" str="LATE4"/>
+    <tok fileIndex="0" linenr="3194" column="51" str="^="/>
+    <tok fileIndex="0" linenr="3194" column="54" str="1"/>
+    <tok fileIndex="0" linenr="3195" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RE4.xx  @Descriptionx    Reads the value of the GPIO pin, RE4.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RE4x    postValue = IO_CFG4_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="3220" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3220" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3220" column="9" str="IO_CFG4_GetValue"/>
+    <tok fileIndex="0" linenr="3220" column="25" str="("/>
+    <tok fileIndex="0" linenr="3220" column="26" str=")"/>
+    <tok fileIndex="0" linenr="3220" column="36" str="PORTEbits"/>
+    <tok fileIndex="0" linenr="3220" column="45" str="."/>
+    <tok fileIndex="0" linenr="3220" column="46" str="RE4"/>
+    <tok fileIndex="0" linenr="3221" column="1" str="/**  @Summary    Configures the GPIO pin, RE4, as an input.  @Description    Configures the GPIO pin, RE4, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RE4 as an input    IO_CFG4_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3244" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3244" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3244" column="9" str="IO_CFG4_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="3244" column="32" str="("/>
+    <tok fileIndex="0" linenr="3244" column="33" str=")"/>
+    <tok fileIndex="0" linenr="3244" column="36" str="TRISEbits"/>
+    <tok fileIndex="0" linenr="3244" column="45" str="."/>
+    <tok fileIndex="0" linenr="3244" column="46" str="TRISE4"/>
+    <tok fileIndex="0" linenr="3244" column="53" str="="/>
+    <tok fileIndex="0" linenr="3244" column="55" str="1"/>
+    <tok fileIndex="0" linenr="3245" column="1" str="/**  @Summary    Configures the GPIO pin, RE4, as an output.  @Description    Configures the GPIO pin, RE4, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RE4 as an output    IO_CFG4_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3268" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3268" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3268" column="9" str="IO_CFG4_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="3268" column="33" str="("/>
+    <tok fileIndex="0" linenr="3268" column="34" str=")"/>
+    <tok fileIndex="0" linenr="3268" column="36" str="TRISEbits"/>
+    <tok fileIndex="0" linenr="3268" column="45" str="."/>
+    <tok fileIndex="0" linenr="3268" column="46" str="TRISE4"/>
+    <tok fileIndex="0" linenr="3268" column="53" str="="/>
+    <tok fileIndex="0" linenr="3268" column="55" str="0"/>
+    <tok fileIndex="0" linenr="3269" column="1" str="/**  @Summary    Sets the GPIO pin, RE5, high using LATEbits.LATE5.  @Description    Sets the GPIO pin, RE5, high using LATEbits.LATE5.  @Preconditions    The RE5 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RE5 high (1)    LCD_RESET_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3292" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3292" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3292" column="9" str="LCD_RESET_SetHigh"/>
+    <tok fileIndex="0" linenr="3292" column="26" str="("/>
+    <tok fileIndex="0" linenr="3292" column="27" str=")"/>
+    <tok fileIndex="0" linenr="3292" column="38" str="LATEbits"/>
+    <tok fileIndex="0" linenr="3292" column="46" str="."/>
+    <tok fileIndex="0" linenr="3292" column="47" str="LATE5"/>
+    <tok fileIndex="0" linenr="3292" column="53" str="="/>
+    <tok fileIndex="0" linenr="3292" column="55" str="1"/>
+    <tok fileIndex="0" linenr="3293" column="1" str="/**  @Summary    Sets the GPIO pin, RE5, low using LATEbits.LATE5.  @Description    Sets the GPIO pin, RE5, low using LATEbits.LATE5.  @Preconditions    The RE5 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RE5 low (0)    LCD_RESET_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3316" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3316" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3316" column="9" str="LCD_RESET_SetLow"/>
+    <tok fileIndex="0" linenr="3316" column="25" str="("/>
+    <tok fileIndex="0" linenr="3316" column="26" str=")"/>
+    <tok fileIndex="0" linenr="3316" column="38" str="LATEbits"/>
+    <tok fileIndex="0" linenr="3316" column="46" str="."/>
+    <tok fileIndex="0" linenr="3316" column="47" str="LATE5"/>
+    <tok fileIndex="0" linenr="3316" column="53" str="="/>
+    <tok fileIndex="0" linenr="3316" column="55" str="0"/>
+    <tok fileIndex="0" linenr="3317" column="1" str="/**  @Summary    Toggles the GPIO pin, RE5, using LATEbits.LATE5.  @Description    Toggles the GPIO pin, RE5, using LATEbits.LATE5.  @Preconditions    The RE5 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RE5    LCD_RESET_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3340" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3340" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3340" column="9" str="LCD_RESET_Toggle"/>
+    <tok fileIndex="0" linenr="3340" column="25" str="("/>
+    <tok fileIndex="0" linenr="3340" column="26" str=")"/>
+    <tok fileIndex="0" linenr="3340" column="38" str="LATEbits"/>
+    <tok fileIndex="0" linenr="3340" column="46" str="."/>
+    <tok fileIndex="0" linenr="3340" column="47" str="LATE5"/>
+    <tok fileIndex="0" linenr="3340" column="53" str="^="/>
+    <tok fileIndex="0" linenr="3340" column="56" str="1"/>
+    <tok fileIndex="0" linenr="3341" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RE5.xx  @Descriptionx    Reads the value of the GPIO pin, RE5.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RE5x    postValue = LCD_RESET_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="3366" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3366" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3366" column="9" str="LCD_RESET_GetValue"/>
+    <tok fileIndex="0" linenr="3366" column="27" str="("/>
+    <tok fileIndex="0" linenr="3366" column="28" str=")"/>
+    <tok fileIndex="0" linenr="3366" column="38" str="PORTEbits"/>
+    <tok fileIndex="0" linenr="3366" column="47" str="."/>
+    <tok fileIndex="0" linenr="3366" column="48" str="RE5"/>
+    <tok fileIndex="0" linenr="3367" column="1" str="/**  @Summary    Configures the GPIO pin, RE5, as an input.  @Description    Configures the GPIO pin, RE5, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RE5 as an input    LCD_RESET_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3390" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3390" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3390" column="9" str="LCD_RESET_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="3390" column="34" str="("/>
+    <tok fileIndex="0" linenr="3390" column="35" str=")"/>
+    <tok fileIndex="0" linenr="3390" column="38" str="TRISEbits"/>
+    <tok fileIndex="0" linenr="3390" column="47" str="."/>
+    <tok fileIndex="0" linenr="3390" column="48" str="TRISE5"/>
+    <tok fileIndex="0" linenr="3390" column="55" str="="/>
+    <tok fileIndex="0" linenr="3390" column="57" str="1"/>
+    <tok fileIndex="0" linenr="3391" column="1" str="/**  @Summary    Configures the GPIO pin, RE5, as an output.  @Description    Configures the GPIO pin, RE5, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RE5 as an output    LCD_RESET_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3414" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3414" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3414" column="9" str="LCD_RESET_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="3414" column="35" str="("/>
+    <tok fileIndex="0" linenr="3414" column="36" str=")"/>
+    <tok fileIndex="0" linenr="3414" column="38" str="TRISEbits"/>
+    <tok fileIndex="0" linenr="3414" column="47" str="."/>
+    <tok fileIndex="0" linenr="3414" column="48" str="TRISE5"/>
+    <tok fileIndex="0" linenr="3414" column="55" str="="/>
+    <tok fileIndex="0" linenr="3414" column="57" str="0"/>
+    <tok fileIndex="0" linenr="3415" column="1" str="/**  @Summary    Sets the GPIO pin, RE6, high using LATEbits.LATE6.  @Description    Sets the GPIO pin, RE6, high using LATEbits.LATE6.  @Preconditions    The RE6 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RE6 high (1)    GSM_RI_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3438" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3438" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3438" column="9" str="GSM_RI_SetHigh"/>
+    <tok fileIndex="0" linenr="3438" column="23" str="("/>
+    <tok fileIndex="0" linenr="3438" column="24" str=")"/>
+    <tok fileIndex="0" linenr="3438" column="35" str="LATEbits"/>
+    <tok fileIndex="0" linenr="3438" column="43" str="."/>
+    <tok fileIndex="0" linenr="3438" column="44" str="LATE6"/>
+    <tok fileIndex="0" linenr="3438" column="50" str="="/>
+    <tok fileIndex="0" linenr="3438" column="52" str="1"/>
+    <tok fileIndex="0" linenr="3439" column="1" str="/**  @Summary    Sets the GPIO pin, RE6, low using LATEbits.LATE6.  @Description    Sets the GPIO pin, RE6, low using LATEbits.LATE6.  @Preconditions    The RE6 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RE6 low (0)    GSM_RI_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3462" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3462" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3462" column="9" str="GSM_RI_SetLow"/>
+    <tok fileIndex="0" linenr="3462" column="22" str="("/>
+    <tok fileIndex="0" linenr="3462" column="23" str=")"/>
+    <tok fileIndex="0" linenr="3462" column="35" str="LATEbits"/>
+    <tok fileIndex="0" linenr="3462" column="43" str="."/>
+    <tok fileIndex="0" linenr="3462" column="44" str="LATE6"/>
+    <tok fileIndex="0" linenr="3462" column="50" str="="/>
+    <tok fileIndex="0" linenr="3462" column="52" str="0"/>
+    <tok fileIndex="0" linenr="3463" column="1" str="/**  @Summary    Toggles the GPIO pin, RE6, using LATEbits.LATE6.  @Description    Toggles the GPIO pin, RE6, using LATEbits.LATE6.  @Preconditions    The RE6 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RE6    GSM_RI_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3486" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3486" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3486" column="9" str="GSM_RI_Toggle"/>
+    <tok fileIndex="0" linenr="3486" column="22" str="("/>
+    <tok fileIndex="0" linenr="3486" column="23" str=")"/>
+    <tok fileIndex="0" linenr="3486" column="35" str="LATEbits"/>
+    <tok fileIndex="0" linenr="3486" column="43" str="."/>
+    <tok fileIndex="0" linenr="3486" column="44" str="LATE6"/>
+    <tok fileIndex="0" linenr="3486" column="50" str="^="/>
+    <tok fileIndex="0" linenr="3486" column="53" str="1"/>
+    <tok fileIndex="0" linenr="3487" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RE6.xx  @Descriptionx    Reads the value of the GPIO pin, RE6.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RE6x    postValue = GSM_RI_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="3512" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3512" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3512" column="9" str="GSM_RI_GetValue"/>
+    <tok fileIndex="0" linenr="3512" column="24" str="("/>
+    <tok fileIndex="0" linenr="3512" column="25" str=")"/>
+    <tok fileIndex="0" linenr="3512" column="35" str="PORTEbits"/>
+    <tok fileIndex="0" linenr="3512" column="44" str="."/>
+    <tok fileIndex="0" linenr="3512" column="45" str="RE6"/>
+    <tok fileIndex="0" linenr="3513" column="1" str="/**  @Summary    Configures the GPIO pin, RE6, as an input.  @Description    Configures the GPIO pin, RE6, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RE6 as an input    GSM_RI_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3536" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3536" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3536" column="9" str="GSM_RI_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="3536" column="31" str="("/>
+    <tok fileIndex="0" linenr="3536" column="32" str=")"/>
+    <tok fileIndex="0" linenr="3536" column="35" str="TRISEbits"/>
+    <tok fileIndex="0" linenr="3536" column="44" str="."/>
+    <tok fileIndex="0" linenr="3536" column="45" str="TRISE6"/>
+    <tok fileIndex="0" linenr="3536" column="52" str="="/>
+    <tok fileIndex="0" linenr="3536" column="54" str="1"/>
+    <tok fileIndex="0" linenr="3537" column="1" str="/**  @Summary    Configures the GPIO pin, RE6, as an output.  @Description    Configures the GPIO pin, RE6, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RE6 as an output    GSM_RI_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3560" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3560" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3560" column="9" str="GSM_RI_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="3560" column="32" str="("/>
+    <tok fileIndex="0" linenr="3560" column="33" str=")"/>
+    <tok fileIndex="0" linenr="3560" column="35" str="TRISEbits"/>
+    <tok fileIndex="0" linenr="3560" column="44" str="."/>
+    <tok fileIndex="0" linenr="3560" column="45" str="TRISE6"/>
+    <tok fileIndex="0" linenr="3560" column="52" str="="/>
+    <tok fileIndex="0" linenr="3560" column="54" str="0"/>
+    <tok fileIndex="0" linenr="3561" column="1" str="/**  @Summary    Sets the GPIO pin, RE7, high using LATEbits.LATE7.  @Description    Sets the GPIO pin, RE7, high using LATEbits.LATE7.  @Preconditions    The RE7 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RE7 high (1)    GSM_KEY_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3584" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3584" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3584" column="9" str="GSM_KEY_SetHigh"/>
+    <tok fileIndex="0" linenr="3584" column="24" str="("/>
+    <tok fileIndex="0" linenr="3584" column="25" str=")"/>
+    <tok fileIndex="0" linenr="3584" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="3584" column="44" str="."/>
+    <tok fileIndex="0" linenr="3584" column="45" str="LATE7"/>
+    <tok fileIndex="0" linenr="3584" column="51" str="="/>
+    <tok fileIndex="0" linenr="3584" column="53" str="1"/>
+    <tok fileIndex="0" linenr="3585" column="1" str="/**  @Summary    Sets the GPIO pin, RE7, low using LATEbits.LATE7.  @Description    Sets the GPIO pin, RE7, low using LATEbits.LATE7.  @Preconditions    The RE7 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RE7 low (0)    GSM_KEY_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3608" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3608" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3608" column="9" str="GSM_KEY_SetLow"/>
+    <tok fileIndex="0" linenr="3608" column="23" str="("/>
+    <tok fileIndex="0" linenr="3608" column="24" str=")"/>
+    <tok fileIndex="0" linenr="3608" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="3608" column="44" str="."/>
+    <tok fileIndex="0" linenr="3608" column="45" str="LATE7"/>
+    <tok fileIndex="0" linenr="3608" column="51" str="="/>
+    <tok fileIndex="0" linenr="3608" column="53" str="0"/>
+    <tok fileIndex="0" linenr="3609" column="1" str="/**  @Summary    Toggles the GPIO pin, RE7, using LATEbits.LATE7.  @Description    Toggles the GPIO pin, RE7, using LATEbits.LATE7.  @Preconditions    The RE7 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RE7    GSM_KEY_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3632" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3632" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3632" column="9" str="GSM_KEY_Toggle"/>
+    <tok fileIndex="0" linenr="3632" column="23" str="("/>
+    <tok fileIndex="0" linenr="3632" column="24" str=")"/>
+    <tok fileIndex="0" linenr="3632" column="36" str="LATEbits"/>
+    <tok fileIndex="0" linenr="3632" column="44" str="."/>
+    <tok fileIndex="0" linenr="3632" column="45" str="LATE7"/>
+    <tok fileIndex="0" linenr="3632" column="51" str="^="/>
+    <tok fileIndex="0" linenr="3632" column="54" str="1"/>
+    <tok fileIndex="0" linenr="3633" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RE7.xx  @Descriptionx    Reads the value of the GPIO pin, RE7.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RE7x    postValue = GSM_KEY_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="3658" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3658" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3658" column="9" str="GSM_KEY_GetValue"/>
+    <tok fileIndex="0" linenr="3658" column="25" str="("/>
+    <tok fileIndex="0" linenr="3658" column="26" str=")"/>
+    <tok fileIndex="0" linenr="3658" column="36" str="PORTEbits"/>
+    <tok fileIndex="0" linenr="3658" column="45" str="."/>
+    <tok fileIndex="0" linenr="3658" column="46" str="RE7"/>
+    <tok fileIndex="0" linenr="3659" column="1" str="/**  @Summary    Configures the GPIO pin, RE7, as an input.  @Description    Configures the GPIO pin, RE7, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RE7 as an input    GSM_KEY_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3682" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3682" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3682" column="9" str="GSM_KEY_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="3682" column="32" str="("/>
+    <tok fileIndex="0" linenr="3682" column="33" str=")"/>
+    <tok fileIndex="0" linenr="3682" column="36" str="TRISEbits"/>
+    <tok fileIndex="0" linenr="3682" column="45" str="."/>
+    <tok fileIndex="0" linenr="3682" column="46" str="TRISE7"/>
+    <tok fileIndex="0" linenr="3682" column="53" str="="/>
+    <tok fileIndex="0" linenr="3682" column="55" str="1"/>
+    <tok fileIndex="0" linenr="3683" column="1" str="/**  @Summary    Configures the GPIO pin, RE7, as an output.  @Description    Configures the GPIO pin, RE7, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RE7 as an output    GSM_KEY_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3706" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3706" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3706" column="9" str="GSM_KEY_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="3706" column="33" str="("/>
+    <tok fileIndex="0" linenr="3706" column="34" str=")"/>
+    <tok fileIndex="0" linenr="3706" column="36" str="TRISEbits"/>
+    <tok fileIndex="0" linenr="3706" column="45" str="."/>
+    <tok fileIndex="0" linenr="3706" column="46" str="TRISE7"/>
+    <tok fileIndex="0" linenr="3706" column="53" str="="/>
+    <tok fileIndex="0" linenr="3706" column="55" str="0"/>
+    <tok fileIndex="0" linenr="3707" column="1" str="/**  @Summary    Sets the GPIO pin, RF0, high using LATFbits.LATF0.  @Description    Sets the GPIO pin, RF0, high using LATFbits.LATF0.  @Preconditions    The RF0 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RF0 high (1)    BTN_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3730" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3730" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3730" column="9" str="BTN_SetHigh"/>
+    <tok fileIndex="0" linenr="3730" column="20" str="("/>
+    <tok fileIndex="0" linenr="3730" column="21" str=")"/>
+    <tok fileIndex="0" linenr="3730" column="32" str="LATFbits"/>
+    <tok fileIndex="0" linenr="3730" column="40" str="."/>
+    <tok fileIndex="0" linenr="3730" column="41" str="LATF0"/>
+    <tok fileIndex="0" linenr="3730" column="47" str="="/>
+    <tok fileIndex="0" linenr="3730" column="49" str="1"/>
+    <tok fileIndex="0" linenr="3731" column="1" str="/**  @Summary    Sets the GPIO pin, RF0, low using LATFbits.LATF0.  @Description    Sets the GPIO pin, RF0, low using LATFbits.LATF0.  @Preconditions    The RF0 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RF0 low (0)    BTN_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3754" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3754" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3754" column="9" str="BTN_SetLow"/>
+    <tok fileIndex="0" linenr="3754" column="19" str="("/>
+    <tok fileIndex="0" linenr="3754" column="20" str=")"/>
+    <tok fileIndex="0" linenr="3754" column="32" str="LATFbits"/>
+    <tok fileIndex="0" linenr="3754" column="40" str="."/>
+    <tok fileIndex="0" linenr="3754" column="41" str="LATF0"/>
+    <tok fileIndex="0" linenr="3754" column="47" str="="/>
+    <tok fileIndex="0" linenr="3754" column="49" str="0"/>
+    <tok fileIndex="0" linenr="3755" column="1" str="/**  @Summary    Toggles the GPIO pin, RF0, using LATFbits.LATF0.  @Description    Toggles the GPIO pin, RF0, using LATFbits.LATF0.  @Preconditions    The RF0 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RF0    BTN_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3778" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3778" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3778" column="9" str="BTN_Toggle"/>
+    <tok fileIndex="0" linenr="3778" column="19" str="("/>
+    <tok fileIndex="0" linenr="3778" column="20" str=")"/>
+    <tok fileIndex="0" linenr="3778" column="32" str="LATFbits"/>
+    <tok fileIndex="0" linenr="3778" column="40" str="."/>
+    <tok fileIndex="0" linenr="3778" column="41" str="LATF0"/>
+    <tok fileIndex="0" linenr="3778" column="47" str="^="/>
+    <tok fileIndex="0" linenr="3778" column="50" str="1"/>
+    <tok fileIndex="0" linenr="3779" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RF0.xx  @Descriptionx    Reads the value of the GPIO pin, RF0.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RF0x    postValue = BTN_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="3804" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3804" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3804" column="9" str="BTN_GetValue"/>
+    <tok fileIndex="0" linenr="3804" column="21" str="("/>
+    <tok fileIndex="0" linenr="3804" column="22" str=")"/>
+    <tok fileIndex="0" linenr="3804" column="32" str="PORTFbits"/>
+    <tok fileIndex="0" linenr="3804" column="41" str="."/>
+    <tok fileIndex="0" linenr="3804" column="42" str="RF0"/>
+    <tok fileIndex="0" linenr="3805" column="1" str="/**  @Summary    Configures the GPIO pin, RF0, as an input.  @Description    Configures the GPIO pin, RF0, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RF0 as an input    BTN_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3828" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3828" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3828" column="9" str="BTN_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="3828" column="28" str="("/>
+    <tok fileIndex="0" linenr="3828" column="29" str=")"/>
+    <tok fileIndex="0" linenr="3828" column="32" str="TRISFbits"/>
+    <tok fileIndex="0" linenr="3828" column="41" str="."/>
+    <tok fileIndex="0" linenr="3828" column="42" str="TRISF0"/>
+    <tok fileIndex="0" linenr="3828" column="49" str="="/>
+    <tok fileIndex="0" linenr="3828" column="51" str="1"/>
+    <tok fileIndex="0" linenr="3829" column="1" str="/**  @Summary    Configures the GPIO pin, RF0, as an output.  @Description    Configures the GPIO pin, RF0, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RF0 as an output    BTN_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3852" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3852" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3852" column="9" str="BTN_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="3852" column="29" str="("/>
+    <tok fileIndex="0" linenr="3852" column="30" str=")"/>
+    <tok fileIndex="0" linenr="3852" column="32" str="TRISFbits"/>
+    <tok fileIndex="0" linenr="3852" column="41" str="."/>
+    <tok fileIndex="0" linenr="3852" column="42" str="TRISF0"/>
+    <tok fileIndex="0" linenr="3852" column="49" str="="/>
+    <tok fileIndex="0" linenr="3852" column="51" str="0"/>
+    <tok fileIndex="0" linenr="3853" column="1" str="/**  @Summary    Sets the GPIO pin, RF1, high using LATFbits.LATF1.  @Description    Sets the GPIO pin, RF1, high using LATFbits.LATF1.  @Preconditions    The RF1 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RF1 high (1)    CAN_TX_SetHigh();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3876" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3876" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3876" column="9" str="CAN_TX_SetHigh"/>
+    <tok fileIndex="0" linenr="3876" column="23" str="("/>
+    <tok fileIndex="0" linenr="3876" column="24" str=")"/>
+    <tok fileIndex="0" linenr="3876" column="35" str="LATFbits"/>
+    <tok fileIndex="0" linenr="3876" column="43" str="."/>
+    <tok fileIndex="0" linenr="3876" column="44" str="LATF1"/>
+    <tok fileIndex="0" linenr="3876" column="50" str="="/>
+    <tok fileIndex="0" linenr="3876" column="52" str="1"/>
+    <tok fileIndex="0" linenr="3877" column="1" str="/**  @Summary    Sets the GPIO pin, RF1, low using LATFbits.LATF1.  @Description    Sets the GPIO pin, RF1, low using LATFbits.LATF1.  @Preconditions    The RF1 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Set RF1 low (0)    CAN_TX_SetLow();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3900" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3900" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3900" column="9" str="CAN_TX_SetLow"/>
+    <tok fileIndex="0" linenr="3900" column="22" str="("/>
+    <tok fileIndex="0" linenr="3900" column="23" str=")"/>
+    <tok fileIndex="0" linenr="3900" column="35" str="LATFbits"/>
+    <tok fileIndex="0" linenr="3900" column="43" str="."/>
+    <tok fileIndex="0" linenr="3900" column="44" str="LATF1"/>
+    <tok fileIndex="0" linenr="3900" column="50" str="="/>
+    <tok fileIndex="0" linenr="3900" column="52" str="0"/>
+    <tok fileIndex="0" linenr="3901" column="1" str="/**  @Summary    Toggles the GPIO pin, RF1, using LATFbits.LATF1.  @Description    Toggles the GPIO pin, RF1, using LATFbits.LATF1.  @Preconditions    The RF1 must be set to an output.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Toggle RF1    CAN_TX_Toggle();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3924" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3924" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3924" column="9" str="CAN_TX_Toggle"/>
+    <tok fileIndex="0" linenr="3924" column="22" str="("/>
+    <tok fileIndex="0" linenr="3924" column="23" str=")"/>
+    <tok fileIndex="0" linenr="3924" column="35" str="LATFbits"/>
+    <tok fileIndex="0" linenr="3924" column="43" str="."/>
+    <tok fileIndex="0" linenr="3924" column="44" str="LATF1"/>
+    <tok fileIndex="0" linenr="3924" column="50" str="^="/>
+    <tok fileIndex="0" linenr="3924" column="53" str="1"/>
+    <tok fileIndex="0" linenr="3925" column="1" str="/**x  @Summaryx    Reads the value of the GPIO pin, RF1.xx  @Descriptionx    Reads the value of the GPIO pin, RF1.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    uint16_t portValue;xx    // Read RF1x    postValue = CAN_TX_GetValue();x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="3950" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3950" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3950" column="9" str="CAN_TX_GetValue"/>
+    <tok fileIndex="0" linenr="3950" column="24" str="("/>
+    <tok fileIndex="0" linenr="3950" column="25" str=")"/>
+    <tok fileIndex="0" linenr="3950" column="35" str="PORTFbits"/>
+    <tok fileIndex="0" linenr="3950" column="44" str="."/>
+    <tok fileIndex="0" linenr="3950" column="45" str="RF1"/>
+    <tok fileIndex="0" linenr="3951" column="1" str="/**  @Summary    Configures the GPIO pin, RF1, as an input.  @Description    Configures the GPIO pin, RF1, as an input.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RF1 as an input    CAN_TX_SetDigitalInput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3974" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3974" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3974" column="9" str="CAN_TX_SetDigitalInput"/>
+    <tok fileIndex="0" linenr="3974" column="31" str="("/>
+    <tok fileIndex="0" linenr="3974" column="32" str=")"/>
+    <tok fileIndex="0" linenr="3974" column="35" str="TRISFbits"/>
+    <tok fileIndex="0" linenr="3974" column="44" str="."/>
+    <tok fileIndex="0" linenr="3974" column="45" str="TRISF1"/>
+    <tok fileIndex="0" linenr="3974" column="52" str="="/>
+    <tok fileIndex="0" linenr="3974" column="54" str="1"/>
+    <tok fileIndex="0" linenr="3975" column="1" str="/**  @Summary    Configures the GPIO pin, RF1, as an output.  @Description    Configures the GPIO pin, RF1, as an output.  @Preconditions    None.  @Returns    None.  @Param    None.  @Example    &lt;code&gt;    // Sets the RF1 as an output    CAN_TX_SetDigitalOutput();    &lt;/code&gt;*/"/>
+    <tok fileIndex="0" linenr="3998" column="1" str="#"/>
+    <tok fileIndex="0" linenr="3998" column="2" str="define"/>
+    <tok fileIndex="0" linenr="3998" column="9" str="CAN_TX_SetDigitalOutput"/>
+    <tok fileIndex="0" linenr="3998" column="32" str="("/>
+    <tok fileIndex="0" linenr="3998" column="33" str=")"/>
+    <tok fileIndex="0" linenr="3998" column="35" str="TRISFbits"/>
+    <tok fileIndex="0" linenr="3998" column="44" str="."/>
+    <tok fileIndex="0" linenr="3998" column="45" str="TRISF1"/>
+    <tok fileIndex="0" linenr="3998" column="52" str="="/>
+    <tok fileIndex="0" linenr="3998" column="54" str="0"/>
+    <tok fileIndex="0" linenr="4000" column="1" str="/**    Section: Function Prototypes*/"/>
+    <tok fileIndex="0" linenr="4003" column="1" str="/**x  @Summaryx    Configures the pin settings of the PIC32MX570F512Hx    The peripheral pin select, PPS, configuration is also handled by this manager.xx  @Descriptionx    This is the generated manager file for the MPLAB(c) Code Configurator device.  This managerx    configures the pins direction, initial state, analog setting.x    The peripheral pin select, PPS, configuration is also handled by this manager.xx  @Preconditionsx    None.xx  @Returnsx    None.xx  @Paramx    None.xx  @Examplex    &lt;code&gt;x    void SYSTEM_Initialize(void)x    {x        // Other initializers are called from this functionx        PIN_MANAGER_Initialize();x    }x    &lt;/code&gt;xx*/"/>
+    <tok fileIndex="0" linenr="4032" column="1" str="void"/>
+    <tok fileIndex="0" linenr="4032" column="6" str="PIN_MANAGER_Initialize"/>
+    <tok fileIndex="0" linenr="4032" column="28" str="("/>
+    <tok fileIndex="0" linenr="4032" column="29" str="void"/>
+    <tok fileIndex="0" linenr="4032" column="33" str=")"/>
+    <tok fileIndex="0" linenr="4032" column="34" str=";"/>
+    <tok fileIndex="0" linenr="4034" column="1" str="#"/>
+    <tok fileIndex="0" linenr="4034" column="2" str="endif"/>
+  </rawtokens>
+  <suppressions>
+  </suppressions>
+<dump cfg="">
+  <standards>
+    <c version="c11"/>
+    <cpp version="c++20"/>
+  </standards>
+  <directivelist>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="48" str="#ifndef _PIN_MANAGER_H"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="49" str="#define _PIN_MANAGER_H"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="53" str="#include &lt;xc.h&gt;"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="80" str="#define SDI3_SetHigh() LATBbits.LATB10 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="104" str="#define SDI3_SetLow() LATBbits.LATB10 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="128" str="#define SDI3_Toggle() LATBbits.LATB10 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="154" str="#define SDI3_GetValue() PORTBbits.RB10"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="178" str="#define SDI3_SetDigitalInput() TRISBbits.TRISB10 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="202" str="#define SDI3_SetDigitalOutput() TRISBbits.TRISB10 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="226" str="#define RFM95_INT_SetHigh() LATBbits.LATB11 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="250" str="#define RFM95_INT_SetLow() LATBbits.LATB11 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="274" str="#define RFM95_INT_Toggle() LATBbits.LATB11 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="300" str="#define RFM95_INT_GetValue() PORTBbits.RB11"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="324" str="#define RFM95_INT_SetDigitalInput() TRISBbits.TRISB11 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="348" str="#define RFM95_INT_SetDigitalOutput() TRISBbits.TRISB11 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="372" str="#define RF95_CS_SetHigh() LATBbits.LATB12 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="396" str="#define RF95_CS_SetLow() LATBbits.LATB12 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="420" str="#define RF95_CS_Toggle() LATBbits.LATB12 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="446" str="#define RF95_CS_GetValue() PORTBbits.RB12"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="470" str="#define RF95_CS_SetDigitalInput() TRISBbits.TRISB12 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="494" str="#define RF95_CS_SetDigitalOutput() TRISBbits.TRISB12 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="518" str="#define LED_GREEN_SetHigh() LATBbits.LATB13 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="542" str="#define LED_GREEN_SetLow() LATBbits.LATB13 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="566" str="#define LED_GREEN_Toggle() LATBbits.LATB13 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="592" str="#define LED_GREEN_GetValue() PORTBbits.RB13"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="616" str="#define LED_GREEN_SetDigitalInput() TRISBbits.TRISB13 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="640" str="#define LED_GREEN_SetDigitalOutput() TRISBbits.TRISB13 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="664" str="#define SCK3_SetHigh() LATBbits.LATB14 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="688" str="#define SCK3_SetLow() LATBbits.LATB14 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="712" str="#define SCK3_Toggle() LATBbits.LATB14 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="738" str="#define SCK3_GetValue() PORTBbits.RB14"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="762" str="#define SCK3_SetDigitalInput() TRISBbits.TRISB14 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="786" str="#define SCK3_SetDigitalOutput() TRISBbits.TRISB14 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="810" str="#define LED_BLUE_SetHigh() LATBbits.LATB15 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="834" str="#define LED_BLUE_SetLow() LATBbits.LATB15 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="858" str="#define LED_BLUE_Toggle() LATBbits.LATB15 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="884" str="#define LED_BLUE_GetValue() PORTBbits.RB15"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="908" str="#define LED_BLUE_SetDigitalInput() TRISBbits.TRISB15 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="932" str="#define LED_BLUE_SetDigitalOutput() TRISBbits.TRISB15 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="956" str="#define RFM95_RESET_SetHigh() LATBbits.LATB4 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="980" str="#define RFM95_RESET_SetLow() LATBbits.LATB4 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1004" str="#define RFM95_RESET_Toggle() LATBbits.LATB4 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1030" str="#define RFM95_RESET_GetValue() PORTBbits.RB4"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1054" str="#define RFM95_RESET_SetDigitalInput() TRISBbits.TRISB4 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1078" str="#define RFM95_RESET_SetDigitalOutput() TRISBbits.TRISB4 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1102" str="#define SDO3_SetHigh() LATBbits.LATB5 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1126" str="#define SDO3_SetLow() LATBbits.LATB5 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1150" str="#define SDO3_Toggle() LATBbits.LATB5 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1176" str="#define SDO3_GetValue() PORTBbits.RB5"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1200" str="#define SDO3_SetDigitalInput() TRISBbits.TRISB5 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1224" str="#define SDO3_SetDigitalOutput() TRISBbits.TRISB5 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1248" str="#define LED_RED_SetHigh() LATBbits.LATB6 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1272" str="#define LED_RED_SetLow() LATBbits.LATB6 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1296" str="#define LED_RED_Toggle() LATBbits.LATB6 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1322" str="#define LED_RED_GetValue() PORTBbits.RB6"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1346" str="#define LED_RED_SetDigitalInput() TRISBbits.TRISB6 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1370" str="#define LED_RED_SetDigitalOutput() TRISBbits.TRISB6 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1394" str="#define LED_YELLOW_SetHigh() LATBbits.LATB7 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1418" str="#define LED_YELLOW_SetLow() LATBbits.LATB7 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1442" str="#define LED_YELLOW_Toggle() LATBbits.LATB7 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1468" str="#define LED_YELLOW_GetValue() PORTBbits.RB7"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1492" str="#define LED_YELLOW_SetDigitalInput() TRISBbits.TRISB7 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1516" str="#define LED_YELLOW_SetDigitalOutput() TRISBbits.TRISB7 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1540" str="#define RTC_CS_SetHigh() LATBbits.LATB8 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1564" str="#define RTC_CS_SetLow() LATBbits.LATB8 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1588" str="#define RTC_CS_Toggle() LATBbits.LATB8 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1614" str="#define RTC_CS_GetValue() PORTBbits.RB8"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1638" str="#define RTC_CS_SetDigitalInput() TRISBbits.TRISB8 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1662" str="#define RTC_CS_SetDigitalOutput() TRISBbits.TRISB8 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1686" str="#define BTN_OK_SetHigh() LATDbits.LATD0 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1710" str="#define BTN_OK_SetLow() LATDbits.LATD0 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1734" str="#define BTN_OK_Toggle() LATDbits.LATD0 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1760" str="#define BTN_OK_GetValue() PORTDbits.RD0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1784" str="#define BTN_OK_SetDigitalInput() TRISDbits.TRISD0 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1808" str="#define BTN_OK_SetDigitalOutput() TRISDbits.TRISD0 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1832" str="#define BTN_UP_SetHigh() LATDbits.LATD1 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1856" str="#define BTN_UP_SetLow() LATDbits.LATD1 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1880" str="#define BTN_UP_Toggle() LATDbits.LATD1 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1906" str="#define BTN_UP_GetValue() PORTDbits.RD1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1930" str="#define BTN_UP_SetDigitalInput() TRISDbits.TRISD1 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1954" str="#define BTN_UP_SetDigitalOutput() TRISDbits.TRISD1 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="1978" str="#define BTN_DOWN_SetHigh() LATDbits.LATD2 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2002" str="#define BTN_DOWN_SetLow() LATDbits.LATD2 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2026" str="#define BTN_DOWN_Toggle() LATDbits.LATD2 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2052" str="#define BTN_DOWN_GetValue() PORTDbits.RD2"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2076" str="#define BTN_DOWN_SetDigitalInput() TRISDbits.TRISD2 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2100" str="#define BTN_DOWN_SetDigitalOutput() TRISDbits.TRISD2 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2124" str="#define BTN_LEFT_SetHigh() LATDbits.LATD3 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2148" str="#define BTN_LEFT_SetLow() LATDbits.LATD3 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2172" str="#define BTN_LEFT_Toggle() LATDbits.LATD3 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2198" str="#define BTN_LEFT_GetValue() PORTDbits.RD3"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2222" str="#define BTN_LEFT_SetDigitalInput() TRISDbits.TRISD3 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2246" str="#define BTN_LEFT_SetDigitalOutput() TRISDbits.TRISD3 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2270" str="#define BTN_RIGHT_SetHigh() LATDbits.LATD4 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2294" str="#define BTN_RIGHT_SetLow() LATDbits.LATD4 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2318" str="#define BTN_RIGHT_Toggle() LATDbits.LATD4 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2344" str="#define BTN_RIGHT_GetValue() PORTDbits.RD4"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2368" str="#define BTN_RIGHT_SetDigitalInput() TRISDbits.TRISD4 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2392" str="#define BTN_RIGHT_SetDigitalOutput() TRISDbits.TRISD4 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2416" str="#define GSM_RX_SetHigh() LATDbits.LATD8 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2440" str="#define GSM_RX_SetLow() LATDbits.LATD8 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2464" str="#define GSM_RX_Toggle() LATDbits.LATD8 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2490" str="#define GSM_RX_GetValue() PORTDbits.RD8"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2514" str="#define GSM_RX_SetDigitalInput() TRISDbits.TRISD8 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2538" str="#define GSM_RX_SetDigitalOutput() TRISDbits.TRISD8 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2562" str="#define IO_CFG0_SetHigh() LATEbits.LATE0 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2586" str="#define IO_CFG0_SetLow() LATEbits.LATE0 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2610" str="#define IO_CFG0_Toggle() LATEbits.LATE0 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2636" str="#define IO_CFG0_GetValue() PORTEbits.RE0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2660" str="#define IO_CFG0_SetDigitalInput() TRISEbits.TRISE0 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2684" str="#define IO_CFG0_SetDigitalOutput() TRISEbits.TRISE0 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2708" str="#define IO_CFG1_SetHigh() LATEbits.LATE1 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2732" str="#define IO_CFG1_SetLow() LATEbits.LATE1 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2756" str="#define IO_CFG1_Toggle() LATEbits.LATE1 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2782" str="#define IO_CFG1_GetValue() PORTEbits.RE1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2806" str="#define IO_CFG1_SetDigitalInput() TRISEbits.TRISE1 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2830" str="#define IO_CFG1_SetDigitalOutput() TRISEbits.TRISE1 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2854" str="#define IO_CFG2_SetHigh() LATEbits.LATE2 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2878" str="#define IO_CFG2_SetLow() LATEbits.LATE2 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2902" str="#define IO_CFG2_Toggle() LATEbits.LATE2 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2928" str="#define IO_CFG2_GetValue() PORTEbits.RE2"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2952" str="#define IO_CFG2_SetDigitalInput() TRISEbits.TRISE2 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="2976" str="#define IO_CFG2_SetDigitalOutput() TRISEbits.TRISE2 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3000" str="#define IO_CFG3_SetHigh() LATEbits.LATE3 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3024" str="#define IO_CFG3_SetLow() LATEbits.LATE3 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3048" str="#define IO_CFG3_Toggle() LATEbits.LATE3 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3074" str="#define IO_CFG3_GetValue() PORTEbits.RE3"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3098" str="#define IO_CFG3_SetDigitalInput() TRISEbits.TRISE3 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3122" str="#define IO_CFG3_SetDigitalOutput() TRISEbits.TRISE3 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3146" str="#define IO_CFG4_SetHigh() LATEbits.LATE4 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3170" str="#define IO_CFG4_SetLow() LATEbits.LATE4 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3194" str="#define IO_CFG4_Toggle() LATEbits.LATE4 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3220" str="#define IO_CFG4_GetValue() PORTEbits.RE4"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3244" str="#define IO_CFG4_SetDigitalInput() TRISEbits.TRISE4 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3268" str="#define IO_CFG4_SetDigitalOutput() TRISEbits.TRISE4 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3292" str="#define LCD_RESET_SetHigh() LATEbits.LATE5 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3316" str="#define LCD_RESET_SetLow() LATEbits.LATE5 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3340" str="#define LCD_RESET_Toggle() LATEbits.LATE5 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3366" str="#define LCD_RESET_GetValue() PORTEbits.RE5"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3390" str="#define LCD_RESET_SetDigitalInput() TRISEbits.TRISE5 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3414" str="#define LCD_RESET_SetDigitalOutput() TRISEbits.TRISE5 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3438" str="#define GSM_RI_SetHigh() LATEbits.LATE6 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3462" str="#define GSM_RI_SetLow() LATEbits.LATE6 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3486" str="#define GSM_RI_Toggle() LATEbits.LATE6 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3512" str="#define GSM_RI_GetValue() PORTEbits.RE6"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3536" str="#define GSM_RI_SetDigitalInput() TRISEbits.TRISE6 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3560" str="#define GSM_RI_SetDigitalOutput() TRISEbits.TRISE6 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3584" str="#define GSM_KEY_SetHigh() LATEbits.LATE7 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3608" str="#define GSM_KEY_SetLow() LATEbits.LATE7 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3632" str="#define GSM_KEY_Toggle() LATEbits.LATE7 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3658" str="#define GSM_KEY_GetValue() PORTEbits.RE7"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3682" str="#define GSM_KEY_SetDigitalInput() TRISEbits.TRISE7 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3706" str="#define GSM_KEY_SetDigitalOutput() TRISEbits.TRISE7 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3730" str="#define BTN_SetHigh() LATFbits.LATF0 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3754" str="#define BTN_SetLow() LATFbits.LATF0 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3778" str="#define BTN_Toggle() LATFbits.LATF0 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3804" str="#define BTN_GetValue() PORTFbits.RF0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3828" str="#define BTN_SetDigitalInput() TRISFbits.TRISF0 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3852" str="#define BTN_SetDigitalOutput() TRISFbits.TRISF0 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3876" str="#define CAN_TX_SetHigh() LATFbits.LATF1 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3900" str="#define CAN_TX_SetLow() LATFbits.LATF1 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3924" str="#define CAN_TX_Toggle() LATFbits.LATF1 ^= 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3950" str="#define CAN_TX_GetValue() PORTFbits.RF1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3974" str="#define CAN_TX_SetDigitalInput() TRISFbits.TRISF1 = 1"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="3998" str="#define CAN_TX_SetDigitalOutput() TRISFbits.TRISF1 = 0"/>
+    <directive file="mcc_generated_files/pin_manager.h" linenr="4034" str="#endif"/>
+  </directivelist>
+  <tokenlist>
+    <token id="02C82740" file="mcc_generated_files/pin_manager.h" linenr="4032" column="1" str="void" scope="01072EC0" type="name"/>
+    <token id="02C823C0" file="mcc_generated_files/pin_manager.h" linenr="4032" column="6" str="PIN_MANAGER_Initialize" scope="01072EC0" type="name" function="03090DF0" astParent="02C82400"/>
+    <token id="02C82400" file="mcc_generated_files/pin_manager.h" linenr="4032" column="28" str="(" scope="01072EC0" link="02C82440" astOperand1="02C823C0" valueType-type="void"/>
+    <token id="02C82440" file="mcc_generated_files/pin_manager.h" linenr="4032" column="33" str=")" scope="01072EC0" link="02C82400"/>
+    <token id="02C82A40" file="mcc_generated_files/pin_manager.h" linenr="4032" column="34" str=";" scope="01072EC0"/>
+  </tokenlist>
+  <scopes>
+    <scope id="01072EC0" type="Global">
+      <functionList>
+        <function id="03090DF0" tokenDef="02C823C0" name="PIN_MANAGER_Initialize" type="Function"/>
+      </functionList>
+    </scope>
+  </scopes>
+  <variables>
+  </variables>
+  <valueflow>
+  </valueflow>
+</dump>
+</dumps>

@@ -1,0 +1,32 @@
+#include "logic.h"
+
+#include "sas/debug.h"
+#include "sas/timer.h"
+
+static struct
+{
+   uint8_t sch_buff;
+}lg;
+
+//////////////////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////////////////
+
+void logic_init()
+{
+   
+   //timer_add(&lg_on_ping, TM_SEC_T0_TICK(3), true, true);
+   //lg.timer_gps_spread = timer_add(&lg_on_timer_spread, TM_SEC_T0_TICK(10), false, true);
+}
+
+void logic_start()
+{
+   
+}
+
+//////////////////////////////////////////////////////////////////////////////
+
+void logic_service()
+{
+   
+}

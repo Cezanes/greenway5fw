@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>com.microchip.mplab.nbide.embedded.makeproject</type>
+    <configuration>
+        <data xmlns="http://www.netbeans.org/ns/make-project/1">
+            <name>GwOutputCard_v5.0</name>
+            <name>PowerBoardR3</name>
+            <name>PowerBoardR2</name>
+            <creation-uuid>36d4e0a8-3c44-47c5-a665-f4de9a571c1c</creation-uuid>
+            <make-project-type>0</make-project-type>
+            <c-extensions>c</c-extensions>
+            <cpp-extensions/>
+            <header-extensions>h</header-extensions>
+            <asminc-extensions/>
+            <sourceEncoding>ISO-8859-1</sourceEncoding>
+            <make-dep-projects/>
+            <sourceRootList>
+                <sourceRootElem>D:\Programe\Pic\TrafficManager\PowerBoard\PowerBoardR1.X\src\sas</sourceRootElem>
+                <sourceRootElem>D:\Programe\Pic\TrafficManager\PowerBoard\PowerBoardR1.X\src\hal</sourceRootElem>
+                <sourceRootElem>D:\Programe\Pic\TrafficManager\PowerBoard\PowerBoardR1.X\src\cfg</sourceRootElem>
+                <sourceRootElem>D:\Programe\Pic\TrafficManager\PowerBoard\PowerBoardR1.X\src\app</sourceRootElem>
+                <sourceRootElem>src/sas</sourceRootElem>
+                <sourceRootElem>src/hal</sourceRootElem>
+                <sourceRootElem>src/cfg</sourceRootElem>
+                <sourceRootElem>src/app</sourceRootElem>
+                <sourceRootElem>src/ssl</sourceRootElem>
+            </sourceRootList>
+            <confList>
+                <confElem>
+                    <name>default</name>
+                    <type>2</type>
+                </confElem>
+            </confList>
+            <formatting>
+                <project-formatting-style>false</project-formatting-style>
+            </formatting>
+        </data>
+    </configuration>
+</project>

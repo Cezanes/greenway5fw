@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group/>
+        <group name="Electra"/>
+        <group name="GreenWAay"/>
+        <group name="Gw3">
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw4/GwMaster/GwMasterCtrl_v4.0.X/src/app/sem/semaphore.c</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw4/GwMaster/GwMasterCtrl_v4.0.X/src/app/out/power_ctrl.c</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw4/GwMaster/GwMasterCtrl_v4.0.X/main.c</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw4/GwMaster/GwMasterCtrl_v4.0.X/src/app/sem/semaphore.h</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw4/GwMaster/GwMasterCtrl_v4.0.X/src/app/sem/chronos.h</file>
+        </group>
+        <group name="Gw4">
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw4/GwMaster/GwMasterCtrl_v4.0.X/src/sas/slink.c</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw4/GwMaster/GwMasterCtrl_v4.0.X/src/cfg/hw_config.c</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw4/GwMaster/GwMasterCtrl_v4.0.X/src/hal/uart32mx.c</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw4/GwMaster/GwMasterCtrl_v4.0.X/src/hal/uart32mx.h</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw4/GwMaster/GwMasterCtrl_v4.0.X/src/sas/server.c</file>
+        </group>
+    </open-files>
+</project-private>
