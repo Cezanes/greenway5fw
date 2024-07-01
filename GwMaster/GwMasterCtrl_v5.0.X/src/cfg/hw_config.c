@@ -244,17 +244,7 @@ const HwConfig hw_config =
          
          .ext_modem = true,
          .ext_modem_itf = kSlinkItfEdge,
-
-         .mqtt = {
-            .enabled = false,
-            .host = "greenwayrs.ddns.net",
-            .port = 1883,
-            .send_buff = (uint8_t[256]){},
-            .send_buff_size = 256,
-            .recv_buff = (uint8_t[256]){},
-            .recv_buff_size = 256,
-         },
-
+         
          .gsm = {
             .baud = 115200,
             .clock_src = _XTAL_FREQ,

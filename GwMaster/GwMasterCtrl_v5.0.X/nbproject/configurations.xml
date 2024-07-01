@@ -37,8 +37,6 @@
         <logicalFolder name="f1" displayName="net" projectFiles="true">
           <itemPath>src/app/net/cellular.c</itemPath>
           <itemPath>src/app/net/cellular.h</itemPath>
-          <itemPath>src/app/net/mqtt.c</itemPath>
-          <itemPath>src/app/net/mqtt.h</itemPath>
           <itemPath>src/app/net/serial.h</itemPath>
           <itemPath>src/app/net/serial.c</itemPath>
           <itemPath>src/app/net/radio.c</itemPath>
@@ -141,29 +139,6 @@
           <itemPath>src/sas/atdrv.h</itemPath>
           <itemPath>src/sas/sim800c.c</itemPath>
           <itemPath>src/sas/sim800c.h</itemPath>
-        </logicalFolder>
-        <logicalFolder name="f7" displayName="mqtt" projectFiles="true">
-          <itemPath>src/sas/mqtt/MQTTClient.c</itemPath>
-          <itemPath>src/sas/mqtt/MQTTClient.h</itemPath>
-          <itemPath>src/sas/mqtt/MQTTConnect.h</itemPath>
-          <itemPath>src/sas/mqtt/MQTTConnectClient.c</itemPath>
-          <itemPath>src/sas/mqtt/MQTTConnectServer.c</itemPath>
-          <itemPath>src/sas/mqtt/MQTTDeserializePublish.c</itemPath>
-          <itemPath>src/sas/mqtt/MQTTFormat.c</itemPath>
-          <itemPath>src/sas/mqtt/MQTTFormat.h</itemPath>
-          <itemPath>src/sas/mqtt/MQTTPacket.c</itemPath>
-          <itemPath>src/sas/mqtt/MQTTPacket.h</itemPath>
-          <itemPath>src/sas/mqtt/MQTTPlatform.c</itemPath>
-          <itemPath>src/sas/mqtt/MQTTPlatform.h</itemPath>
-          <itemPath>src/sas/mqtt/MQTTPublish.h</itemPath>
-          <itemPath>src/sas/mqtt/MQTTSerializePublish.c</itemPath>
-          <itemPath>src/sas/mqtt/MQTTSubscribe.h</itemPath>
-          <itemPath>src/sas/mqtt/MQTTSubscribeClient.c</itemPath>
-          <itemPath>src/sas/mqtt/MQTTSubscribeServer.c</itemPath>
-          <itemPath>src/sas/mqtt/MQTTUnsubscribe.h</itemPath>
-          <itemPath>src/sas/mqtt/MQTTUnsubscribeClient.c</itemPath>
-          <itemPath>src/sas/mqtt/MQTTUnsubscribeServer.c</itemPath>
-          <itemPath>src/sas/mqtt/StackTrace.h</itemPath>
         </logicalFolder>
         <logicalFolder name="f4" displayName="other" projectFiles="true">
           <itemPath>src/sas/storage.c</itemPath>
@@ -367,7 +342,7 @@
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="false"/>
         <property key="make-warnings-into-errors" value="false"/>
-        <property key="optimization-level" value="-O2"/>
+        <property key="optimization-level" value=""/>
         <property key="place-data-into-section" value="false"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>

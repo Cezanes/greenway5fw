@@ -11,10 +11,7 @@
 #include "sal/debug.h"
 
 #include "sas/sim800c.h"
-#include "sas/mqtt/MQTTClient.h"
-
 #include "cellular.h"
-#include "mqtt.h"
 
 #include "app/logic/logic.h"
 #include "app/sem/semaphore.h"
@@ -615,7 +612,7 @@ static bool modem_network_connect(void)
        }
    }
    
-   if (mqtt_enabled())
+#if 0
    {
       if(!cell.network_registered)
       {
@@ -654,6 +651,7 @@ static bool modem_network_connect(void)
          }   
       }
    }
+#endif
    
    cell.network_registered = true;
    cell.modem_working = true;
@@ -666,7 +664,7 @@ static void server_disconnect(void)
 {
    if(cell.connected)
    {
-      mqtt_disconnect();
+      //mqtt_disconnect();
       gsm_tcp_disconnect();
 
       cell.connected = false;
@@ -695,74 +693,14 @@ static bool server_connect(void)
    
    cell.connected = true;
    
-   if(mqtt_enabled() && !mqtt_connect())
+   /*if(mqtt_enabled() && !mqtt_connect())
    {
       cell_server_disconnect();
       return false;
-   }
+   }*/
 
     
    return true;
-}
-
-static int mqtt_callback_connect(struct MqttNetwork * net, const char * host, size_t port)
-{
-   gsm_tcp_disconnect();
-   gsm_ip_init();
-
-   if(kOK != gsm_tcp_connect(host, port))
-   {
-      DBG(kLvlWarn, "cell, server connection failed");
-      return MQTT_FAILURE;
-   }
-   
-   return MQTT_SUCCESS;
-}
-
-static int mqtt_callback_disconnect(struct MqttNetwork * net)
-{
-   cell_server_disconnect();
-   return MQTT_SUCCESS;
-}
-
-static int mqtt_callback_read(struct MqttNetwork * net, unsigned char * data, int size, int timeout)
-{
-   int ret = gsm_tcp_wait_recv(timeout);
-   
-   if(kErrorTimeout == ret)
-   {
-      return 0;
-   }
-   else if(kOK != ret)
-   {
-      DBG(kLvlWarn, "cell, MQTT read wait recv failed");
-      cell_server_disconnect();
-      return -1;
-   }
-
-   size_t read;
-   size_t remaining;
-   
-   if(kOK != gsm_tcp_read(data, (size_t)size, &read, &remaining))
-   {
-      DBG(kLvlWarn, "cell, MQTT read TCP failed");
-      cell_server_disconnect();
-      return -1;
-   }
-   
-   return (int) read;
-}
-
-static int mqtt_callback_write(struct MqttNetwork *net , const unsigned char * data, int size, int timeout)
-{
-   if(kOK != gsm_tcp_send(data, size))
-   {
-      DBG(kLvlWarn, "cell, MQTT write TCP failed");
-      cell_server_disconnect();
-      return -1;
-   }
-   
-   return size;
 }
 
 static void modem_connect_timer(void)
@@ -1145,12 +1083,12 @@ static void cell_modem_service(void)
    if(cell.req_tcp_read)
    {
       cell.req_tcp_read = false;
-      mqtt_on_data_recv();
+      //mqtt_on_data_recv();
    }
    
    if(cell.connected)
    {
-      mqtt_keep_alive();
+      //mqtt_keep_alive();
    }
    
    if(cell.req_tcp_disconnect)
@@ -1194,15 +1132,6 @@ void cell_init(CellData * cell_data, const CellConfig * config)
    
    if(app_config.have_gsm)
    {
-      MqttNetwork network = (MqttNetwork) {
-         .mqttconnect = mqtt_callback_connect,
-         .mqttread = mqtt_callback_read, 
-         .mqttwrite = mqtt_callback_write,
-         .mqttdisconnect = mqtt_callback_disconnect,
-      };
-
-      mqtt_init(&config->mqtt, &network);
-
       cell.reconnect_timer = timer_add(modem_connect_timer, 30 * 1000, false, false);
 
       gsm_init(&config->gsm);

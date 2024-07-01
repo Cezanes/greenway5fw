@@ -4,7 +4,6 @@
 #include "types.h"
 #include "sas/sim800c.h"
 #include "app/sem/sem_objects.h"
-#include "app/net/mqtt.h"
 
 enum 
 {
@@ -32,7 +31,6 @@ typedef struct __attribute__ ((packed))
 typedef struct
 {
    GsmConfig gsm;
-   MqttConfig mqtt;
 
    bool ext_modem;
    size_t ext_modem_itf;

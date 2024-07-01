@@ -24,12 +24,12 @@ const GlobalState * state_global(void)
 void state_sem_update(void)
 {
    cell_report_new_state();
-   mqtt_status_changed();
+   //mqtt_status_changed();
 }
 
 void state_sem_new_sch(void)
 {
-   mqtt_status_changed();
+   //mqtt_status_changed();
 }
 
 
@@ -49,18 +49,18 @@ void state_start(void)
    state.global.sem = sem_get_state();
    state.global.metrics = sem_get_metrics();
    
-   mqtt_start();
+   //mqtt_start();
    cell_start();
 }
 
 void state_service(void)
 {
    cell_service();
-   mqtt_service();
+   //mqtt_service();
    
    if(gps_have_time() != state.global.gps_lock)
    {
       state.global.gps_lock = gps_have_time();
-      mqtt_status_changed();
+      //mqtt_status_changed();
    }
 }

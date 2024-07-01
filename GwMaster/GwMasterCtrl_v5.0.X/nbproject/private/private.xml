@@ -19,5 +19,19 @@
             <file>file:/D:/Programe/Pic/TrafficManager/Gw4/GwMaster/GwMasterCtrl_v4.0.X/src/hal/uart32mx.h</file>
             <file>file:/D:/Programe/Pic/TrafficManager/Gw4/GwMaster/GwMasterCtrl_v4.0.X/src/sas/server.c</file>
         </group>
+        <group name="Gw5">
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw5/GwMaster/GwMasterCtrl_v5.0.X/src/app/net/serial.c</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw5/GwMaster/GwMasterCtrl_v5.0.X/src/lib/shared_buff.h</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw5/GwMaster/GwMasterCtrl_v5.0.X/src/sas/server.h</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw5/GwMaster/GwMasterCtrl_v5.0.X/src/cfg/hw_config.c</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw5/GwMaster/GwMasterCtrl_v5.0.X/src/sas/server.c</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw5/GwMaster/GwMasterCtrl_v5.0.X/src/lib/jparsing.c</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw5/GwMaster/GwMasterCtrl_v5.0.X/src/app/net/mqtt.c</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw5/GwMaster/GwMasterCtrl_v5.0.X/src/app/net/serial.h</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw5/GwMaster/GwMasterCtrl_v5.0.X/src/lib/shared_buff.c</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw5/GwMaster/GwMasterCtrl_v5.0.X/main.c</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw5/GwMaster/GwMasterCtrl_v5.0.X/src/app/net/cellular.c</file>
+            <file>file:/D:/Programe/Pic/TrafficManager/Gw5/GwMaster/GwMasterCtrl_v5.0.X/src/lib/jparsing.h</file>
+        </group>
     </open-files>
 </project-private>

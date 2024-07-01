@@ -11,7 +11,7 @@
 #include "sal/pulse.h"
 #include "cfg/hw_config.h"
 
-
+#include <stdio.h>
 
 static const char * sem_state_str[] = 
 {
