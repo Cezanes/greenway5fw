@@ -7,13 +7,14 @@
 
 #define SERVER_CALLBACKS_MAX         20
 
-typedef void (*SeMsgCallback)(size_t itf, const SeMsgHead * msg);
+typedef void (*SeMsgCallback)(size_t itf, const void * data, size_t size);
 
 typedef struct
 {
    UartDev * uart;
    uint32_t clock_src;
    uint32_t baud;
+   bool own_buff;
    uint8_t * rx_buff;
    size_t rx_buff_size;
 } SocketConfig;
@@ -31,8 +32,9 @@ typedef struct
 void server_init(const ServerConfig * config);
 void server_start(void);
 void server_service(void);
-void server_add_handler(size_t itf, uint16_t id, SeMsgCallback cb);
+void server_add_handler(size_t itf, size_t id, size_t endp, SeMsgCallback cb);
 void server_send_msg(size_t itf, SeMsgHead * msg);
+void server_send(size_t itf, const void* msg, size_t size, size_t id, size_t endp);
 
 void server_begin_send_msg(size_t itf, SeMsgHead *header, size_t size);
 void server_continue_data_msg(size_t itf, const void * ptr, size_t size);

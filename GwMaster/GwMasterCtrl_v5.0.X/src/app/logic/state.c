@@ -2,6 +2,7 @@
 #include "app/net/cellular.h"
 #include "app/sem/semaphore.h"
 #include "sas/gps.h"
+#include "app/edge/edge.h"
 
 
 
@@ -24,6 +25,7 @@ const GlobalState * state_global(void)
 void state_sem_update(void)
 {
    cell_report_new_state();
+   edge_send_status();
    //mqtt_status_changed();
 }
 

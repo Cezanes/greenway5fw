@@ -925,8 +925,8 @@ void sem_tick(const uint32_t time, const uint32_t milli)
    if (sem.ctrl == NULL)
       return;
    
-   uint32_t week_sec = dte_epoch_seconds_from_monday(time);
    const SignalSchedule * sch = NULL;
+   uint32_t week_sec = dte_epoch_seconds_from_monday(time);
    
    // Get the power board metrics
    pctrl_compile_metrics();
@@ -941,7 +941,7 @@ void sem_tick(const uint32_t time, const uint32_t milli)
    {
       sem.req_suspend = false;
       sem.state.last_state = kSemStateInit;
-      switch_to_fallback(week_sec);
+      //switch_to_fallback(week_sec);
       change_state(kSemStateSuspended, kSemErrorNone);
    }
    
@@ -985,7 +985,8 @@ void sem_tick(const uint32_t time, const uint32_t milli)
    }
    
    // Run the suspended schedule
-   if(sem.state.global == kSemStateSuspended || sem.state.global == kSemStateError)
+   if(sem.state.global == kSemStateSuspended || 
+      sem.state.global == kSemStateError)
    {
       sch = sem_next_sch(sem.ctrl, NULL);
       while(sch != NULL)

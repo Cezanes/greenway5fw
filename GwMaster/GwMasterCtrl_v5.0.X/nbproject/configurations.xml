@@ -28,6 +28,11 @@
                    displayName="Source Files"
                    projectFiles="true">
       <logicalFolder name="app" displayName="app" projectFiles="true">
+        <logicalFolder name="f5" displayName="edge" projectFiles="true">
+          <itemPath>src/app/edge/edge.c</itemPath>
+          <itemPath>src/app/edge/edge.h</itemPath>
+          <itemPath>src/app/edge/edge_msg.h</itemPath>
+        </logicalFolder>
         <logicalFolder name="f4" displayName="logic" projectFiles="true">
           <itemPath>src/app/logic/logic.c</itemPath>
           <itemPath>src/app/logic/logic.h</itemPath>
@@ -128,6 +133,7 @@
         <itemPath>src/sal/debug_tfp.c</itemPath>
         <itemPath>src/sal/debug.h</itemPath>
         <itemPath>src/sal/debug.c</itemPath>
+        <itemPath>src/sal/debug_std.c</itemPath>
       </logicalFolder>
       <logicalFolder name="sas" displayName="sas" projectFiles="true">
         <logicalFolder name="f5" displayName="can" projectFiles="true">
@@ -197,7 +203,7 @@
         <targetDevice>PIC32MX570F512L</targetDevice>
         <targetHeader></targetHeader>
         <targetPluginBoard></targetPluginBoard>
-        <platformTool>noID</platformTool>
+        <platformTool>pk4hybrid</platformTool>
         <languageToolchain>XC32</languageToolchain>
         <languageToolchainVersion>4.10</languageToolchainVersion>
         <platform>3</platform>
@@ -246,7 +252,7 @@
         <property key="generate-micro-compressed-code" value="false"/>
         <property key="isolate-each-function" value="false"/>
         <property key="make-warnings-into-errors" value="false"/>
-        <property key="optimization-level" value="-O2"/>
+        <property key="optimization-level" value=""/>
         <property key="place-data-into-section" value="false"/>
         <property key="post-instruction-scheduling" value="default"/>
         <property key="pre-instruction-scheduling" value="default"/>
@@ -303,9 +309,9 @@
         <property key="fill-flash-options-seq" value=""/>
         <property key="fill-flash-options-what" value="0"/>
         <property key="generate-16-bit-code" value="false"/>
-        <property key="generate-cross-reference-file" value="false"/>
+        <property key="generate-cross-reference-file" value="true"/>
         <property key="generate-micro-compressed-code" value="false"/>
-        <property key="heap-size" value=""/>
+        <property key="heap-size" value="32"/>
         <property key="input-libraries" value=""/>
         <property key="kseg-length" value=""/>
         <property key="kseg-origin" value=""/>
@@ -317,7 +323,7 @@
         <property key="optimization-level" value=""/>
         <property key="preprocessor-macros" value=""/>
         <property key="remove-unused-sections" value="true"/>
-        <property key="report-memory-usage" value="false"/>
+        <property key="report-memory-usage" value="true"/>
         <property key="serial-length" value=""/>
         <property key="serial-origin" value=""/>
         <property key="stack-size" value=""/>
@@ -541,6 +547,22 @@
                   value="Press to select which tool pack to use"/>
         <property key="voltagevalue" value="3.25"/>
       </pk4hybrid>
+      <item path="src/sal/debug.c" ex="true" overriding="false">
+        <C32>
+        </C32>
+        <C32-AR>
+        </C32-AR>
+        <C32-AS>
+        </C32-AS>
+        <C32-CO>
+        </C32-CO>
+        <C32-LD>
+        </C32-LD>
+        <C32CPP>
+        </C32CPP>
+        <C32Global>
+        </C32Global>
+      </item>
       <item path="src/sal/debug_orig.h" ex="true" overriding="false">
         <C32>
         </C32>

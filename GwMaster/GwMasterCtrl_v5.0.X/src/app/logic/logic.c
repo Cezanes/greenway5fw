@@ -38,7 +38,7 @@ static struct
    
    bool remote_ctrl;
 
-   uint8_t sch_buff[SIGNAL_MAX_SCHEDULE_SIZE];
+   uint8_t sch_buff[1]; //SIGNAL_MAX_SCHEDULE_SIZE
 } lg;
 
 

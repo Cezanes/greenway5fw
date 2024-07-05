@@ -45,9 +45,10 @@ size_t utils_str_prefix(char * dest, size_t dest_size, const char * str);
 size_t utils_str_shift_end(char * dest, size_t dest_size);
 size_t utils_str_shift_end_wn(char * dest, size_t dest_size);
 size_t utils_str_shift_back(char * dest, size_t dest_size, size_t dest_len, size_t offset);
+size_t utils_strcpy(char * dest, size_t dest_size, const char * src);
+
 
 bool utils_valid_phone_nr(const char * nr);
-
 uint8_t utils_hex_to_byte(uint8_t const * const hex);
 
 uint8_t utils_bcd_to_hex(uint8_t bcdvalue);

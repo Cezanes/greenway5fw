@@ -95,7 +95,7 @@ static void handle_ctrl_status(size_t id, size_t flags, uint32_t burnt_map, uint
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 
-static void on_recv_msg(const CanMsg * msg)
+void pctrl_on_recv_msg(const CanMsg * msg)
 {
    // DBG(kLvlInfo, "hctrl, received CAN msg %X %X", msg->data[0], msg->data[1]);
    
@@ -234,12 +234,7 @@ static void print_metrics(void)
 void pctrl_init(const PCtrlConfig * config)
 {
    pctrl = (PCtrlInternal){0};
-   
-   CanBusConfig bus_cfg = config->can;
-   bus_cfg.on_recv_msg = on_recv_msg;
-   bus_cfg.use_rx_interrupt = true;
-      
-   can_init(&bus_cfg);
+   can_init(&config->can);
 }
 
 void pctrl_pswitch_set(bool en)

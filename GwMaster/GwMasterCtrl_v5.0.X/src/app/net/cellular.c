@@ -15,6 +15,7 @@
 
 #include "app/logic/logic.h"
 #include "app/sem/semaphore.h"
+#include "app/edge/edge.h"
 #include "serial.h"
 
 #include <stdio.h>
@@ -93,7 +94,7 @@ static void modem_connect_timer(void);
 
 static bool reply_sms(size_t itf, const char *phonenr, const char *msg)
 {
-   DBG(kLvlVerb, "replying sms itf %u:\n\n%s", itf, msg);
+   //DBG(kLvlVerb, "replying sms itf %u:\n\n%s", itf, msg);
    
    if(app_config.have_gsm && cell.modem_working && 
       (itf == kSlinkItfAll || itf & kSlinkItfCell))
@@ -110,7 +111,8 @@ static bool reply_sms(size_t itf, const char *phonenr, const char *msg)
       }
    }
    
-   serial_send_sms_msg(itf, phonenr, msg, strlen(msg));
+   edge_send_sms(phonenr, msg);
+   //serial_send_sms_msg(itf, phonenr, msg, strlen(msg));
    
    return true;
 }
@@ -288,7 +290,7 @@ static bool remove_user(int index)
 
 static void sms_process_new_msg(size_t itf, const char * phonenr, char * msg, size_t msg_buff_size)
 {
-   DBG(kLvlInfo, "sms, received cmd: %s", msg);
+   DBG(kLvlInfo, "sms, received cmd: '%s'", msg);
    
    size_t role = get_role(phonenr);
    if(role == kCellUserRoleUnknown)

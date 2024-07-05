@@ -18,10 +18,9 @@ typedef struct __attribute__ ((packed))
 {
    uint8_t tag;
    uint16_t seq;
-   uint16_t src;
    uint8_t endp;
    uint16_t id;
-   uint16_t size;
+   uint32_t size;
    uint8_t crc;
 } SeMsgHead;
 
@@ -47,6 +46,7 @@ typedef struct __attribute__ ((packed))
 typedef struct
 {
    void* user;
+   bool own_buff;
    uint8_t * rx_buff;
    size_t rx_size;
    void (* send_byte)(void* user, const uint8_t);
@@ -79,6 +79,7 @@ void slink_start(SlinkInstance * inst);
 void slink_recv_byte(SlinkInstance * inst, uint8_t b);
 bool slink_have_msg(SlinkInstance * inst);
 void slink_send_msg(SlinkInstance * inst, SeMsgHead * header);
+void slink_send(SlinkInstance * inst, const void * msg, size_t size, size_t id, size_t endp);
 void slink_discard(SlinkInstance * inst);
 void slink_service(SlinkInstance * inst);
 

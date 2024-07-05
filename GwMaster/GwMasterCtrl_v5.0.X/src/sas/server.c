@@ -23,7 +23,8 @@ enum
 
 typedef struct
 {
-   uint16_t id;
+   size_t id;
+   size_t endp;
    SeMsgCallback cb;
    size_t itf;
 } MsgHandler;
@@ -48,14 +49,10 @@ static SlinkInstance slink_inst[2];
 static void server_send_byte(void* user, uint8_t b);
 static void server_recv_byte(void* user, uint8_t b);
 static void server_uart_rboe(void* user);
-static void server_enable_int();
-static void server_disable_int();
+static void server_enable_int(void);
+static void server_disable_int(void);
 static bool server_req_buffer(void* user);
 static void server_rel_buffer(void* user);
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -74,6 +71,7 @@ void server_init(const ServerConfig * config)
    {
       slink_inst[i] = (SlinkInstance) {
          .user = (void*)&srv.config.sockets[i],
+         .own_buff = srv.config.sockets[i].own_buff,
          .rx_buff = srv.config.sockets[i].rx_buff,
          .rx_size = srv.config.sockets[i].rx_buff_size,
          .send_byte = &server_send_byte,
@@ -107,10 +105,16 @@ static void server_uart_rboe(void* user)
 static bool server_req_buffer(void* user)
 {
    SlinkInstance * inst = user;
+   
+   if (inst->own_buff)
+      return true;
+   
    if (srv.buff_own_inst == NULL || srv.buff_own_inst == inst)
    {
       srv.errors |= kSrvInfoBufferTaken;
       srv.buff_own_inst = inst;
+      inst->rx_buff = srv.config.shared_rx_buff;
+      inst->rx_size = srv.config.shared_rx_buff_size;
       return true;
    }
    
@@ -122,6 +126,13 @@ static bool server_req_buffer(void* user)
 static void server_rel_buffer(void* user)
 {
    SlinkInstance * inst = user;
+   
+   if (inst->own_buff)
+      return;
+   
+   inst->rx_buff = NULL;
+   inst->rx_size = 0;
+   
    if (srv.buff_own_inst == NULL)
    {
       srv.errors |= kSrvErrorBufferReleaseUnknown;
@@ -166,7 +177,7 @@ static void server_disable_int(void)
    sys_disable_ints();
 }
 
-void server_add_handler(size_t itf, uint16_t id, SeMsgCallback cb)
+void server_add_handler(size_t itf, size_t id, size_t endp, SeMsgCallback cb)
 {
    if(srv.handler_count >= SERVER_CALLBACKS_MAX)
    {
@@ -176,6 +187,7 @@ void server_add_handler(size_t itf, uint16_t id, SeMsgCallback cb)
    
    srv.handlers[srv.handler_count] = (MsgHandler) {
       .id = id, 
+      .endp = endp,
       .cb = cb, 
       .itf = itf
    };
@@ -194,6 +206,21 @@ void server_send_msg(size_t itf, SeMsgHead * msg)
       if (mask & itf)
       {
          slink_send_msg(&slink_inst[i], msg);
+      }
+   }
+}
+
+void server_send(size_t itf, const void* msg, size_t size, size_t id, size_t endp)
+{
+   if (itf == 0)
+      itf = -1;
+   
+   size_t mask = 1;
+   for(size_t i = 0; i < srv.config.socket_count; i++, mask <<= 1)
+   {
+      if (mask & itf)
+      {
+         slink_send(&slink_inst[i], msg, size, id, endp);
       }
    }
 }
@@ -266,10 +293,10 @@ static void server_dispatch(size_t itf, SlinkInstance * inst, const SeMsgHead * 
       if (this_itf == 0)
          this_itf = -1;
          
-      if ((srv.handlers[i].id == msg->id) && (this_itf & itf) > 0)
+      if ((this_itf & itf) > 0 && (srv.handlers[i].endp == msg->endp) && (srv.handlers[i].id == msg->id))
       {
-         DBG(kLvlVerb, "server, handling message %u.%u", msg->id >> 8, msg->id & 0xFF);
-         (*srv.handlers[i].cb)(itf, msg);
+         DBG(kLvlVerb, "server, handling message %4X, ep %u", msg->id, msg->endp);
+         (*srv.handlers[i].cb)(itf, msg + 1, msg->size - sizeof(SeMsgHead));
          found = true;
          break;
       }
@@ -279,11 +306,10 @@ static void server_dispatch(size_t itf, SlinkInstance * inst, const SeMsgHead * 
    
    if (!found)
    {
-      DBG(kLvlWarn, "server, unknown message type %u.%u", msg->id >> 8, msg->id & 0xFF);
+      DBG(kLvlWarn, "server, unknown message type %4X, ep %u", msg->id, msg->endp);
       send_unknown(itf, msg->id);
    }
 }
-
 
 void server_service(void)
 {

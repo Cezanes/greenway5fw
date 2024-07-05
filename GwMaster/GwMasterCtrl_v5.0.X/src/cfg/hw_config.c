@@ -16,16 +16,17 @@
 #define STORAGE_END_ADDR        (0x9D080000UL - 4096)
 #define STORAGE_APP_CFG_ADDR    (STORAGE_END_ADDR     - 1 * STORAGE_PAGE_SIZE)
 #define STORAGE_SEM_PROG_ADDR   (STORAGE_APP_CFG_ADDR - SIGNAL_MAX_SCHEDULE_SIZE)
-//#define STORAGE_FW_IMG          (0x9D018000)
+#define STORAGE_SEM_DESC_ADDR   (STORAGE_SEM_PROG_ADDR - SIGNAL_MAX_DESCRIPTION_SIZE)
 
 const uint8_t __attribute((space(prog), section(".app_config"), address(STORAGE_APP_CFG_ADDR))) sect_app_cfg[STORAGE_PAGE_SIZE];// = { [0 ...(sizeof(sect_app_cfg))-1] = 0x55 };
 const uint8_t __attribute((space(prog), section(".sem_prog"), address(STORAGE_SEM_PROG_ADDR))) sect_sem_prog[SIGNAL_MAX_SCHEDULE_SIZE];// = { [0 ...(sizeof(sect_sem_prog))-1] = 0xFF };
-//const uint8_t __attribute((space(prog), section(".fwupd"), noload, address(STORAGE_FW_IMG))) sect_fw_img[128 * 1024];
+const uint8_t __attribute((space(prog), section(".sem_wtf"), address(STORAGE_SEM_DESC_ADDR))) sect_sem_desc[SIGNAL_MAX_DESCRIPTION_SIZE];
 
 static const StorageSector nvm[] = 
 {
    {.ptr = sect_app_cfg,  .size = sizeof(sect_app_cfg)}, 
    {.ptr = sect_sem_prog, .size = sizeof(sect_sem_prog)}, 
+   {.ptr = sect_sem_desc, .size = sizeof(sect_sem_desc)}, 
 };
 
 static const BtnEntry btn_entries[] = 
@@ -72,7 +73,7 @@ static const Pin pin_have_modem = PIN_DEF(C, 2);
 #endif
 
 
-static uint8_t network_buff[16 * 1024];
+static uint8_t network_buff[32 * 1024];
 
 static const PulseInstance pu_inst[] = 
 {
@@ -154,18 +155,14 @@ static const uint32_t sem_sms_periods[] =
 static const SocketConfig sockets[] = 
 {
    {
-      .baud = 500000,
+      .baud = 500000,              // PC
       .clock_src = _XTAL_FREQ,
       .uart = &Uart[0],
-      .rx_buff = network_buff,
-      .rx_buff_size = sizeof(network_buff),
    },
    {
-      .baud = 115200,
+      .baud = 115200,              // Modem
       .clock_src = _XTAL_FREQ,
       .uart = &Uart[2],
-      .rx_buff = network_buff,
-      .rx_buff_size = sizeof(network_buff),
    },
 };
 
@@ -184,16 +181,14 @@ const HwConfig hw_config =
    },
    
    .debug = {
-      .buff = (uint8_t[1024]){},
-      .buff_size = 1024,
       .baud = 500000,
       .clock_src = _XTAL_FREQ,
       .uart = &Uart[0],
    },
    
    .shabuff = {
-      .ptr = (uint8_t[8 * 1024]){},
-      .size = 8 * 1024,
+      //.ptr = (uint8_t[8 * 1024]){},
+      //.size = 8 * 1024,
       .chunk_count = 4,
    },
       
@@ -226,8 +221,8 @@ const HwConfig hw_config =
    },
    
    .sem = {
-      .sch_buff = (uint8_t[2048]){},
-      .sch_buff_size = 2048,
+      //.sch_buff = (uint8_t[2048]){},
+      //.sch_buff_size = 2048,
       .sms_periods = sem_sms_periods,
       .sms_period_count = COUNT(sem_sms_periods),
    },
@@ -294,6 +289,7 @@ const HwConfig hw_config =
          },
          
          .use_rx_interrupt = false,
+         .on_recv_msg = pctrl_on_recv_msg,
          .mode_timeout = 1000,
       },
    },

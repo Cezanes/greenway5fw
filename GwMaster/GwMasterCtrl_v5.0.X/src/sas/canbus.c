@@ -13,7 +13,7 @@
 
 typedef struct
 {
-   CanBusConfig config;
+   const CanBusConfig * config;
    uint32_t fifo[2 * 32 * 4];
    
    size_t recv_msg_count;
@@ -36,7 +36,7 @@ bool can_change_mode(CAN_MODULE module, CAN_OP_MODE opmode)
 {
    CANSetOperatingMode(module, opmode);
    
-   uint32_t timeout = can.config.mode_timeout;
+   uint32_t timeout = can.config->mode_timeout;
    while(CANGetOperatingMode(module) != opmode)
    {
       timer_delay_ms(1);
@@ -64,14 +64,14 @@ static bool peripheral_init(void)
    }
    
    CAN_BIT_CONFIG can_config;
-   can_config.phaseSeg1Tq          = can.config.clock.phaseSeg1Tq; // 3
-   can_config.phaseSeg2Tq          = can.config.clock.phaseSeg2Tq; // 3
-   can_config.propagationSegTq     = can.config.clock.propagationSegTq; // 3
-   can_config.phaseSeg2TimeSelect  = can.config.clock.phaseSeg2TimeSelect; // true
-   can_config.sample3Time          = can.config.clock.sample3Time; // true
-   can_config.syncJumpWidth        = can.config.clock.syncJumpWidth; // true 
+   can_config.phaseSeg1Tq          = can.config->clock.phaseSeg1Tq; // 3
+   can_config.phaseSeg2Tq          = can.config->clock.phaseSeg2Tq; // 3
+   can_config.propagationSegTq     = can.config->clock.propagationSegTq; // 3
+   can_config.phaseSeg2TimeSelect  = can.config->clock.phaseSeg2TimeSelect; // true
+   can_config.sample3Time          = can.config->clock.sample3Time; // true
+   can_config.syncJumpWidth        = can.config->clock.syncJumpWidth; // true 
    
-   CANSetSpeed(CAN1, &can_config, can.config.clock.sys_clock, can.config.clock.can_baud);
+   CANSetSpeed(CAN1, &can_config, can.config->clock.sys_clock, can.config->clock.can_baud);
    
    CANAssignMemoryBuffer(CAN1, can.fifo, sizeof(can.fifo));
    
@@ -98,7 +98,7 @@ static bool peripheral_init(void)
       return false;
    }
    
-   if (can.config.use_rx_interrupt && can.config.on_recv_msg)
+   if (can.config->use_rx_interrupt && can.config->on_recv_msg)
    {
       enable_isr();
    }
@@ -112,7 +112,7 @@ void __ISR(_CAN_1_VECTOR, IPL1AUTO) CAN1_ISR(void)
    {   
        if(CANGetPendingEventCode(CAN1) == CAN_CHANNEL1_EVENT)
        {   
-         if(can.config.on_recv_msg)
+         if(can.config->on_recv_msg)
          {
             CANRxMessageBuffer * message = (CANRxMessageBuffer *)CANGetRxMessage(CAN1, CAN_CHANNEL1);
 
@@ -126,7 +126,7 @@ void __ISR(_CAN_1_VECTOR, IPL1AUTO) CAN1_ISR(void)
                msg.data[0] = message->messageWord[2];
                msg.data[1] = message->messageWord[3];
 
-               can.config.on_recv_msg(&msg);
+               can.config->on_recv_msg(&msg);
             }
          }
          
@@ -143,7 +143,7 @@ void __ISR(_CAN_1_VECTOR, IPL1AUTO) CAN1_ISR(void)
 
 void can_init(const CanBusConfig * config)
 {
-   can.config = *config;
+   can.config = config;
    
    if(!peripheral_init())
    {
@@ -255,12 +255,12 @@ bool can_send_empty(void)
 
 void can_service(void)
 {
-   if(!can.config.use_rx_interrupt && can.config.on_recv_msg)
+   if(!can.config->use_rx_interrupt && can.config->on_recv_msg)
    {
       CanMsg msg;
       if(can_recv(&msg))
       {
-         can.config.on_recv_msg(&msg);
+         can.config->on_recv_msg(&msg);
       }
    }
 }

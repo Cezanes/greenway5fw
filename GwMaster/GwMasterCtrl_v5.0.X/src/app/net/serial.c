@@ -5,6 +5,8 @@
 #include "app/sem/sem_objects.h"
 #include "app/logic/logic.h"
 #include "cfg/app_config.h"
+#include "app/edge/edge_msg.h"
+#include "app/edge/edge.h"
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,38 +36,33 @@ static void serial_msg_set_sms(size_t itf, const SeMsgHead * msg);
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 
-
-static void reply(size_t itf, uint16_t type)
+/*
+static void reply(size_t itf, size_t id, size_t endp)
 {
-   SeMsgHead msg = {
-      .id = type,
-      .size = sizeof(SeMsgHead),
-   };
-   
-   server_send_msg(itf, &msg);
+   server_send(itf, NULL, 0, id, endp);
 }
 
-static void ack(size_t itf, uint16_t type)
+static void ack(size_t itf, size_t id)
 {
    SeMsgAck msg = {
       .head = {
          .id = kMsgSlinkAck,
          .size = sizeof(SeMsgAck),
       },
-      .acked_msg = type,
+      .acked_msg = id,
    };
    
    server_send_msg(itf, &msg.head);
 }
 
-static void nack(size_t itf, uint16_t type, size_t reason)
+static void nack(size_t itf, uint16_t id, size_t reason)
 {
    SeMsgNack msg = {
       .head = {
          .id = kMsgSlinkNack,
          .size = sizeof(SeMsgNack),
       },
-      .nacked_msg = type,
+      .nacked_msg = id,
       .reason = (uint8_t)reason,
    };
    
@@ -74,7 +71,7 @@ static void nack(size_t itf, uint16_t type, size_t reason)
 
 static void serial_msg_hello(size_t itf, const SeMsgHead * msg)
 {
-   reply(itf, kMsgSlinkHello);
+   reply(itf, 0, kMsgSlinkHello);
 }
 
 static void serial_msg_info(size_t itf, const SeMsgHead * msg)
@@ -206,10 +203,11 @@ static void serial_msg_set_sms(size_t itf, const SeMsgHead * msg)
 /////////////////////////////////////////////////////////////   Public    //////////////////////////////////////////////////////
 
 
-void serial_send_msg(size_t itf, SeMsgHead * msg)
+void serial_send_msg_old(size_t itf, SeMsgHead * msg)
 {
    server_send_msg(itf, msg);
 }
+
 
 void serial_send_sms_msg(size_t itf, const char * no, const char * text, size_t len)
 {
@@ -235,6 +233,55 @@ void serial_send_sms_msg(size_t itf, const char * no, const char * text, size_t 
    server_finalize_msg(itf);
 }
 
+static void serial_msg_edge_proc_sms(size_t itf, const SeMsgHead * msg)
+{
+ * uint8_t phone_nr[16] = {0};
+   
+   strncpy(phone_nr, data, sizeof(phone_nr) - 1);
+   
+   cell_receive_sms(itf, phone_nr, (const char *)&(((const char *)data)[sizeof(phone_nr)]), size - sizeof(phone_nr));
+ 
+   const SeMsgSetSms * msgs = (const SeMsgSetSms *) msg;
+   size_t text_size = msgs->head.size - sizeof(SeMsgSetSms);
+   
+   cell_receive_sms(itf, msgs->phone_nr, (const char *)(msgs + 1), text_size);
+}*/
+
+
+void serial_send_msg(size_t itf, const void * msg, size_t size, size_t id, size_t ep)
+{
+   server_send(itf, msg, size, id, ep);
+}
+
+
+static void serial_on_msg_ctrl_get(size_t itf, const void * data, size_t size)
+{
+   DataCtrlReq req;
+   
+   if (!edge_parse_ctrl_get(&req, data, size))
+   {
+      DBG(kLvlError, "edge, failed to deserialize ctrl req, %s:", data);
+      return;
+   }
+   
+   if (!memcmp(req.what, "status", 7))
+   {
+      edge_send_status();
+   }
+}
+
+static void serial_on_msg_mon_sms(size_t itf, const void * data, size_t size)
+{
+   DataMonSms msg;
+   if (!edge_parse_mon_sms(&msg, data, size))
+   {
+      DBG(kLvlError, "edge, failed to deserialize mon sms, %s:", data);
+      return;
+   }
+   
+   cell_receive_sms(itf, msg.nr, msg.text, strlen(msg.text));
+}
+
 
 /////////////////////////////////////////////////////////////   Public    //////////////////////////////////////////////////////
 
@@ -245,17 +292,23 @@ void serial_init(const ServerConfig * config)
    
    server_init(config);
    
-   server_add_handler(kSlinkItfAll, kMsgSlinkHello, &serial_msg_hello);
-   server_add_handler(kSlinkItfAll, kMsgSlinkInfo, &serial_msg_info);
-   server_add_handler(kSlinkItfAll, kMsgSlinkGetSemProg, &serial_msg_get_sem_prog);
-   server_add_handler(kSlinkItfAll, kMsgSlinkSetSemProg, &serial_msg_set_sem_prog);
-   server_add_handler(kSlinkItfAll, kMsgSlinkGetConfig, &serial_msg_get_config);
-   server_add_handler(kSlinkItfAll, kMsgSlinkSetConfig, &serial_msg_set_config);
-   server_add_handler(kSlinkItfAll, kMsgSlinkGetTime, &serial_msg_get_time);
-   server_add_handler(kSlinkItfAll, kMsgSlinkSetTime, &serial_msg_set_time);
-   server_add_handler(kSlinkItfAll, kMsgSlinkSetNetProg, &serial_msg_set_sem_netw);
+   /*server_add_handler(kSlinkItfPc, kMsgSlinkHello, 0, &serial_msg_hello);
+   server_add_handler(kSlinkItfPc, kMsgSlinkInfo, 0, &serial_msg_info);
+   server_add_handler(kSlinkItfPc, kMsgSlinkGetSemProg, 0, &serial_msg_get_sem_prog);
+   server_add_handler(kSlinkItfPc, kMsgSlinkSetSemProg, 0, &serial_msg_set_sem_prog);
+   server_add_handler(kSlinkItfPc, kMsgSlinkGetConfig, 0, &serial_msg_get_config);
+   server_add_handler(kSlinkItfPc, kMsgSlinkSetConfig, 0, &serial_msg_set_config);
+   server_add_handler(kSlinkItfPc, kMsgSlinkGetTime, 0, &serial_msg_get_time);
+   server_add_handler(kSlinkItfPc, kMsgSlinkSetTime, 0, &serial_msg_set_time);
+   server_add_handler(kSlinkItfPc, kMsgSlinkSetNetProg, 0, &serial_msg_set_sem_netw);
+   server_add_handler(kSlinkItfPc, kMsgSlinkSetSms, 0, &serial_msg_set_sms);*/
    
-   server_add_handler(kSlinkItfAll, kMsgSlinkSetSms, &serial_msg_set_sms);
+   
+   server_add_handler(kSlinkItfEdge, kMsgSlinkCtrlGet, kSlinkEpServer, &serial_on_msg_ctrl_get);
+   
+   server_add_handler(kSlinkItfEdge, kMsgSlinkMonSms, kSlinkEpMonitor, &serial_on_msg_mon_sms);
+   
+   
 }
 
 void serial_start(void)

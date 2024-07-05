@@ -30,6 +30,7 @@ void pctrl_clear_outs(void);
 void pctrl_clear_status(void);
 void pctrl_compile_metrics(void);
 void pctrl_commit(bool led_sync);
+void pctrl_on_recv_msg(const CanMsg * msg);
 void pctrl_service(void);
 
 #endif

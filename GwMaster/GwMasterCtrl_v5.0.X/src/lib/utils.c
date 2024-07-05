@@ -382,6 +382,23 @@ size_t utils_str_shift_back(char * dest, size_t dest_size, size_t dest_start, si
    return end;
 }
 
+size_t utils_strcpy(char * dest, size_t dest_size, const char * src)
+{
+   size_t count = 0;
+   
+   if(dest_size == 0)
+      return 0;
+   
+   for(; *src != '\0' && dest_size > 1; src++, dest++, count++)
+   {
+      *dest = *src;
+   }
+   
+   *dest = '\0';
+   
+   return count;
+}
+
 bool utils_str_first_uint32(const char **start, const char *end, uint32_t *value, int baze)
 {
    const char * ptr = *start;

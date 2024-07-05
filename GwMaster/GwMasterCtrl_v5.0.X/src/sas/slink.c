@@ -221,6 +221,43 @@ void slink_send_msg(SlinkInstance * inst, SeMsgHead * header)
    slink_send_esc_byte(inst, crc >> 8);
 }
 
+void slink_send(SlinkInstance * inst, const void * msg, size_t size, size_t id, size_t endp)
+{
+   SeMsgHead header = {
+      .tag = SE_MSG_FRAME_START,
+      .seq = 0,
+      .endp = (uint8_t)endp,
+      .id = (uint16_t)id,
+      .size = size + sizeof(SeMsgHead),
+      .crc = 0,
+   };
+
+   uint8_t* ptr = (uint8_t*)&header;
+   header.crc = utils_crc8t(ptr, sizeof(SeMsgHead) - 1);
+     
+   // Compute the CRC.
+   uint16_t crc = utils_crc16t(ptr, sizeof(SeMsgHead), CRC_START_CCITT_1D0F);
+   crc = utils_crc16t(msg, size, crc);
+
+   // Send frame start;
+   slink_send_byte(inst, SE_MSG_FRAME_START);
+   size_t count = sizeof(SeMsgHead);
+   ptr++; count--;
+
+   // Send the header
+   for (; count; count--, ptr++)
+      slink_send_esc_byte(inst, *ptr);
+
+   // Send the message
+   ptr = (uint8_t *)msg;
+   count = size;
+   for (; count; count--, ptr++)
+      slink_send_esc_byte(inst, *ptr);
+
+   // Send the crc.
+   slink_send_esc_byte(inst, (uint8_t)crc);
+   slink_send_esc_byte(inst, (uint8_t)(crc >> 8));
+}
 
 // Sends only the header to the server.
 uint16_t slink_begin_send_msg(SlinkInstance * inst, SeMsgHead * header, size_t size)

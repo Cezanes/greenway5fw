@@ -9,7 +9,7 @@ static struct
    size_t chunk_map;
    size_t chunk_size;
    size_t chunk_count;
-   void * chunk_ptrs[10];
+   void * chunk_ptrs[4];
    const SharedBuff * buff;
 } sb;
 

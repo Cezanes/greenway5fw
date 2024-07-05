@@ -8,7 +8,7 @@
 #include "lib/utils.h"
 #include "sal/debug.h"
 
-static const char * sep = ", ";
+static const char sep = ',';
 
 
 bool json_parse_tokens(JsonInst * inst, const char *json_str, size_t size)
@@ -16,7 +16,7 @@ bool json_parse_tokens(JsonInst * inst, const char *json_str, size_t size)
    jsmn_init(&inst->parser);
    inst->token_count = jsmn_parse(&inst->parser, json_str, size, inst->tokens, inst->token_available);
    
-   inst->json_str = json_str;
+   inst->json_str = (char *)json_str;
    
    switch(inst->token_count)
    {
@@ -84,6 +84,23 @@ bool json_parse_get_string(const JsonInst * inst, const jsmntok_t *tok, char * b
    return true;
 }
 
+bool json_parse_get_string_ref(const JsonInst * inst, const jsmntok_t *tok, const char ** str, size_t* size)
+{
+   if (tok->type != JSMN_STRING || tok->size != 0)
+      return false;
+   
+   int count = tok->end - tok->start;
+   
+   if (size != NULL)
+      *size = (size_t) count;
+   
+   inst->json_str[tok->end] = '\0';
+   
+   *str = &inst->json_str[tok->start];
+   
+   return true;
+}
+
 bool json_parse_get_int32(const JsonInst * inst, const jsmntok_t *tok, int32_t *value)
 {
    if (tok->type != JSMN_PRIMITIVE || tok->size != 0)
@@ -104,9 +121,10 @@ bool json_read_uint32(const JsonInst * inst, const jsmntok_t *tok, uint32_t *val
    return true;
 }
 
-bool json_find_uint32(const JsonInst * inst, int root, const char * tag, uint32_t *value)
+bool json_find_uint32(const JsonInst * inst, const jsmntok_t * root, const char * tag, uint32_t *value)
 {
-   const jsmntok_t * token = json_parse_find_tag(inst, root, tag);
+   const jsmntok_t * token = json_parse_find_tag(inst, root + 1, tag);
+   
    if(NULL != token && token->type == JSMN_STRING)
    {
       return json_read_uint32(inst, &token[1], value);
@@ -115,11 +133,15 @@ bool json_find_uint32(const JsonInst * inst, int root, const char * tag, uint32_
    return false;
 }
 
-const jsmntok_t * json_parse_find_tag(const JsonInst * inst, int root, const char *tag)
+const jsmntok_t * json_parse_find_tag(const JsonInst * inst, const jsmntok_t *root, const char *tag)
 {
+   int root_index = 0;
+   if (root != NULL)
+      root_index = root->index + 1;
+         
    for(size_t i = 0; i < inst->token_count; i++)
    {
-      if(inst->tokens[i].parent == root && json_parse_is_tag(inst, &inst->tokens[i], tag))
+      if(inst->tokens[i].parent == root_index && json_parse_is_tag(inst, &inst->tokens[i], tag))
       {
          return &inst->tokens[i];
       }
@@ -150,7 +172,79 @@ size_t json_add_int32(char *json, size_t buff_size, const char *tag, int32_t val
 
 size_t json_add_string(char *json, size_t buff_size, const char *tag, const char * value)
 {
-   return snprintf_ex(json, buff_size, "\"%s\":\"%s\",", tag, value);
+   size_t size = 0;
+   
+   //snprintf_ex(json, buff_size, "\"%s\":\"%s\",", tag, value);
+   
+   size += snprintf_ex(&json[size], buff_size - size, "\"%s\":\"", tag);
+   
+   const char * str = value;
+   char * ptr = &json[size];
+   
+   for(; (size < buff_size - 1) && (*str != '\0'); str++)
+   {
+      char c = *str;
+      switch(c)
+      {
+         case 0x08: 
+            *ptr++ = '\\'; size++;
+            *ptr++ = 'b'; size++;
+            break;
+         
+         case 0x0C:
+            *ptr++ = '\\'; size++;
+            *ptr++ = 'f'; size++;
+            break;
+         
+         case '\n':
+            *ptr++ = '\\'; size++;
+            *ptr++ = 'n'; size++;
+            break;
+         
+         case '\r':
+            *ptr++ = '\\'; size++;
+            *ptr++ = 'r'; size++;
+            break;
+         
+         case '\t':
+            *ptr++ = '\\'; size++;
+            *ptr++ = 't'; size++;
+            break;
+            
+         case '"':
+            *ptr++ = '\\'; size++;
+            *ptr++ = '"'; size++;
+            break;
+            
+         case '\\':
+            *ptr++ = '\\'; size++;
+            *ptr++ = '\\'; size++;
+            break;
+            
+         case '/':
+            *ptr++ = '\\'; size++;
+            *ptr++ = '/'; size++;
+            break;
+         
+         default:
+            if ((unsigned char)c < 0x20)
+            {
+               if (buff_size - size >= 6)
+               {
+                  size += snprintf_ex(ptr, buff_size - size, "\\u%04x", c);
+                  ptr += size;
+               }
+            }
+            else
+            {
+               *ptr++ = c; size++;
+            }
+      }
+   }
+   
+   size += snprintf_ex(&json[size], buff_size - size, "\",");
+   
+   return size;
 }
 
 size_t json_add_bool(char *json, size_t buff_size, const char *tag, bool value)
@@ -166,6 +260,11 @@ size_t json_begin_object(char *json, size_t buff_size, const char * tag)
    if(tag)
       return snprintf_ex(json, buff_size, "\"%s\":{", tag);
    else return snprintf_ex(json, buff_size, "{");
+}
+
+size_t json_next_object(char *json, size_t buff_size)
+{
+   return snprintf_ex(json, buff_size, ",");
 }
 
 size_t json_begin_array(char *json, size_t buff_size, const char * tag)

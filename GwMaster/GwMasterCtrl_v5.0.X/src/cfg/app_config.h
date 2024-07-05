@@ -10,7 +10,8 @@
 enum
 {
    kStorageSectorAppCfg = 0,
-   kStorageSemProg = 1,
+   kStorageSemProg,
+   kStorageSemDesc,
 };
 
 typedef struct __attribute__ ((packed))
