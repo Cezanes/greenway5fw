@@ -17,6 +17,7 @@
 
 #include "app/sem/chronos.h"
 #include "app/net/radio.h"
+#include "app/edge/edge_msg.h"
 
 
 typedef struct __attribute__ ((packed))
@@ -229,7 +230,7 @@ size_t logic_slink_set_local_prog(const SignalNetwork * netw)
       return kErrorId;
    }
    
-   sem_suspend(true);
+   sem_hang(true);
    
    if(!storage_erase(kStorageSemProg) ||
       !storage_write(kStorageSemProg, dest, netw, netw->size))
@@ -248,7 +249,7 @@ size_t logic_slink_set_local_prog(const SignalNetwork * netw)
    const SignalController * ctrl = (const SignalController *) (dest_netw + 1);
    
    sem_set_program(ctrl);
-   sem_suspend(false);
+   sem_hang(false);
 
    if (ctrl->schedule_count > 0)
    {
@@ -422,17 +423,8 @@ size_t logic_slink_set_netw(const SignalNetwork * netw)
    
    const SignalController * ctrl = sem_next_ctrl(netw, NULL);
    
-   NetworkConfig ncfg = {
-      .node_count = 0,
-   };
-   
    do
    {
-      if (ncfg.node_count < COUNT(ncfg.node_list))
-      {
-         ncfg.node_list[ncfg.node_count++] = ctrl->id;
-      }
-      
       if(found && !next)
       {
          if(ctrl->id == app_config.net.addr_local)
@@ -482,10 +474,6 @@ size_t logic_slink_set_netw(const SignalNetwork * netw)
       DBG(kLvlError, "logic, sem netw no configuration found for this controller %u", app_config.net.addr_local);
       return kErrorConfig;
    }
-   
-   app_config.net.node_count = ncfg.node_count;
-   memcpy(app_config.net.node_list, ncfg.node_list, sizeof(ncfg.node_list));
-   app_config_write();
    
    if (next)
    {
@@ -539,7 +527,7 @@ void logic_on_gps_status(bool available, uint32_t epoch)
       if (available && lg.req_broadcast_time)
       {
          lg.req_broadcast_time = false;
-         logic_broadcast_time(epoch);
+         //logic_broadcast_time(epoch);
       }
    }
 }
@@ -562,7 +550,29 @@ void logic_have_gps_time(const bool have)
    }*/
 }
 
+
+///////////////////////////////////////////////////////    New stuff   ///////////////////////////////////////////////////////
+
+
+void logic_set_new_config(const DataCtrlConfig * cfg)
+{
+   DBG(kLvlInfo, "logic, new config id %u", cfg->ctrl_id);
+   
+   app_config.ctrl.config = *cfg;
+   app_config_write();
+}
+
+void logic_set_title(const DataCtrlTitle * title)
+{
+   DBG(kLvlInfo, "logic, new title %s; %s", title->name, title->description);
+   
+   app_config.ctrl.title = *title;
+   app_config_write();
+}
+
+
 ///////////////////////////////////////////////////////   Radio Link   ///////////////////////////////////////////////////////
+
 
 size_t logic_rlink_set_netw(const SignalNetwork * netw)
 {

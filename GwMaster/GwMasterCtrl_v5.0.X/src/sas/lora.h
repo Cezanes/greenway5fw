@@ -38,9 +38,7 @@ typedef struct __attribute__ ((packed))
 typedef struct __attribute__ ((packed))
 {
    uint8_t addr_network;
-   uint8_t addr_local;
-   uint8_t node_list[32];
-   uint8_t node_count;
+   uint8_t addr_local;   
 } NetworkConfig;
 
 typedef struct __attribute__ ((packed))

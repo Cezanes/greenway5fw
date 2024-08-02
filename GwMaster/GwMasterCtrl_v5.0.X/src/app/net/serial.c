@@ -260,14 +260,40 @@ static void serial_on_msg_ctrl_get(size_t itf, const void * data, size_t size)
    
    if (!edge_parse_ctrl_get(&req, data, size))
    {
-      DBG(kLvlError, "edge, failed to deserialize ctrl req, %s:", data);
+      DBG(kLvlError, "serial, failed to deserialize ctrl req, %s:", data);
       return;
    }
    
    if (!memcmp(req.what, "status", 7))
    {
-      edge_send_status();
+      edge_send_ctrl_status();
    }
+}
+
+static void serial_on_msg_ctrl_set_config(size_t itf, const void * data, size_t size)
+{
+   DataCtrlConfig cfg;
+   
+   if (!edge_parse_ctrl_set_config(&cfg, data, size))
+   {
+      DBG(kLvlError, "serial, failed to deserialize set config, %s:", data);
+      return;
+   }
+   
+   logic_set_new_config(&cfg);
+}
+
+static void serial_on_msg_ctrl_set_title(size_t itf, const void * data, size_t size)
+{
+   DataCtrlTitle title;
+   
+   if (!edge_parse_ctrl_set_title(&title, data, size))
+   {
+      DBG(kLvlError, "serial, failed to deserialize set title, %s:", data);
+      return;
+   }
+   
+   logic_set_title(&title);
 }
 
 static void serial_on_msg_mon_sms(size_t itf, const void * data, size_t size)
@@ -275,7 +301,7 @@ static void serial_on_msg_mon_sms(size_t itf, const void * data, size_t size)
    DataMonSms msg;
    if (!edge_parse_mon_sms(&msg, data, size))
    {
-      DBG(kLvlError, "edge, failed to deserialize mon sms, %s:", data);
+      DBG(kLvlError, "serial, failed to deserialize mon sms, %s:", data);
       return;
    }
    
@@ -305,10 +331,11 @@ void serial_init(const ServerConfig * config)
    
    
    server_add_handler(kSlinkItfEdge, kMsgSlinkCtrlGet, kSlinkEpServer, &serial_on_msg_ctrl_get);
+   server_add_handler(kSlinkItfEdge, kMsgSlinkCtrlSetConfig, kSlinkEpServer, &serial_on_msg_ctrl_set_config);
+   server_add_handler(kSlinkItfEdge, kMsgSlinkCtrlSetTitle, kSlinkEpServer, &serial_on_msg_ctrl_set_title);
    
    server_add_handler(kSlinkItfEdge, kMsgSlinkMonSms, kSlinkEpMonitor, &serial_on_msg_mon_sms);
-   
-   
+
 }
 
 void serial_start(void)

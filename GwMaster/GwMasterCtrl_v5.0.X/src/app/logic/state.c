@@ -22,10 +22,10 @@ const GlobalState * state_global(void)
    return &state.global;
 }
 
-void state_sem_update(void)
+void state_sem_state_changed(void)
 {
    cell_report_new_state();
-   edge_send_status();
+   edge_send_ctrl_status();
    //mqtt_status_changed();
 }
 

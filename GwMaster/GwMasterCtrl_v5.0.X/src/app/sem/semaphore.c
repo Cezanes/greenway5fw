@@ -11,7 +11,7 @@
 #include "sal/pulse.h"
 #include "cfg/hw_config.h"
 
-#include <stdio.h>
+
 
 static const char * sem_state_str[] = 
 {
@@ -20,6 +20,7 @@ static const char * sem_state_str[] =
    "normal",
    "alert",
    "suspended",
+   "suspended_manually",
    "disabled",
    "error",
    "fatal",
@@ -27,7 +28,7 @@ static const char * sem_state_str[] =
 
 static const char * sem_error_str[] = 
 {
-   "no_error", 
+   "none", 
    "bulb_failure", 
    "board_unpowered", 
    "board_disconnected",
@@ -42,6 +43,7 @@ static const char * sem_state_friendly_str[] =
    "Normal",
    "Alert", 
    "Supended", 
+   "Supended Manually", 
    "Disabled", 
    "Error",
    "Fatal",
@@ -50,7 +52,7 @@ static const char * sem_state_friendly_str[] =
 
 static const char * sem_error_friendly_str[] = 
 {
-   "No Error",
+   "None",
    "Bulb Failure", 
    "Board Unpowered", 
    "Board Disconnected",
@@ -66,11 +68,9 @@ typedef struct
    bool disable_sem_update;
    bool suspended_sch_check;
    
-   const SignalController * ctrl;
-   
-   bool req_suspend;
-   bool req_normal;
-   bool req_reload;
+   bool req_manual_suspend;
+   bool req_manual_disable;
+   bool req_manual_normal;
    
    bool req_state_changed;
    bool req_sch_changed;
@@ -80,6 +80,9 @@ typedef struct
    bool transition_in;
    bool transition_out;
    size_t tranzition_safety;
+   
+   const SignalNetwork * netw;
+   const SignalController * ctrl;
    const SignalSchedule * curr_sch;
    
 } SemInternal;
@@ -205,8 +208,25 @@ static SemInternal sem;
 
 static void change_state(size_t state, size_t error)
 {
-   if(sem.state.global == state && sem.state.error == error)
+   if (sem.state.global == state && sem.state.error == error)
       return;
+   
+   if (app_config.sem.disabled_manually && state >= kSemStateNormal)
+   {
+      if (state < kSemStateDisabled)
+      {
+         state = kSemStateDisabled;
+         error = kSemErrorNone;
+      }
+   }
+   else if (app_config.sem.suspended_manually && state >= kSemStateNormal)
+   {
+      if (state < kSemStateSuspendedManually)
+      {
+         state = kSemStateSuspendedManually;
+         error = kSemErrorNone;
+      }
+   }
    
    sem.state.just_booted = state == kSemStateNormal && sem.state.global == kSemStateInit;
    
@@ -216,7 +236,13 @@ static void change_state(size_t state, size_t error)
    sem.state.last_state = sem.state.global;
    sem.state.global = state;
    sem.state.error = error;
+   
+   sem.state.str_global = sem_get_state_str(false);
+   sem.state.str_error = sem_get_error_str();
+   
    sem.req_state_changed = true;
+   
+   DBG(kLvlWarn, "state changed to '%s', error '%s'", sem.state.str_global, sem.state.str_error);
 }
 
 static void check_power_board_error_resume(void)
@@ -524,12 +550,26 @@ static bool switch_to_fallback(const uint32_t week_sec)
 
 void sem_operation_suspend(void)
 {
-   sem.req_suspend = true;
+   sem.req_manual_suspend = true;
+   app_config.sem.suspended_manually = true;
+   app_config.sem.disabled_manually = false;
+   app_config_write();
+}
+
+void sem_operation_disable(void)
+{
+   sem.req_manual_disable = true;
+   app_config.sem.suspended_manually = false;
+   app_config.sem.disabled_manually = true;
+   app_config_write();
 }
 
 void sem_operation_resume(void)
 {
-   sem.req_normal = true;
+   sem.req_manual_normal = true;
+   app_config.sem.suspended_manually = false;
+   app_config.sem.disabled_manually = false;
+   app_config_write();
 }
 
 
@@ -632,20 +672,15 @@ static size_t str_fill_board_map(char * buff, size_t buff_size, uint32_t map)
    return size;
 }
 
-void sem_update_state_details(void)
+static void sem_sch_changed(void)
 {
-   sem.state.str_global = sem_get_state_str();
-   sem.state.str_error = sem_get_error_str();
-   
    sem.state.str_net[0] = 0;
    sem.state.str_ctrl[0] = 0;
    sem.state.str_sch[0] = 0;
-   
-   const SignalNetwork * netw = logic_slink_get_prog();
-   
-   if(netw != NULL)
+      
+   if(sem.netw != NULL)
    {
-      snprintf(sem.state.str_net, sizeof(sem.state.str_net), "%s", netw->name);
+      snprintf(sem.state.str_net, sizeof(sem.state.str_net), "%s", sem.netw->name);
    }
    
    if(sem.ctrl != NULL)
@@ -658,7 +693,7 @@ void sem_update_state_details(void)
       snprintf(sem.state.str_sch, sizeof(sem.state.str_sch), sem.curr_sch->name);
    }
    
-   DBG(kLvlWarn, "state changed to '%s', error '%s'", sem.state.str_global, sem.state.str_error);
+   sem.req_sch_changed = true;
 }
 
 /*
@@ -748,10 +783,10 @@ void sem_init(const SemConfig * sem_config)
 void sem_start(void)
 {
    const SignalController * ctrl = &sem_demo_prog.ctrl;
-   const SignalNetwork * netw = logic_slink_get_prog();
    
-   if(netw != NULL)
-      ctrl = (const SignalController *)(netw + 1);
+   sem.netw = logic_slink_get_prog();
+   if(sem.netw != NULL)
+      ctrl = (const SignalController *)(sem.netw + 1);
    
    sem_set_program(ctrl);
 }
@@ -772,15 +807,28 @@ const SignalSchedule * sem_get_current_sch(void)
    return sem.curr_sch;
 }
 
-const char * sem_get_state_str(void)
+const char * sem_get_state_str(bool friendly)
 {
-   if(sem.state.global >= COUNT(sem_state_str))
+   if (!friendly)
    {
-      DBG(kLvlError, "sem, invalid state value %u", sem.state.global);
-      return "undefined";
+      if(sem.state.global >= COUNT(sem_state_str))
+      {
+         DBG(kLvlError, "sem, invalid state value %u", sem.state.global);
+         return "undefined";
+      }
+      
+      return sem_state_str[sem.state.global];
    }
-   
-   return sem_state_str[sem.state.global];
+   else
+   {
+      if(sem.state.global >= COUNT(sem_state_friendly_str))
+      {
+         DBG(kLvlError, "sem, invalid state value %u", sem.state.global);
+         return "undefined";
+      }
+      
+      return sem_state_friendly_str[sem.state.global];
+   }
 }
 
 const char * sem_get_error_str(void)
@@ -819,7 +867,7 @@ void sem_set_program(const SignalController * prog)
    pctrl_setup(&port);
 }
 
-void sem_suspend(const bool susp)
+void sem_hang(const bool susp)
 {
    sem_clear();
    sem_commit();
@@ -831,7 +879,6 @@ void sem_suspend_sch_check(const bool on)
 {
    sem.suspended_sch_check = on;
 }
-
 
 void sem_service(void)
 {
@@ -925,8 +972,8 @@ void sem_tick(const uint32_t time, const uint32_t milli)
    if (sem.ctrl == NULL)
       return;
    
-   const SignalSchedule * sch = NULL;
    uint32_t week_sec = dte_epoch_seconds_from_monday(time);
+   const SignalSchedule * sch = NULL;
    
    // Get the power board metrics
    pctrl_compile_metrics();
@@ -936,41 +983,51 @@ void sem_tick(const uint32_t time, const uint32_t milli)
    check_power_board_error_resume();
    
    
-   // Do we need to suspend operation?
-   if(sem.req_suspend && (sem.state.global == kSemStateNormal || sem.state.global == kSemStateAlert))
+   // Do we need to manually suspend?
+   if(sem.req_manual_suspend)
    {
-      sem.req_suspend = false;
-      sem.state.last_state = kSemStateInit;
-      //switch_to_fallback(week_sec);
-      change_state(kSemStateSuspended, kSemErrorNone);
+      sem.req_manual_suspend = false;
+      
+      // Already suspended?
+      if (sem.state.global == kSemStateNormal || 
+          sem.state.global == kSemStateAlert ||
+          sem.state.global == kSemStateSuspended ||
+          sem.state.global == kSemStateDisabled)
+      {
+         //switch_to_fallback(week_sec);
+         change_state(kSemStateSuspendedManually, kSemErrorNone);
+      }
+   }
+   
+   // Do we need to manually disable?
+   if(sem.req_manual_disable)
+   {
+      sem.req_manual_disable = false;
+      
+      // Already disabled?
+      if (sem.state.global < kSemStateFatal)
+      {
+         change_state(kSemStateDisabled, kSemErrorNone);
+      }
    }
    
    // Do we need to resume?
-   if(sem.req_normal && (sem.state.global == kSemStateSuspended))
+   if(sem.req_manual_normal)
    {
-      sem.req_normal = false;
-      sem.state.last_state = kSemStateInit;
+      sem.req_manual_normal = false;
       
-      change_state(kSemStateNormal, kSemErrorNone);
-      
-      sem.transition_out = false;
-      sem.transition_in = false;
+      if (sem.state.global == kSemStateSuspended ||
+          sem.state.global == kSemStateSuspendedManually ||
+          sem.state.global == kSemStateDisabled ||
+         (sem.state.global == kSemStateError && sem.state.error == kSemErrorBulbFailure))
+      {
+         change_state(kSemStateNormal, kSemErrorNone);
+
+         sem.transition_out = false;
+         sem.transition_in = false;
+      }
    }
-   
-   // Do we need to reload?
-   if(sem.req_normal)
-   {
-      sem.req_normal = false;
-      sem.state.last_state = kSemStateInit;
-      
-      pctrl_clear_status();
-      
-      change_state(kSemStateNormal, kSemErrorNone);
-      
-      sem.transition_out = false;
-      sem.transition_in = false;
-   }
-   
+     
    // Run the normal schedule 
    if(sem.state.global == kSemStateNormal || 
       sem.state.global == kSemStateAlert)
@@ -984,8 +1041,11 @@ void sem_tick(const uint32_t time, const uint32_t milli)
       }  
    }
    
+   else
+   
    // Run the suspended schedule
    if(sem.state.global == kSemStateSuspended || 
+      sem.state.global == kSemStateSuspendedManually ||
       sem.state.global == kSemStateError)
    {
       sch = sem_next_sch(sem.ctrl, NULL);
@@ -1001,6 +1061,12 @@ void sem_tick(const uint32_t time, const uint32_t milli)
    if (sch != NULL)
       safely_run_schedule(time, week_sec, milli, sch);
    
+   if (sem.curr_sch != sch)
+   {
+      sem.curr_sch = sch;
+      sem_sch_changed();
+   }
+   
    sem_commit();
    
    return;
@@ -1008,7 +1074,7 @@ void sem_tick(const uint32_t time, const uint32_t milli)
    
      
    
-   
+   /*
    
    // Run normal schedule
    if(sem.state.global != kSemStateNormal && sem.state.global != kSemStateAlert)
@@ -1130,4 +1196,5 @@ void sem_tick(const uint32_t time, const uint32_t milli)
          print_transition(sem.curr_sch);
       }
    }
+    * */
 }

@@ -469,7 +469,7 @@ static void radio_msg_blob(const RaMsgHead * msg, uint32_t size)
 
 static bool is_near(const uint8_t id)
 {
-   if (app_config.net.node_count == 0)
+   /*if (app_config.net.node_count == 0)
       return false;
    
    int our = -1;
@@ -497,12 +497,14 @@ static bool is_near(const uint8_t id)
    else
    {
       return our - his == 1;
-   }
+   }*/
+   
+   return false;
 }
 
 static uint8_t closest_node(const uint8_t id)
 {
-   if (app_config.net.node_count == 0)
+   /*if (app_config.net.node_count == 0)
       return kRadioAddrInvalid;
    
    int our = -1;
@@ -536,7 +538,9 @@ static uint8_t closest_node(const uint8_t id)
       our--;
    }
    
-   return app_config.net.node_list[our];
+   return app_config.net.node_list[our];*/
+   
+   return 0;
 }
 
 static void radio_msg_forward(const RaMsgHead * msg, uint32_t size)

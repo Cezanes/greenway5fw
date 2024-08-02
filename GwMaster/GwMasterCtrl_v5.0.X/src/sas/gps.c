@@ -165,8 +165,6 @@ static void gps_process_buff(const uint8_t * const data, size_t size)
 
 static void gps_recv_byte(void* user, uint8_t b)
 {
-   return;
-   
    if(b == '$')
    {
       gps.rx_index = 0;

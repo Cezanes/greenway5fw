@@ -111,7 +111,7 @@ bool json_parse_get_int32(const JsonInst * inst, const jsmntok_t *tok, int32_t *
    return true;
 }
 
-bool json_read_uint32(const JsonInst * inst, const jsmntok_t *tok, uint32_t *value)
+bool json_parse_get_uint32(const JsonInst * inst, const jsmntok_t *tok, uint32_t *value)
 {
    if (tok->type != JSMN_PRIMITIVE || tok->size != 0)
       return false;
@@ -127,7 +127,7 @@ bool json_find_uint32(const JsonInst * inst, const jsmntok_t * root, const char 
    
    if(NULL != token && token->type == JSMN_STRING)
    {
-      return json_read_uint32(inst, &token[1], value);
+      return json_parse_get_uint32(inst, &token[1], value);
    }
    
    return false;

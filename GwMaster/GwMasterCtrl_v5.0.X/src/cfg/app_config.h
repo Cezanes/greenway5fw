@@ -6,12 +6,13 @@
 
 #include "app/sem/semaphore.h"
 #include "app/logic/state.h"
+#include "app/edge/edge_msg.h"
 
 enum
 {
    kStorageSectorAppCfg = 0,
    kStorageSemProg,
-   kStorageSemDesc,
+   kStorageOther,
 };
 
 typedef struct __attribute__ ((packed))
@@ -21,9 +22,11 @@ typedef struct __attribute__ ((packed))
    uint32_t timestamp;
    int32_t timezone;
    bool have_gsm;
+   DataCtrlGlobal ctrl;
    NetworkConfig net;
    RadioConfig radio;
    ComData com;
+   SemData sem;
    uint16_t crc;
 } AppConfig;
 

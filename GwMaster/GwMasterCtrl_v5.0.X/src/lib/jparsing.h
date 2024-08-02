@@ -27,7 +27,7 @@ bool json_parse_is_tag(const JsonInst * inst, const jsmntok_t *tok, const char *
 bool json_parse_get_string(const JsonInst * inst, const jsmntok_t *tok, char * buff, size_t size);
 bool json_parse_get_string_ref(const JsonInst * inst, const jsmntok_t *tok, const char ** str, size_t* size);
 bool json_parse_get_int32(const JsonInst * inst, const jsmntok_t *tok, int32_t *value);
-bool json_read_uint32(const JsonInst * inst, const jsmntok_t *tok, uint32_t *value);
+bool json_parse_get_uint32(const JsonInst * inst, const jsmntok_t *tok, uint32_t *value);
 bool json_find_uint32(const JsonInst * inst, const jsmntok_t * root, const char * tag, uint32_t *value);
 const jsmntok_t * json_parse_find_tag(const JsonInst * inst, const jsmntok_t * root, const char *tag);
 

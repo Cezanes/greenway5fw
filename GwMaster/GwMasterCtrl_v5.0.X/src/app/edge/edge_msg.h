@@ -4,29 +4,28 @@
 
 typedef struct
 {
-   char what[32];
+   const char * what;
 } DataCtrlReq;
-
 
 typedef struct 
 {
    int fwv;
    int hwv;
-   char devid[16];
+   uint32_t ctrl_id;
    
 } DataCtrlId;
 
 typedef struct 
 {
-   char name[16];
+   char name[32];
    char description[64];
    
 } DataCtrlTitle;
 
 typedef struct 
 {
-   char state[16];
-   char error[16];
+   const char * state;
+   const char * error;
    uint32_t program_active_id;
    uint32_t schedule_active_id;
    uint32_t pinout_active_id;
@@ -41,7 +40,11 @@ typedef struct
    
 } DataCtrlInfo;
 
+typedef struct 
+{
+   uint32_t ctrl_id;
 
+} DataCtrlConfig;
 
 
 ////////////////////////////////////////////////////////////////////////////
@@ -53,3 +56,13 @@ typedef struct
    const char * text;
    
 } DataMonSms;
+
+
+////////////////////////////////////////////////////////////////////////////
+
+typedef struct
+{
+   DataCtrlConfig config;
+   DataCtrlTitle title;
+   
+} DataCtrlGlobal;

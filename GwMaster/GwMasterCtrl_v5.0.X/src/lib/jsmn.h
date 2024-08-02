@@ -39,7 +39,7 @@ enum jsmnerr {
  * end		end position in JSON data string
  */
 typedef struct {
-	jsmntype_t type;
+	short type;
 	short start;
 	short end;
 	short size;

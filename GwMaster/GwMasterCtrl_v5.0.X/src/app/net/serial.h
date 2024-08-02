@@ -46,6 +46,7 @@ enum MsgIdCtrl
       kMsgSlinkCtrlSetConfig   = kMsgSlinkCtrlCfg + 0x0C,
       kMsgSlinkCtrlStatus      = kMsgSlinkCtrlCfg + 0x10,
       kMsgSlinkCtrlSetState    = kMsgSlinkCtrlCfg + 0x14,
+      kMsgSlinkCtrlSetTitle    = kMsgSlinkCtrlCfg + 0x18,
 
 };
 

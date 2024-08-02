@@ -79,7 +79,7 @@ const HwConfig hw_config =
    .debug = {
       .buff = (uint8_t[1024]){},
       .buff_size = 1024,
-      .baud = 460800,
+      .baud = 500000,
       .clock_src = _XTAL_FREQ,
       .uart = &Uart[0],
    },

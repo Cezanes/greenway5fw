@@ -1,5 +1,4 @@
-#ifndef LOGIC_H
-#define LOGIC_H
+#pragma once
 
 #include "cfg/app_config.h"
 #include "app/sem/sem_objects.h"
@@ -28,6 +27,7 @@ void logic_have_gps_time(const bool have);
 void logic_broadcast_time(const uint32_t time);
 void logic_on_gps_status(bool available, uint32_t time);
 
+void logic_set_new_config(const DataCtrlConfig * cfg);
+void logic_set_title(const DataCtrlTitle * title);
 
 
-#endif

@@ -38,6 +38,7 @@ static void sms_process_new_msg(size_t itf, const char * phonenr, char * msg, si
 static void sms_cmd_list(size_t itf, const char *phonenr, char *msg, size_t msg_buff_size, size_t role);
 static void sms_cmd_status(size_t itf, const char *phonenr, char *msg, size_t msg_buff_size, size_t role);
 static void sms_cmd_resume(size_t itf, const char *phonenr, char *msg, size_t msg_buff_size, size_t role);
+static void sms_cmd_disable(size_t itf, const char *phonenr, char *msg, size_t msg_buff_size, size_t role);
 static void sms_cmd_reset(size_t itf, const char *phonenr, char *msg, size_t msg_buff_size, size_t role);
 static void sms_cmd_suspend(size_t itf, const char *phonenr, char *msg, size_t msg_buff_size, size_t role);
 static void sms_cmd_user(size_t itf, const char *phonenr, char *msg, size_t msg_buff_size, size_t role);
@@ -48,6 +49,7 @@ static const SmsCommand sms_cmds[] =
    {"status", "status", &sms_cmd_status}, 
    {"suspend", "suspend", &sms_cmd_suspend}, 
    {"resume", "resume", &sms_cmd_resume}, 
+   {"disable", "disable", &sms_cmd_disable}, 
    {"reset", "reset", &sms_cmd_reset}, 
    {"user", "user list\nuser add <name> <nr> <role>\nuser rem <name>", &sms_cmd_user},
 };
@@ -104,7 +106,7 @@ static bool reply_sms(size_t itf, const char *phonenr, const char *msg)
 
       if(!gsm_send_sms(phonenr, msg))
       {
-         DBG(kLvlError, "cannot send SMS to %s", phonenr);
+         DBG(kLvlError, "cell, cannot send SMS to %s", phonenr);
          cell.modem_working = false;
          timer_reset(cell.reconnect_timer);
          return false;
@@ -528,7 +530,7 @@ static void sms_cmd_status(size_t itf, const char *phonenr, char *msg, size_t ms
       size += snprintf(&msg[size], msg_buff_size - size, "Uptime: %u.%u.%u %02u:%02u:%02u\n", dt.years - 1970, dt.months - 1, dt.days - 1, dt.hours, dt.minutes, dt.seconds);
    }
    
-   size += snprintf(&msg[size], msg_buff_size - size, "Status: %s\n", sem_get_state_str());   
+   size += snprintf(&msg[size], msg_buff_size - size, "Status: %s\n", sem_get_state_str(true));   
    
    msg[msg_buff_size - 1] = 0;
    reply_sms(itf, phonenr, msg);
@@ -537,6 +539,11 @@ static void sms_cmd_status(size_t itf, const char *phonenr, char *msg, size_t ms
 static void sms_cmd_resume(size_t itf, const char *phonenr, char *msg, size_t msg_buff_size, size_t role)
 {
    sem_operation_resume();
+}
+
+static void sms_cmd_disable(size_t itf, const char *phonenr, char *msg, size_t msg_buff_size, size_t role)
+{
+   sem_operation_disable();
 }
 
 static void sms_cmd_reset(size_t itf, const char *phonenr, char *msg, size_t msg_buff_size, size_t role)
@@ -910,8 +917,8 @@ void cell_report_new_state(void)
       
       case kSemStateNormal:
       {
-         if(state->sem->just_booted)
-            return;
+         //if(state->sem->just_booted)
+         //   return;
          
          size += snprintf(&buff[size], buff_size - size, "GW: Normal operation\n");
          
@@ -928,6 +935,12 @@ void cell_report_new_state(void)
       case kSemStateSuspended:
       {
          size += snprintf(&buff[size], buff_size - size, "GW: Controller suspended\n");
+         break;
+      }
+      
+      case kSemStateSuspendedManually:
+      {
+         size += snprintf(&buff[size], buff_size - size, "GW: Controller manually suspended\n");
          break;
       }
       
@@ -1006,7 +1019,7 @@ void cell_report_new_state(void)
       
       default:
       {
-         DBG(kLvlError, "cell, invalid sem state %u", state->sem->global);
+         DBG(kLvlError, "cell, unhandled sem state %u", state->sem->global);
          break;
       }
    };

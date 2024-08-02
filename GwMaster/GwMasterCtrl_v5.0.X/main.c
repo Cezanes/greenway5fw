@@ -58,8 +58,6 @@ int main(void)
    timer_delay_ms(100);
    
    DBG(kLvlInfo, "application start, addr %u, net %u, modem %u", app_config.net.addr_local, app_config.net.addr_network, app_config.have_gsm);
-   
-   DBG(kLvlInfo, "tok %u", sizeof(jsmntok_t));
 
    gps_start();
    radio_start();
